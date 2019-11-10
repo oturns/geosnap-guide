@@ -24,6 +24,9 @@
 
 
 # Chapters
+- title: Introduction
+  url: README
+  not_numbered: false
 
 - title: Getting Started
   url: notebooks/01_getting_started

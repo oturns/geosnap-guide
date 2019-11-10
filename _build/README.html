@@ -1,0 +1,87 @@
+---
+redirect_from:
+  - "readme"
+title: |-
+  Introduction
+prev_page:
+  url: 
+  title: |-
+    
+next_page:
+  url: /notebooks/01_getting_started.html
+  title: |-
+    Getting Started
+suffix: .md
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 align="center"><code>geosnap</code></h1></p>
+<p><p align="center">
+<img height=100  src="assets/images/geosnap.svg" alt="geosnap"/>
+</p></p>
+<h2 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h2><p><code>geosnap</code> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
+of neighborhoods.
+Neighborhoods are important for a wide variety of reasons, but they’re hard to study
+because of some long-standing challenges, including that</p>
+<ul>
+<li>there is no formal definition of a
+<a href="https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood">“neighborhood”</a> so
+identifying and modeling them is frought with uncertainty</li>
+<li>many different physical and social data can characterize a neighborhood (e.g. its
+proximity to the urban core, its share of residents with a high school education, or the
+median price of its apartments) so there are countless ways to model neighborhoods by
+choosing different subsets of attributes</li>
+<li>conceptually, neighborhoods evolve through both space and time, meaning their
+socially-construed boundaries can shift over time, as can their demographic makeup.</li>
+<li>geographic tabulation units change boundaries over time, meaning the raw data are
+aggregated to different areal units at differerent points in time.</li>
+</ul>
+<p>To address these challenges,<code>geosnap</code> provides a suite of tools for creating socio-spatial
+datasets, harmonizing those datasets into consistent set of time-static boundaries,
+modeling bespoke neighborhoods and prototypical neighborhood types, and modeling
+neighborhood change using classic and spatial statistical methods.
+It also provides a set of static and interactive visualization tools to help you display
+and understand the critical information at each step of the process.</p>
+<p><strong>Batteries Included:</strong>
+<code>geosnap</code> comes packed with 30 years of census data, thanks to <a href="https://quiltdata.com/">quilt</a>, so you
+can get started modeling neighborhoods in the U.S. immediately.
+But you’re not just limited to the data provided with the package. <code>geosnap</code>
+works with any data you provide, any place in the world.</p>
+<h2 id="Architecture">Architecture<a class="anchor-link" href="#Architecture"> </a></h2><p>Most interaction in geosnap happens with a <code>Community</code>, and almost all of geosnap's functionality is available as a method on a <code>Community</code> object. But when you need to use other fetures, like access data or launch an interactive visuzalization, you may need to access functions in one of geosnap's submodules.</p>
+<h3 id="geosnap-has-five-modules:"><code>geosnap</code> has five modules:<a class="anchor-link" href="#geosnap-has-five-modules:"> </a></h3><ul>
+<li><p><strong><code>datasets</code></strong>:   Access built-in datasets, including 30 years of census data for the USA,  and databases stored with functions from the <code>io</code> module</p>
+</li>
+<li><p><strong><code>io</code></strong>:  Ingest, create, and manipulate space-time datasets</p>
+</li>
+<li><p><strong><code>analyze</code></strong>:  Analyze and model neighborhood boundaries and spatio-temporal dynamics</p>
+</li>
+<li><p><strong><code>harmonize</code></strong>:  Harmonize neighborhood boundaries into consistent, stable units using spatial statistical
+methods</p>
+</li>
+<li><p><strong><code>visualize</code></strong>:  Visualize neighborhood dynamics</p>
+</li>
+</ul>
+<h2 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h2><p>The recommended method for installing geosnap is with
+<a href="https://www.anaconda.com/download/">anaconda</a>.</p>
+<div class="highlight"><pre><span></span>conda install geosnap
+</pre></div>
+<h2 id="Funding">Funding<a class="anchor-link" href="#Funding"> </a></h2><p><img src="assets/images/nsf_logo.jpg" width=100 /> This project is supported by NSF Award #1733705,
+<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false">Neighborhoods in Space-Time Contexts</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
