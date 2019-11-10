@@ -1,0 +1,72 @@
+# This file contains the order and numbering for all sections in the book.
+#
+# It is a sample TOC file to help you get started. Fill it out with entries
+# for your own content.
+#
+# Each entry has the following schema:
+#
+# - title: mytitle   # Title of chapter or section
+#   url: /myurl  # URL of section relative to the /content/ folder.
+#   sections:  # Contains a list of more entries that make up the chapter's sections
+#   not_numbered: true  # if the section shouldn't have a number in the sidebar
+#     (e.g. Introduction or appendices)
+#   expand_sections: true  # if you'd like the sections of this chapter to always
+#     be expanded in the sidebar.
+#   external: true  # Whether the URL is an external link or points to content in the book
+#
+# Below are some special values that trigger specific behavior:
+# - search: true  # Will provide a link to a search page
+# - divider: true  # Will insert a divider in the sidebar
+# - header: My Header  # Will insert a header with no link in the sidebar
+#
+# See the links below for an example.
+
+
+
+# Chapters
+
+- title: Getting Started
+  url: notebooks/01_getting_started
+  not_numbered: false
+
+- title: Creating Datasets
+  url: notebooks/02_creating_community_datasets
+  not_numbered: false
+
+- title: Harmonizing Community Boundaries
+  url: notebooks/03_harmonizing_community_boundaries
+  not_numbered: false
+
+- title: Modeling Neighborhood Types
+  url: notebooks/04_modeling_neighborhood_types
+  not_numbered: false
+
+- title: Modeling Neighborhood Dynamics
+  url: notebooks/05_modeling_neighborhood_dynamics
+  not_numbered: false
+
+- title: Visualizing Neighborhood Sequences
+  url: notebooks/06_visualizing_neighborhood_sequences
+  not_numbered: false
+
+- title: Interactive Visualization
+  url: notebooks/07_interactive_visualization
+  not_numbered: false
+
+# Divider for meta-pages and content page
+- divider: true
+
+# External link
+- title: API Documentation
+  url: https://spatialucr.github.io/geosnap/api.html
+  external: true
+  not_numbered: true
+
+# Top-level page
+- title: Github Repository
+  url: https://github.com/spatialucr/geosnap
+  external: true
+  not_numbered: true
+  
+  
+- search: true
