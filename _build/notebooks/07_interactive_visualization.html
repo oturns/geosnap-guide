@@ -50,7 +50,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../doc/figs/commviz.png&quot;</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../docs/figs/commviz.png&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -98,85 +98,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.visualize</span> <span class="k">import</span> <span class="n">explore</span>
+<span class="c1"># uncomment to run</span>
+<span class="c1"># explore(data=&#39;ltdb&#39;)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/sklearn/externals/six.py:31: DeprecationWarning: The module is deprecated in version 0.21 and will be removed in version 0.23 since we&#39;ve dropped support for Python 2.7. Please rely on the official version of six (https://pypi.org/project/six/).
-  &#34;(https://pypi.org/project/six/).&#34;, DeprecationWarning)
-/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/sklearn/externals/joblib/__init__.py:15: DeprecationWarning: sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.
-  warnings.warn(msg, category=DeprecationWarning)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">explore</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;ltdb&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre> * Serving Flask app &#34;__main__&#34; (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre> * Running on http://127.0.0.1:8050/ (Press CTRL+C to quit)
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET / HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_renderer/react@16.8.6.min.js?v=1.0.0&amp;m=1561062262 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_renderer/prop-types@15.7.2.min.js?v=1.0.0&amp;m=1561062262 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_core_components/highlight.pack.js?v=1.0.0&amp;m=1563307603 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_html_components/dash_html_components.min.js?v=1.0.0&amp;m=1561063963 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_renderer/react-dom@16.8.6.min.js?v=1.0.0&amp;m=1561062262 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_bootstrap_components/_components/dash_bootstrap_components.min.js?v=0.7.0&amp;m=1564067725 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_renderer/dash_renderer.min.js?v=1.0.0&amp;m=1561062262 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_core_components/dash_core_components.min.js?v=1.0.0&amp;m=1563307603 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:07] &#34;GET /_dash-component-suites/dash_core_components/plotly-1.48.3.min.js?v=1.0.0&amp;m=1563307603 HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:08] &#34;GET /_dash-dependencies HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:08] &#34;GET /_dash-layout HTTP/1.1&#34; 200 -
-127.0.0.1 - - [06/Aug/2019 16:11:14] &#34;POST /_dash-update-component HTTP/1.1&#34; 200 -
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 

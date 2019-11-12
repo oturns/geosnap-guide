@@ -58,7 +58,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can access geosnap's built-in data from the <code>data_store</code> object in the data module. It contains a variable codebook as well as state, county, and MSA boundaries, in addition to boundaries and social data for three decades of census tracts. If you have stored an existing longitudinal database such as LTDB or the Geolytics Neighborhood Change Database, it will be available in the data store as well.</p>
+<p>You can access geosnap's built-in data from the <code>datasets</code> module. It contains a variable codebook as well as state, county, and MSA boundaries, in addition to boundaries and social data for three decades of census tracts. If you have stored an existing longitudinal database such as LTDB or the Geolytics Neighborhood Change Database, it will be available in <code>datasets</code> as well.</p>
 
 </div>
 </div>
@@ -72,7 +72,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="k">import</span> <span class="n">data_store</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="k">import</span> <span class="n">datasets</span>
 </pre></div>
 
     </div>
@@ -89,7 +89,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">data_store</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -105,7 +105,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;codebook&#39;,
+<pre>[&#39;blocks_2000&#39;,
+ &#39;blocks_2010&#39;,
+ &#39;codebook&#39;,
  &#39;counties&#39;,
  &#39;ltdb&#39;,
  &#39;msa_definitions&#39;,
@@ -129,7 +131,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Everything in <code>data_store</code> is a pandas (or geopandas) geo/dataframe. To access any of the data inside, just call the appropriate attribute/method (most datasets are methods). For example, to accesss the codebook which outlines each variable in the data store, incuding its name, description, the original census sources/variable names and the formula used to calculate it, you simply call <code>data_store.codebook</code>. We support the same variable set the Longitudinal Tract Database (LTDB).</p>
+<p>Everything in <code>datasets</code> is a pandas (or geopandas) geo/dataframe. To access any of the data inside, just call the appropriate attribute/method (most datasets are methods). For example, to accesss the codebook which outlines each variable in the data store, incuding its name, description, the original census sources/variable names and the formula used to calculate it, you simply call <code>datasets.codebook</code>. We support the same variable set the Longitudinal Tract Database (LTDB).</p>
 
 </div>
 </div>
@@ -143,7 +145,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_store</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -297,7 +299,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_store</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -356,123 +358,123 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
   <tbody>
     <tr>
       <th>0</th>
-      <td>01071950100</td>
-      <td>248</td>
-      <td>58000</td>
-      <td>31028</td>
+      <td>25009266400</td>
+      <td>662</td>
+      <td>172400</td>
+      <td>53314</td>
+      <td>48750</td>
+      <td>22500</td>
       <td>0</td>
-      <td>0</td>
-      <td>51250</td>
-      <td>30631</td>
-      <td>5792</td>
+      <td>53808</td>
+      <td>3065</td>
       <td>7</td>
       <td>...</td>
-      <td>10.47</td>
-      <td>8.85</td>
+      <td>3.74</td>
+      <td>9.84</td>
       <td>0.03</td>
-      <td>15.38</td>
-      <td>10.54</td>
-      <td>20.31</td>
-      <td>18.69</td>
-      <td>13445</td>
+      <td>14.59</td>
+      <td>11.04</td>
+      <td>21.40</td>
+      <td>17.61</td>
+      <td>24288</td>
       <td>2000</td>
-      <td>POLYGON ((-85.659972 34.755957, -85.660201 34....</td>
+      <td>POLYGON ((-70.91489900000001 42.886589, -70.90...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>01071950200</td>
-      <td>281</td>
-      <td>56600</td>
-      <td>29519</td>
+      <td>25009267102</td>
+      <td>653</td>
+      <td>169200</td>
+      <td>50739</td>
+      <td>46250</td>
       <td>0</td>
-      <td>25446</td>
-      <td>29063</td>
-      <td>30995</td>
-      <td>3618</td>
-      <td>9</td>
+      <td>0</td>
+      <td>51264</td>
+      <td>4311</td>
+      <td>23</td>
       <td>...</td>
-      <td>10.30</td>
-      <td>10.36</td>
-      <td>0.00</td>
-      <td>18.57</td>
-      <td>13.48</td>
-      <td>17.32</td>
-      <td>25.19</td>
-      <td>16321</td>
+      <td>3.22</td>
+      <td>13.42</td>
+      <td>0.06</td>
+      <td>13.77</td>
+      <td>9.67</td>
+      <td>21.02</td>
+      <td>18.91</td>
+      <td>20946</td>
       <td>2000</td>
-      <td>POLYGON ((-85.771604 34.917734, -85.772938 34....</td>
+      <td>POLYGON ((-70.91489900000001 42.886589, -70.91...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>01071950300</td>
-      <td>209</td>
-      <td>52700</td>
-      <td>32340</td>
-      <td>31250</td>
-      <td>20972</td>
-      <td>23182</td>
-      <td>34021</td>
-      <td>5899</td>
-      <td>12</td>
+      <td>25009266200</td>
+      <td>662</td>
+      <td>163200</td>
+      <td>49315</td>
+      <td>90457</td>
+      <td>101277</td>
+      <td>26250</td>
+      <td>48150</td>
+      <td>5131</td>
+      <td>37</td>
       <td>...</td>
-      <td>12.60</td>
-      <td>8.31</td>
-      <td>0.00</td>
-      <td>16.19</td>
-      <td>11.71</td>
-      <td>16.84</td>
-      <td>22.63</td>
-      <td>15718</td>
+      <td>3.30</td>
+      <td>9.10</td>
+      <td>0.07</td>
+      <td>13.44</td>
+      <td>10.63</td>
+      <td>22.38</td>
+      <td>20.74</td>
+      <td>21817</td>
       <td>2000</td>
-      <td>POLYGON ((-86.02624400000001 34.783033, -86.02...</td>
+      <td>POLYGON ((-70.93079899999999 42.884589, -70.92...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>01071950400</td>
-      <td>229</td>
-      <td>51000</td>
-      <td>33328</td>
-      <td>28750</td>
+      <td>25009267101</td>
+      <td>624</td>
+      <td>179200</td>
+      <td>45625</td>
       <td>0</td>
-      <td>16250</td>
-      <td>33442</td>
-      <td>2302</td>
-      <td>3</td>
+      <td>54545</td>
+      <td>38750</td>
+      <td>44750</td>
+      <td>3011</td>
+      <td>11</td>
       <td>...</td>
-      <td>15.36</td>
-      <td>8.35</td>
+      <td>42.08</td>
+      <td>9.96</td>
       <td>0.00</td>
-      <td>16.46</td>
-      <td>11.32</td>
-      <td>21.32</td>
-      <td>16.54</td>
-      <td>13755</td>
+      <td>19.89</td>
+      <td>14.78</td>
+      <td>16.97</td>
+      <td>27.61</td>
+      <td>22578</td>
       <td>2000</td>
-      <td>POLYGON ((-86.32297199999999 34.741224, -86.32...</td>
+      <td>POLYGON ((-70.8246893731782 42.87092164133018,...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>01071950500</td>
-      <td>233</td>
-      <td>70100</td>
-      <td>35319</td>
-      <td>0</td>
-      <td>65417</td>
-      <td>0</td>
-      <td>35446</td>
-      <td>3216</td>
-      <td>2</td>
+      <td>25009266100</td>
+      <td>569</td>
+      <td>215200</td>
+      <td>60677</td>
+      <td>48750</td>
+      <td>43750</td>
+      <td>32500</td>
+      <td>61224</td>
+      <td>3643</td>
+      <td>20</td>
       <td>...</td>
-      <td>7.91</td>
-      <td>10.68</td>
-      <td>0.00</td>
-      <td>16.09</td>
-      <td>11.52</td>
-      <td>19.24</td>
-      <td>16.02</td>
-      <td>15556</td>
+      <td>3.74</td>
+      <td>10.31</td>
+      <td>0.23</td>
+      <td>14.44</td>
+      <td>10.77</td>
+      <td>22.19</td>
+      <td>15.48</td>
+      <td>28030</td>
       <td>2000</td>
-      <td>POLYGON ((-86.171466 34.621673, -86.1737300000...</td>
+      <td>POLYGON ((-70.97459559012734 42.86775028124355...</td>
     </tr>
   </tbody>
 </table>
@@ -495,7 +497,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_store</span><span class="o">.</span><span class="n">states</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">states</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -511,7 +513,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1269f2c50&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12aabb3c8&gt;</pre>
 </div>
 
 </div>
@@ -563,15 +565,15 @@ height=79
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
-<span class="n">data_store</span><span class="o">.</span><span class="n">tracts_1990</span><span class="p">()[</span><span class="n">data_store</span><span class="o">.</span><span class="n">tracts_1990</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">datasets</span><span class="o">.</span><span class="n">tracts_1990</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_1990</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1990</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="n">data_store</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()[</span><span class="n">data_store</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="n">data_store</span><span class="o">.</span><span class="n">tracts_2010</span><span class="p">()[</span><span class="n">data_store</span><span class="o">.</span><span class="n">tracts_2010</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2010</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2010</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">2010</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 </pre></div>
@@ -618,7 +620,7 @@ height=268
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As mentioned above, you save these data locally for better performance using <code>geosnap.data.store_census</code>, which will download two quilt packages totaling just over 400mb (which is an exceedingly small file size, when you consider how much data are packed into those files). Once data are stored locally, you won't need this function again unless you want to update your local package to the most recent version on quilt.</p>
+<p>As mentioned above, you save these data locally for better performance using <code>geosnap.io.store_census</code>, which will download two quilt packages totaling just over 400mb (which is an exceedingly small file size, when you consider how much data are packed into those files). Once data are stored locally, you won't need this function again unless you want to update your local package to the most recent version on quilt.</p>
 
 </div>
 </div>
@@ -632,7 +634,7 @@ height=268
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="k">import</span> <span class="n">store_census</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.io</span> <span class="k">import</span> <span class="n">store_census</span>
 <span class="n">store_census</span><span class="p">()</span>
 </pre></div>
 
@@ -647,8 +649,8 @@ height=268
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>Copying: 100%|██████████| 327M/327M [01:56&lt;00:00, 2.81MB/s]    
-Copying: 100%|██████████| 86.1M/86.1M [00:14&lt;00:00, 6.10MB/s]  
+<pre>Copying: 100%|██████████| 258M/258M [00:19&lt;00:00, 13.6MB/s]    
+Copying: 100%|██████████| 86.1M/86.1M [00:06&lt;00:00, 12.8MB/s]  
 </pre>
 </div>
 </div>
@@ -665,7 +667,7 @@ Copying: 100%|██████████| 86.1M/86.1M [00:14&lt;00:00, 6.10M
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using geosnap's built-in data, researchers can get a jumpstart on neighborhood analysis with US tract data, but census tracts are not without their drawbacks. Many of geosnap's analytics require that neighborhood units remain consistent and stable in a study area over time (how can you analyze neighborhood change if your neighborhoods are different in each time period?), but with each new decennial census, tracts are redrawn according to population fluctuations. Geosnap offers two methods for dealing with this challenge.</p>
 <p>First, geosnap can create its own set of stable longitudinal units of analysis and convert raw census or other data into those units. Its <code>harmonize</code> module provides tools for researchers to define a set of geographic units and interpolate data into those units using moden spatial statistical methods. This is a good option for researchers who are interested in the ways that different interpolation methods can affect their analyses or those who want to use state-of-the-art methods to create longitudinal datasets that are more accurate than those provided by existing databases.</p>
-<p>Second, geosnap can simply leverage existing data that has already been standardized into a set of consistent units. The <code>data</code> module provides tools for reading and storing existing longitudinal databases that, once ingested, will be available in the data store and can be queried and analyzed repeatedly. This is a good option for researchers who want to get started modeling neighborhood characteristics right away and are less interested in exploring how error propagates through spatial interpolation.</p>
+<p>Second, geosnap can simply leverage existing data that has already been standardized into a set of consistent units. The <code>io</code> module provides tools for reading and storing existing longitudinal databases that, once ingested, will be available in the data store and can be queried and analyzed repeatedly. This is a good option for researchers who want to get started modeling neighborhood characteristics right away and are less interested in exploring how error propagates through spatial interpolation.</p>
 
 </div>
 </div>
@@ -738,31 +740,17 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="k">import</span> <span class="n">store_ltdb</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.io</span> <span class="k">import</span> <span class="n">store_ltdb</span>
 
 <span class="c1"># if the archives were in my downloads folder, the paths might be something like this</span>
 <span class="n">sample</span> <span class="o">=</span> <span class="s2">&quot;/Users/knaaptime/Downloads/LTDB_Std_All_Sample.zip&quot;</span>
 <span class="n">full</span> <span class="o">=</span> <span class="s2">&quot;/Users/knaaptime/Downloads/LTDB_Std_All_fullcount.zip&quot;</span>
 
-<span class="n">store_ltdb</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span> <span class="n">fullcount</span><span class="o">=</span><span class="n">full</span><span class="p">)</span>
+<span class="c1"># uncomment to run</span>
+<span class="c1">#store_ltdb(sample=sample, fullcount=full)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Hashing: 100%|██████████| 300M/300M [00:02&lt;00:00, 131MB/s]  
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -773,7 +761,7 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>That function will extract the necessary data from the archives, calculate additional variables using formulas from the codebook, create a new local quilt package for storing the data, and register the database with the <code>data_store</code>. After the function has run, you will be able to access the LTDB data as a long-form geodataframe by calling the <code>ltdb</code> attribute from the data store. As with the <code>store_census</code> function above, this only needs to be run a single time to save the data as a local quit package and register it with geosnap. You won't neeed to store the data again unless there's an update to the variable formulas in the codebook.</p>
+<p>That function will extract the necessary data from the archives, calculate additional variables using formulas from the codebook, create a new local quilt package for storing the data, and register the database with the <code>datasets</code>. After the function has run, you will be able to access the LTDB data as a long-form geodataframe by calling the <code>ltdb</code> attribute from the data store. As with the <code>store_census</code> function above, this only needs to be run a single time to save the data as a local quit package and register it with geosnap. You won't neeed to store the data again unless there's an update to the variable formulas in the codebook.</p>
 
 </div>
 </div>
@@ -787,7 +775,7 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_store</span><span class="o">.</span><span class="n">ltdb</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#datasets.ltdb.head()</span>
 </pre></div>
 
     </div>
@@ -1010,7 +998,7 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 <ol>
 <li>Open the Geolytics application</li>
 <li>Choose "New Request":<br>
-<img src="https://raw.githubusercontent.com/spatialucr/geosnap/master/geosnap/doc/figs/geolytics_interface1.PNG" alt="Choose &quot;New Request&quot;"></li>
+<img src="https://github.com/spatialucr/geosnap/blob/master/docs/figs/geolytics_interface1.PNG?raw=true" alt="Choose &quot;New Request&quot;"></li>
 <li>Select CSV or DBF</li>
 <li>Make the following Selections:<ul>
 <li><strong>year</strong>: all years in 2010 boundaries</li>
@@ -1019,7 +1007,7 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 </ul>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/spatialucr/geosnap/master/geosnap/doc/figs/geolytics_interface2.PNG" alt=""></p>
+<p><img src="https://github.com/spatialucr/geosnap/blob/master/docs/figs/geolytics_interface2.PNG?raw=true" alt=""></p>
 <ol>
 <li><p>Click <code>Run Report</code></p>
 </li>
@@ -1041,12 +1029,14 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="k">import</span> <span class="n">store_ncdb</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.io</span> <span class="k">import</span> <span class="n">store_ncdb</span>
 
 <span class="n">ncdb_path</span> <span class="o">=</span> <span class="s2">&quot;~/Downloads/ncdb.csv&quot;</span>
 
 <span class="c1"># note this will raise several warnings since NCDB does not contain all the underlying data necessary to calculate all the variables in the codebook</span>
-<span class="n">store_ncdb</span><span class="p">(</span><span class="n">ncdb_path</span><span class="p">)</span>
+
+<span class="c1"># uncomment to run</span>
+<span class="c1"># store_ncdb(ncdb_path)</span>
 </pre></div>
 
     </div>
@@ -1060,7 +1050,7 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As with above, you can access the geolytics data through the <code>ncdb</code> attribute of the <code>data_store</code></p>
+<p>As with above, you can access the geolytics data through the <code>ncdb</code> attribute of the <code>datasets</code></p>
 
 </div>
 </div>
@@ -1074,7 +1064,7 @@ type</strong> menu and "All years" in the <strong>select a year</strong> dropdow
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_store</span><span class="o">.</span><span class="n">ncdb</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#datasets.ncdb.head()</span>
 </pre></div>
 
     </div>

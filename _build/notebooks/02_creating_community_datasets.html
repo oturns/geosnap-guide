@@ -82,28 +82,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="k">import</span> <span class="n">Community</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="k">import</span> <span class="n">Community</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/sklearn/externals/six.py:31: DeprecationWarning: The module is deprecated in version 0.21 and will be removed in version 0.23 since we&#39;ve dropped support for Python 2.7. Please rely on the official version of six (https://pypi.org/project/six/).
-  &#34;(https://pypi.org/project/six/).&#34;, DeprecationWarning)
-/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/sklearn/externals/joblib/__init__.py:15: DeprecationWarning: sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.
-  warnings.warn(msg, category=DeprecationWarning)
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -212,148 +194,148 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <tr style="text-align: right;">
       <th></th>
       <th>geoid</th>
-      <th>geometry</th>
-      <th>median_contract_rent</th>
-      <th>median_home_value</th>
-      <th>median_household_income</th>
-      <th>median_income_asianhh</th>
-      <th>median_income_blackhh</th>
-      <th>median_income_hispanichh</th>
-      <th>median_income_whitehh</th>
-      <th>n_age_5_older</th>
+      <th>n_mexican_pop</th>
+      <th>n_cuban_pop</th>
+      <th>n_puerto_rican_pop</th>
+      <th>n_total_housing_units</th>
+      <th>n_vacant_housing_units</th>
+      <th>n_occupied_housing_units</th>
+      <th>n_owner_occupied_housing_units</th>
+      <th>n_renter_occupied_housing_units</th>
+      <th>n_white_persons</th>
       <th>...</th>
-      <th>p_unemployment_rate</th>
-      <th>p_vacant_housing_units</th>
-      <th>p_veterans</th>
-      <th>p_vietnamese_persons</th>
-      <th>p_white_over_60</th>
-      <th>p_white_over_65</th>
-      <th>p_white_under_15</th>
-      <th>p_widowed_divorced</th>
-      <th>per_capita_income</th>
-      <th>year</th>
+      <th>p_irish_born_pop</th>
+      <th>p_italian_born_pop</th>
+      <th>p_poverty_rate_children</th>
+      <th>p_poverty_rate_hispanic</th>
+      <th>p_russian_born_pop</th>
+      <th>p_scandanavian_born_pop</th>
+      <th>p_scandanavian_pop</th>
+      <th>n_total_pop_sample</th>
+      <th>p_female_labor_force</th>
+      <th>p_black_persons</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>53214</th>
+      <th>0</th>
       <td>11001001600</td>
-      <td>POLYGON ((-77.02680206298828 38.98410034179688...</td>
-      <td>477.0</td>
-      <td>285100.0</td>
-      <td>75252.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.742191e+70</td>
+      <td>4409.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>1667.0</td>
+      <td>43.0</td>
+      <td>1624.0</td>
+      <td>1458.0</td>
+      <td>166.0</td>
+      <td>114423.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>2.58</td>
-      <td>1.028308e+08</td>
-      <td>0.00</td>
-      <td>3.159920e+25</td>
-      <td>4.999423e+17</td>
-      <td>1.378187e+24</td>
-      <td>0.0</td>
-      <td>32166.0</td>
-      <td>1990</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>53215</th>
+      <th>1</th>
       <td>11001001500</td>
-      <td>POLYGON ((-77.05280303955078 38.98649978637695...</td>
-      <td>1001.0</td>
-      <td>366000.0</td>
-      <td>79681.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.025723e+72</td>
+      <td>5430.0</td>
+      <td>11.0</td>
+      <td>15.0</td>
+      <td>2309.0</td>
+      <td>78.0</td>
+      <td>2231.0</td>
+      <td>1898.0</td>
+      <td>333.0</td>
+      <td>4694102.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>3.38</td>
-      <td>7.095389e+07</td>
-      <td>0.23</td>
-      <td>6.529311e+30</td>
-      <td>1.483617e+23</td>
-      <td>6.816417e+33</td>
-      <td>0.0</td>
-      <td>36452.0</td>
-      <td>1990</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>53216</th>
+      <th>2</th>
       <td>11001001701</td>
-      <td>POLYGON ((-77.02660369873047 38.97769927978516...</td>
-      <td>429.0</td>
-      <td>135600.0</td>
-      <td>34420.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>6.918716e+64</td>
+      <td>2868.0</td>
+      <td>5.0</td>
+      <td>22.0</td>
+      <td>1287.0</td>
+      <td>50.0</td>
+      <td>1237.0</td>
+      <td>619.0</td>
+      <td>618.0</td>
+      <td>31727.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>3.89</td>
-      <td>8.990532e+05</td>
-      <td>0.10</td>
-      <td>1.184601e+14</td>
-      <td>1.285720e+10</td>
-      <td>8.476736e+15</td>
-      <td>0.0</td>
-      <td>17782.0</td>
-      <td>1990</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>53217</th>
+      <th>3</th>
       <td>11001001801</td>
-      <td>POLYGON ((-77.02660369873047 38.97769927978516...</td>
-      <td>1001.0</td>
+      <td>694.0</td>
+      <td>5.0</td>
+      <td>28.0</td>
+      <td>10.0</td>
+      <td>1.0</td>
+      <td>9.0</td>
       <td>0.0</td>
-      <td>77197.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.084115e+31</td>
+      <td>9.0</td>
+      <td>35813.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>10.00</td>
-      <td>5.229000e+01</td>
-      <td>0.00</td>
-      <td>1.450982e+11</td>
-      <td>1.437909e+08</td>
-      <td>1.321830e+14</td>
-      <td>0.0</td>
-      <td>14679.0</td>
-      <td>1990</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>53218</th>
+      <th>4</th>
       <td>11001001702</td>
-      <td>POLYGON ((-77.00859832763672 38.97000122070312...</td>
-      <td>514.0</td>
-      <td>129300.0</td>
-      <td>42661.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.210494e+62</td>
+      <td>2516.0</td>
+      <td>6.0</td>
+      <td>12.0</td>
+      <td>1086.0</td>
+      <td>43.0</td>
+      <td>1043.0</td>
+      <td>712.0</td>
+      <td>331.0</td>
+      <td>48917.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>3.96</td>
-      <td>7.219278e+04</td>
-      <td>0.04</td>
-      <td>4.438992e+13</td>
-      <td>2.147213e+10</td>
-      <td>2.352939e+17</td>
-      <td>0.0</td>
-      <td>20468.0</td>
-      <td>1990</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -455,7 +437,7 @@ height=268
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To instantiate a <code>Community</code> from a longitudinal database, you must first register the database with geosnap using either <code>store_ltdb</code> or <code>store_ncdb</code>. Once the data are available in the data_store, you can call <code>Community.from_ltdb</code> and <code>Community.from_ncdb</code></p>
+<p>To instantiate a <code>Community</code> from a longitudinal database, you must first register the database with geosnap using either <code>store_ltdb</code> or <code>store_ncdb</code>. Once the data are available in datasets, you can call <code>Community.from_ltdb</code> and <code>Community.from_ncdb</code></p>
 
 </div>
 </div>
@@ -490,7 +472,7 @@ height=268
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="k">import</span> <span class="n">data_store</span> <span class="k">as</span> <span class="n">store</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="k">import</span> <span class="n">datasets</span>
 </pre></div>
 
     </div>
@@ -507,7 +489,7 @@ height=268
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">store</span><span class="o">.</span><span class="n">msas</span><span class="p">()[</span><span class="n">store</span><span class="o">.</span><span class="n">msas</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Riverside&#39;</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">msas</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">msas</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Riverside&#39;</span><span class="p">)]</span>
 </pre></div>
 
     </div>
@@ -609,7 +591,7 @@ height=268
 <div class="output_png output_subarea ">
 <img src="../images/notebooks/02_creating_community_datasets_21_0.png"
 width=851
-height=189
+height=174
 >
 </div>
 
@@ -677,24 +659,6 @@ height=189
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/knaaptime/projects/geosnap/geosnap/data/data.py:1000: UserWarning:
-
-Unable to determine whether boundary CRS is WGS84 if this produces unexpected results, try reprojecting
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -709,26 +673,6 @@ Unable to determine whether boundary CRS is WGS84 if this produces unexpected re
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../images/notebooks/02_creating_community_datasets_26_0.png"
-width=851
-height=155
->
-</div>
-
-</div>
-</div>
 </div>
 </div>
 
@@ -799,21 +743,6 @@ height=155
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Matched: chicago to Chicago city within layer Incorporated Places
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -845,21 +774,6 @@ height=155
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Matched: chicago to Chicago city within layer Incorporated Places
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -918,37 +832,6 @@ height=155
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1, &#39;2017&#39;)</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../images/notebooks/02_creating_community_datasets_36_1.png"
-width=540
-height=301
->
-</div>
-
-</div>
-</div>
 </div>
 </div>
 

@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://spatialucr.github.io/geosnap-guide//search",
   "headline": "Search the site",
-  "datePublished": "2019-11-10T15:07:50-08:00",
-  "dateModified": "2019-11-10T15:07:50-08:00",
+  "datePublished": "2019-11-11T17:08:48-08:00",
+  "dateModified": "2019-11-11T17:08:48-08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -741,7 +741,7 @@ initFunction(initPrint)
         "title": "Harmonizing Community Boundaries",
         
         "excerpt":
-            "%load_ext autoreload %autoreload 2 from geosnap.data import Community Data prep dc = Community.from_lodes(state_fips=&#39;11&#39;, years=[2010,2015]) /Users/knaaptime/projects/geosnap/geosnap/data/data.py:113: UserWarning: Unable to locate local census 2000 block data. Streaming instead. If you plan to use census data repeatedly you can store it locally with the data.store_blocks_2000 function for better performance &#34;Unable to locate local census 2000 block data. Streaming instead.\\n&#34; /Users/knaaptime/projects/geosnap/geosnap/data/data.py:166: UserWarning: Unable to locate local census 2010 block data. Streaming instead. If you plan to use census data repeatedly you can store it locally with the data.store_blocks_2010 function for better performance &#34;Unable to locate local census 2010 block data. Streaming instead.\\n&#34; dc_tracts =...",
+            "%load_ext autoreload %autoreload 2 from geosnap import Community Data prep dc = Community.from_lodes(state_fips=&quot;11&quot;, years=[2010, 2015]) dc_tracts = Community.from_census(state_fips=&quot;11&quot;, years=2010) # tract level data from 2010, this is the source tracts = dc_tracts.gdf # block level data from 2015, this is the target blocks = dc.gdf[dc.gdf.year == 2015] # original block-level data for 2010, this is the ground truth test = dc.gdf[dc.gdf.year == 2010] # rename this variable so its the same on blocks/tracts tracts[&quot;population&quot;] = tracts[&quot;n_total_pop&quot;] # community with mixed geoms hybrid = Community.from_geodataframes([blocks, tracts]) Harmonizing a community with areal interpolation # this wil take the 2010 tract data and...",
         "categories": [],
         "tags": [],
         "url": "https://spatialucr.github.io/geosnap-guide/notebooks/03_harmonizing_community_boundaries.html",
@@ -749,7 +749,7 @@ initFunction(initPrint)
         "title": "Modeling Neighborhood Types",
         
         "excerpt":
-            "Modeling neighborhoods and neighborhood types In the urban studies, the subfield of geodemographics focuses on the use of cluster analysis to identify a typology of prototypical neighborhoods in a study region. Meanwhile, the subfield of regionalization focuses on identifying contiguous groups of spatial units whose internal attribute structure is relatively homogenous. Whereas geodemographics are concerned primarily with summarizing and categorizing neighborhoods, regionalization is concerned primarily with identifying and delineating neighborhoods. geosnap supports both of these goals by providing classic and spatial clustering algorithms as methods on the Community object from geosnap.data import Community, data_store as store import matplotlib.pyplot as plt...",
+            "Modeling neighborhoods and neighborhood types In the urban studies, the subfield of geodemographics focuses on the use of cluster analysis to identify a typology of prototypical neighborhoods in a study region. Meanwhile, the subfield of regionalization focuses on identifying contiguous groups of spatial units whose internal attribute structure is relatively homogenous. Whereas geodemographics are concerned primarily with summarizing and categorizing neighborhoods, regionalization is concerned primarily with identifying and delineating neighborhoods. geosnap supports both of these goals by providing classic and spatial clustering algorithms as methods on the Community object from geosnap import Community, datasets import matplotlib.pyplot as plt import seaborn...",
         "categories": [],
         "tags": [],
         "url": "https://spatialucr.github.io/geosnap-guide/notebooks/04_modeling_neighborhood_types.html",
@@ -757,7 +757,7 @@ initFunction(initPrint)
         "title": "Modeling Neighborhood Dynamics",
         
         "excerpt":
-            "Modeling Neighborhood Dynamics We will use the Columbus MSA as an example to illustrate the dynamics module of geosnap. Modeling transition rates between neighborhood types across time Analyzing whole neighborhood sequence Data preperation Geodemographics for neighborhood segamentation from geosnap.data import Community, data_store as store import matplotlib.pyplot as plt %matplotlib inline import seaborn as sns import sys, os import warnings warnings.filterwarnings(&quot;ignore&quot;) columbus = Community.from_ltdb(msa_fips=&#39;18140&#39;) columbus1 = columbus.cluster(columns=[&#39;median_household_income&#39;, &#39;p_poverty_rate&#39;, &#39;p_edu_college_greater&#39;, &#39;p_unemployment_rate&#39;], method=&#39;ward&#39;) columbus1.gdf.head() year geoid n_asian_under_15 n_black_under_15 n_hispanic_under_15 n_native_under_15 n_white_under_15 n_persons_under_18 n_asian_over_60 n_black_over_60 ... n_total_housing_units_sample p_nonhisp_white_persons p_white_over_60 p_black_over_60 p_hispanic_over_60 p_native_over_60 p_asian_over_60 p_disabled geometry ward 0 1970 39041010100 NaN 73.000000 NaN NaN 1238.000000...",
+            "Modeling Neighborhood Dynamics We will use the Columbus MSA as an example to illustrate the dynamics module of geosnap. Modeling transition rates between neighborhood types across time Analyzing whole neighborhood sequence Data preperation Geodemographics for neighborhood segamentation from geosnap import Community import matplotlib.pyplot as plt %matplotlib inline import seaborn as sns import sys, os import warnings warnings.filterwarnings(&quot;ignore&quot;) columbus = Community.from_ltdb(msa_fips=&#39;18140&#39;) columbus1 = columbus.cluster(columns=[&#39;median_household_income&#39;, &#39;p_poverty_rate&#39;, &#39;p_edu_college_greater&#39;, &#39;p_unemployment_rate&#39;], method=&#39;ward&#39;) columbus1.gdf.head() year geoid n_asian_under_15 n_black_under_15 n_hispanic_under_15 n_native_under_15 n_white_under_15 n_persons_under_18 n_asian_over_60 n_black_over_60 ... n_total_housing_units_sample p_nonhisp_white_persons p_white_over_60 p_black_over_60 p_hispanic_over_60 p_native_over_60 p_asian_over_60 p_disabled geometry ward 0 1970 39041010100 NaN 73.000000 NaN NaN 1238.000000 1483.000000 NaN 32.000000...",
         "categories": [],
         "tags": [],
         "url": "https://spatialucr.github.io/geosnap-guide/notebooks/05_modeling_neighborhood_dynamics.html",
@@ -773,7 +773,7 @@ initFunction(initPrint)
         "title": "Interactive Visualization",
         
         "excerpt":
-            "Experimental Interactive Visualization You can test geosnap's experimental dataset explorer from the visualize module. This simple variable explorer will launch a [dash] app on your local machine that allows you to explore datasets for different metropolitan regions around the country from IPython.display import Image Image(&quot;../doc/figs/commviz.png&quot;) To use the explorer, import the function from the visualization module and pass the dataset you'd like to explore. The current options are 'census', 'ltdb', or 'ncdb', though note that to use either of the latter, you must have registered the appropriate database using the store_ltdb or store_ncdb functions. The function will launch a new...",
+            "Experimental Interactive Visualization You can test geosnap's experimental dataset explorer from the visualize module. This simple variable explorer will launch a [dash] app on your local machine that allows you to explore datasets for different metropolitan regions around the country from IPython.display import Image Image(&quot;../docs/figs/commviz.png&quot;) To use the explorer, import the function from the visualization module and pass the dataset you'd like to explore. The current options are 'census', 'ltdb', or 'ncdb', though note that to use either of the latter, you must have registered the appropriate database using the store_ltdb or store_ncdb functions. The function will launch a new...",
         "categories": [],
         "tags": [],
         "url": "https://spatialucr.github.io/geosnap-guide/notebooks/07_interactive_visualization.html",
