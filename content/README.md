@@ -1,5 +1,5 @@
 <p align="center">
-<img height=200  src="assets/images/geosnap_long.svg" alt="geosnap"/>
+<img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
 </p>
 <h2 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h2> 
 
