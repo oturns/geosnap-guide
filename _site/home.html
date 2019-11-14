@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Harmonizing Community Boundaries</title>
-  <meta name="description" content="            %load_ext autoreload%autoreload 2from geosnap import Community    Data prep     dc = Community.from_lodes(state_fips=&quot;11&quot;, years=[2010,...">
+  <title>Home</title>
+  <meta name="description" content="        The Geospatial Neighborhood Analysis Packagegeosnap makes it easier to explore, model, analyze, and visualize the social and spatial dynamicsof neigh...">
 
-  <link rel="canonical" href="https://spatialucr.github.io/geosnap-guide//notebooks/03_harmonizing_community_boundaries.html">
+  <link rel="canonical" href="https://spatialucr.github.io/geosnap-guide//home.html">
   <link rel="alternate" type="application/rss+xml" title="GEOSNAP USER GUIDE" href="https://spatialucr.github.io/geosnap-guide//feed.xml">
 
-  <meta property="og:url"         content="https://spatialucr.github.io/geosnap-guide//notebooks/03_harmonizing_community_boundaries.html" />
+  <meta property="og:url"         content="https://spatialucr.github.io/geosnap-guide//home.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Harmonizing Community Boundaries" />
-<meta property="og:description" content="            %load_ext autoreload%autoreload 2from geosnap import Community    Data prep     dc = Community.from_lodes(state_fips=&quot;11&quot;, years=[2010,..." />
+<meta property="og:title"       content="Home" />
+<meta property="og:description" content="        The Geospatial Neighborhood Analysis Packagegeosnap makes it easier to explore, model, analyze, and visualize the social and spatial dynamicsof neigh..." />
 <meta property="og:image"       content="https://spatialucr.github.io/geosnap-guide/assets/images/geosnap.svg" />
 
 <meta name="twitter:card" content="summary">
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://spatialucr.github.io/geosnap-guide//notebooks/03_harmonizing_community_boundaries.html",
-  "headline": "Harmonizing Community Boundaries",
+  "mainEntityOfPage": "https://spatialucr.github.io/geosnap-guide//home.html",
+  "headline": "Home",
   "datePublished": "2019-11-13T21:24:48-08:00",
   "dateModified": "2019-11-13T21:24:48-08:00",
-  "description": "            %load_ext autoreload%autoreload 2from geosnap import Community    Data prep     dc = Community.from_lodes(state_fips=&quot;11&quot;, years=[2010,...",
+  "description": "        The Geospatial Neighborhood Analysis Packagegeosnap makes it easier to explore, model, analyze, and visualize the social and spatial dynamicsof neigh...",
   "author": {
     "@type": "Person",
     "name": "eli knaap"
@@ -438,7 +438,7 @@ initFunction(initPrint)
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
+        <a class="c-sidebar__entry c-sidebar__entry--active"
           href="/home.html"
         >
           
@@ -522,7 +522,7 @@ initFunction(initPrint)
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry c-sidebar__entry--active"
+        <a class="c-sidebar__entry "
           href="/notebooks/03_harmonizing_community_boundaries.html"
         >
           
@@ -705,26 +705,10 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><img src="/assets/images/download-solid.svg" alt="Download" /></button>
     <div class="download-buttons">
-        <a href="/content/notebooks/03_harmonizing_community_boundaries.ipynb" download>
-        <button id="interact-button-download" class="interact-button">.ipynb</button>
-        </a>
         
         <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
     </div>
 </div>
-
-
-  
-  
-  
-
-
-
-
-
-
-<a href="https://mybinder.org/v2/gh/spatialucr/geosnap/master?urlpath=lab/tree/content%2Fnotebooks%2F03_harmonizing_community_boundaries.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
-  
 
 
 </div>
@@ -747,296 +731,70 @@ initFunction(initPrint)
     
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
-<span class="kn">from</span> <span class="nn">geosnap</span> <span class="k">import</span> <span class="n">Community</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-prep">Data prep<a class="anchor-link" href="#Data-prep"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_lodes</span><span class="p">(</span><span class="n">state_fips</span><span class="o">=</span><span class="s2">&quot;11&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">])</span>
+<p align="center">
+<img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
+</p><h1 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h1><p><code>geosnap</code> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
+of neighborhoods.
+Neighborhoods are important for a wide variety of reasons, but they’re hard to study
+because of some long-standing challenges, including that</p>
+<ul>
+<li>there is no formal definition of a
+<a href="https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood">“neighborhood”</a> so
+identifying and modeling them is frought with uncertainty</li>
+<li>many different physical and social data can characterize a neighborhood (e.g. its
+proximity to the urban core, its share of residents with a high school education, or the
+median price of its apartments) so there are countless ways to model neighborhoods by
+choosing different subsets of attributes</li>
+<li>conceptually, neighborhoods evolve through both space and time, meaning their
+socially-construed boundaries can shift over time, as can their demographic makeup.</li>
+<li>geographic tabulation units change boundaries over time, meaning the raw data are
+aggregated to different areal units at differerent points in time.</li>
+</ul>
+<p>To address these challenges,<code>geosnap</code> provides a suite of tools for creating socio-spatial
+datasets, harmonizing those datasets into consistent set of time-static boundaries,
+modeling bespoke neighborhoods and prototypical neighborhood types, and modeling
+neighborhood change using classic and spatial statistical methods.
+It also provides a set of static and interactive visualization tools to help you display
+and understand the critical information at each step of the process.</p>
+<p><strong>Batteries Included:</strong>
+<code>geosnap</code> comes packed with 30 years of census data, thanks to <a href="https://quiltdata.com/">quilt</a>, so you
+can get started modeling neighborhoods in the U.S. immediately.
+But you’re not just limited to the data provided with the package. <code>geosnap</code>
+works with any data you provide, any place in the world.</p>
+<p align="center">
+<img width=75% src='assets/images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif' alt='DC Transitions' style=' display: block; margin-left: auto; margin-right: auto;'/>
+</p><h2 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h2><p>The recommended method for installing geosnap is with
+<a href="https://www.anaconda.com/download/">anaconda</a>. To get started with the development version,
+clone this repository or download it manually then <code>cd</code> into the directory and run the
+following commands:</p>
+<div class="highlight"><pre><span></span>conda env create -f environment.yml
+conda activate geosnap 
+python setup.py develop
 </pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dc_tracts</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_census</span><span class="p">(</span><span class="n">state_fips</span><span class="o">=</span><span class="s2">&quot;11&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+<p>This will download the appropriate dependencies and install geosnap in its own conda
+environment.</p>
+<h2 id="Development">Development<a class="anchor-link" href="#Development"> </a></h2><p>geosnap development is hosted on <a href="https://github.com/spatialucr/geosnap">github</a></p>
+<h2 id="Bug-reports">Bug reports<a class="anchor-link" href="#Bug-reports"> </a></h2><p>To search for or report bugs, please see geosnap’s
+<a href="http://github.com/spatialucr/geosnap/issues">issues</a></p>
+<h2 id="License-information">License information<a class="anchor-link" href="#License-information"> </a></h2><p>See the file “LICENSE.txt” for information on the history of this software, terms &amp;
+conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.</p>
+<h2 id="Citation">Citation<a class="anchor-link" href="#Citation"> </a></h2><p>For a generic citation of geosnap, we recommend the following:</p>
+<div class="highlight"><pre><span></span>@misc<span class="nb">{</span>Knaap2019,
+author = <span class="nb">{</span>Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su<span class="nb">}</span>,
+doi = <span class="nb">{</span>10.5281/ZENODO.3526163<span class="nb">}</span>,
+title = <span class="nb"></span>,
+url = <span class="nb">{</span>https://zenodo.org/record/3526163<span class="nb">}</span>,
+year = <span class="nb">{</span>2019<span class="nb">}</span>
+<span class="nb">}</span>
 </pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tract level data from 2010, this is the source</span>
-<span class="n">tracts</span> <span class="o">=</span> <span class="n">dc_tracts</span><span class="o">.</span><span class="n">gdf</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
+<p>If you need to cite a specific release of the package, please find the appropriate version on <a href="https://zenodo.org/record/3526163">Zenodo</a></p>
+<h2 id="Funding">Funding<a class="anchor-link" href="#Funding"> </a></h2><p><img src="assets/images/nsf_logo.jpg" width=100 /> This project is supported by NSF Award #1733705,
+<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false">Neighborhoods in Space-Time Contexts</a></p>
 
 </div>
 </div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># block level data from 2015, this is the target</span>
-<span class="n">blocks</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2015</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># original block-level data for 2010, this is the ground truth</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># rename this variable so its the same on blocks/tracts</span>
-<span class="n">tracts</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tracts</span><span class="p">[</span><span class="s2">&quot;n_total_pop&quot;</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># community with mixed geoms</span>
-<span class="n">hybrid</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_geodataframes</span><span class="p">([</span><span class="n">blocks</span><span class="p">,</span> <span class="n">tracts</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Harmonizing-a-community-with-areal-interpolation">Harmonizing a community with areal interpolation<a class="anchor-link" href="#Harmonizing-a-community-with-areal-interpolation"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># this wil take the 2010 tract data and interpolate it to 2015 boundaries (the same as 2010)</span>
-<span class="c1"># using pure area interpolation here</span>
-
-<span class="n">hybrid_area</span> <span class="o">=</span> <span class="n">hybrid</span><span class="o">.</span><span class="n">harmonize</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="n">extensive_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Harmonizing-a-community-with-areal-interpolation-and-auxiliary-data">Harmonizing a community with areal interpolation and auxiliary data<a class="anchor-link" href="#Harmonizing-a-community-with-areal-interpolation-and-auxiliary-data"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># this will do the same as above, but will use 2011 NLCD data to constrain the overlay to what&#39;s considered developed land</span>
-
-<span class="n">hybrid_raster</span> <span class="o">=</span> <span class="n">hybrid</span><span class="o">.</span><span class="n">harmonize</span><span class="p">(</span>
-    <span class="mi">2015</span><span class="p">,</span> <span class="n">extensive_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">],</span> <span class="n">weights_method</span><span class="o">=</span><span class="s2">&quot;land_type_area&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">interpolated_area</span> <span class="o">=</span> <span class="n">hybrid_area</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">hybrid_area</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">]</span>
-<span class="n">interpolated_raster</span> <span class="o">=</span> <span class="n">hybrid_raster</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">hybrid_raster</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;truth&quot;</span><span class="p">,</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;raster&quot;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">test</span><span class="p">,</span> <span class="n">interpolated_area</span><span class="p">,</span> <span class="n">interpolated_raster</span><span class="p">]):</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">population</span> <span class="o">-</span> <span class="n">interpolated_area</span><span class="o">.</span><span class="n">population</span>
-
-<span class="n">diff</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">diff</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">population</span> <span class="o">-</span> <span class="n">interpolated_raster</span><span class="o">.</span><span class="n">population</span>
-
-<span class="n">diff</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">diff</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1050,15 +808,15 @@ initFunction(initPrint)
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/notebooks/02_creating_community_datasets.html">
-      〈 <span class="u-margin-right-tiny"></span> Creating Datasets
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="">
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/notebooks/04_modeling_neighborhood_types.html">
-      Modeling Neighborhood Types <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/quickstart.html">
+      Quickstart <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

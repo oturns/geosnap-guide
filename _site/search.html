@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://spatialucr.github.io/geosnap-guide//search",
   "headline": "Search the site",
-  "datePublished": "2019-11-13T09:06:14-08:00",
-  "dateModified": "2019-11-13T09:06:14-08:00",
+  "datePublished": "2019-11-13T21:24:48-08:00",
+  "dateModified": "2019-11-13T21:24:48-08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -425,7 +425,7 @@ initFunction(initPrint)
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://github.com/spatialucr/geosnap"><img src="/assets/images/geosnap.svg" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <a href="https://spatialucr.github.io/geosnap-guide"><img src="/assets/images/geosnap.svg" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
   <h2 class="c-sidebar__title">GEOSNAP USER GUIDE</h2>
   <ul class="c-sidebar__chapters">
     
@@ -439,10 +439,31 @@ initFunction(initPrint)
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/README.html"
+          href="/home.html"
         >
           
-          Introduction
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/quickstart.html"
+        >
+          
+          Quickstart
         </a>
 
         
@@ -463,7 +484,7 @@ initFunction(initPrint)
           href="/notebooks/01_getting_started.html"
         >
           
-          Getting Started
+          Introduction
         </a>
 
         
@@ -722,7 +743,15 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://spatialucr.github.io/geosnap-guide/README.html",
         "teaser":null},{
-        "title": "Getting Started",
+        "title": "Home",
+        
+        "excerpt":
+            "The Geospatial Neighborhood Analysis Package geosnap makes it easier to explore, model, analyze, and visualize the social and spatial dynamics of neighborhoods. Neighborhoods are important for a wide variety of reasons, but they’re hard to study because of some long-standing challenges, including that there is no formal definition of a “neighborhood” so identifying and modeling them is frought with uncertainty many different physical and social data can characterize a neighborhood (e.g. its proximity to the urban core, its share of residents with a high school education, or the median price of its apartments) so there are countless ways to model...",
+        "categories": [],
+        "tags": [],
+        "url": "https://spatialucr.github.io/geosnap-guide/home.html",
+        "teaser":null},{
+        "title": "Introduction",
         
         "excerpt":
             "Getting Started geosnap provides a set of tools for collecting data and constructing space-time datasets, identifying local neighborhoods or prototypical neighborhood types, modeling neighborhood change over time, and visualizing data at each step of the process. geosnap works with data from anywhere in the world, but comes batteries-included with three decades of national US Census data, including boundaries for metropolitan statistical areas, states, counties, and tracts, and over 100 commonly used demographic and socioeconomic variables at the census-tract level. All of these data are stored as geopandas geodataframes in efficient apache parquet files and distributed through quilt. These data are...",
@@ -777,6 +806,14 @@ initFunction(initPrint)
         "categories": [],
         "tags": [],
         "url": "https://spatialucr.github.io/geosnap-guide/notebooks/07_interactive_visualization.html",
+        "teaser":null},{
+        "title": "Quickstart",
+        
+        "excerpt":
+            "Quickstart the Community class is geosnap’s central data construct that holds space-time neighborhood data. You can create a Community from geosnap’s built-in data by passing a set of fips codes to a constructor method from geosnap.data import Community dc = Community.from_census(state_fips=&#39;11&#39;) Using the .from_census constructor, you’ll get 30 years of census tract data in their original boundaries with over a hundred commonly used demographic and socioeconomic variables. Data are stored as a long-form geodataframe under the gdf attribute dc.gdf.head() geoid geometry median_contract_rent median_home_value median_household_income median_income_asianhh median_income_blackhh median_income_hispanichh median_income_whitehh n_age_5_older ... p_unemployment_rate p_vacant_housing_units p_veterans p_vietnamese_persons p_white_over_60 p_white_over_65 p_white_under_15 p_widowed_divorced per_capita_income year...",
+        "categories": [],
+        "tags": [],
+        "url": "https://spatialucr.github.io/geosnap-guide/quickstart.html",
         "teaser":null},]
 </script>
             </div>

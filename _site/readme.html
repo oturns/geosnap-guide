@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://spatialucr.github.io/geosnap-guide//README.html",
   "headline": "Introduction",
-  "datePublished": "2019-11-13T09:06:14-08:00",
-  "dateModified": "2019-11-13T09:06:14-08:00",
+  "datePublished": "2019-11-13T21:24:48-08:00",
+  "dateModified": "2019-11-13T21:24:48-08:00",
   "description": "        The Geospatial Neighborhood Analysis Packagegeosnap makes it easier to explore, model, analyze, and visualize the social and spatial dynamicsof neigh...",
   "author": {
     "@type": "Person",
@@ -425,7 +425,7 @@ initFunction(initPrint)
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://github.com/spatialucr/geosnap"><img src="/assets/images/geosnap.svg" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <a href="https://spatialucr.github.io/geosnap-guide"><img src="/assets/images/geosnap.svg" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
   <h2 class="c-sidebar__title">GEOSNAP USER GUIDE</h2>
   <ul class="c-sidebar__chapters">
     
@@ -438,11 +438,32 @@ initFunction(initPrint)
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry c-sidebar__entry--active"
-          href="/README.html"
+        <a class="c-sidebar__entry "
+          href="/home.html"
         >
           
-          Introduction
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/quickstart.html"
+        >
+          
+          Quickstart
         </a>
 
         
@@ -463,7 +484,7 @@ initFunction(initPrint)
           href="/notebooks/01_getting_started.html"
         >
           
-          Getting Started
+          Introduction
         </a>
 
         
@@ -712,10 +733,16 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><p align="center">
-<img height=200  src="assets/images/geosnap_long.svg" alt="geosnap"/>
-</p></p>
-<h2 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h2><p><code>geosnap</code> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
+<p align="center">
+<img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
+</p><h2 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h2><p><a href="https://travis-ci.com/spatialucr/geosnap"><img src="https://travis-ci.com/spatialucr/geosnap.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/spatialucr/geosnap?branch=master&amp;service=github"><img src="https://coveralls.io/repos/github/spatialucr/geosnap/badge.svg?branch=master" alt="Coverage Status"></a>
+<img src="https://img.shields.io/pypi/pyversions/geosnap" alt="PyPI - Python Version">
+<img src="https://img.shields.io/pypi/v/geosnap" alt="PyPI">
+<img src="https://img.shields.io/conda/vn/conda-forge/geosnap" alt="Conda (channel only)">
+<img src="https://img.shields.io/github/commits-since/spatialucr/geosnap/latest" alt="GitHub commits since latest release (branch)">
+<a href="https://doi.org/10.5281/zenodo.3526163"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3526163.svg" alt="DOI"></a></p>
+<p><code>geosnap</code> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
 of neighborhoods.
 Neighborhoods are important for a wide variety of reasons, but they’re hard to study
 because of some long-standing challenges, including that</p>
@@ -743,24 +770,33 @@ and understand the critical information at each step of the process.</p>
 can get started modeling neighborhoods in the U.S. immediately.
 But you’re not just limited to the data provided with the package. <code>geosnap</code>
 works with any data you provide, any place in the world.</p>
-<h2 id="Architecture">Architecture<a class="anchor-link" href="#Architecture"> </a></h2><p>Most interaction in geosnap happens with a <code>Community</code>, and almost all of geosnap's functionality is available as a method on a <code>Community</code> object. But when you need to use other fetures, like access data or launch an interactive visuzalization, you may need to access functions in one of geosnap's submodules.</p>
-<h3 id="geosnap-has-five-modules:"><code>geosnap</code> has five modules:<a class="anchor-link" href="#geosnap-has-five-modules:"> </a></h3><ul>
-<li><p><strong><code>datasets</code></strong>:   Access built-in datasets, including 30 years of census data for the USA,  and databases stored with functions from the <code>io</code> module</p>
-</li>
-<li><p><strong><code>io</code></strong>:  Ingest, create, and manipulate space-time datasets</p>
-</li>
-<li><p><strong><code>analyze</code></strong>:  Analyze and model neighborhood boundaries and spatio-temporal dynamics</p>
-</li>
-<li><p><strong><code>harmonize</code></strong>:  Harmonize neighborhood boundaries into consistent, stable units using spatial statistical
-methods</p>
-</li>
-<li><p><strong><code>visualize</code></strong>:  Visualize neighborhood dynamics</p>
-</li>
-</ul>
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h2><p>The recommended method for installing geosnap is with
-<a href="https://www.anaconda.com/download/">anaconda</a>.</p>
-<div class="highlight"><pre><span></span>conda install geosnap
+<p align="center">
+<img width=75% src='assets/images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif' alt='DC Transitions' style=' display: block; margin-left: auto; margin-right: auto;'/>
+</p><h2 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h2><p>The recommended method for installing geosnap is with
+<a href="https://www.anaconda.com/download/">anaconda</a>. To get started with the development version,
+clone this repository or download it manually then <code>cd</code> into the directory and run the
+following commands:</p>
+<div class="highlight"><pre><span></span>conda env create -f environment.yml
+conda activate geosnap 
+python setup.py develop
 </pre></div>
+<p>This will download the appropriate dependencies and install geosnap in its own conda
+environment.</p>
+<h2 id="Development">Development<a class="anchor-link" href="#Development"> </a></h2><p>geosnap development is hosted on <a href="https://github.com/spatialucr/geosnap">github</a></p>
+<h2 id="Bug-reports">Bug reports<a class="anchor-link" href="#Bug-reports"> </a></h2><p>To search for or report bugs, please see geosnap’s
+<a href="http://github.com/spatialucr/geosnap/issues">issues</a></p>
+<h2 id="License-information">License information<a class="anchor-link" href="#License-information"> </a></h2><p>See the file “LICENSE.txt” for information on the history of this software, terms &amp;
+conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.</p>
+<h2 id="Citation">Citation<a class="anchor-link" href="#Citation"> </a></h2><p>For a generic citation of geosnap, we recommend the following:</p>
+<div class="highlight"><pre><span></span>@misc<span class="nb">{</span>Knaap2019,
+author = <span class="nb">{</span>Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su<span class="nb">}</span>,
+doi = <span class="nb">{</span>10.5281/ZENODO.3526163<span class="nb">}</span>,
+title = <span class="nb"></span>,
+url = <span class="nb">{</span>https://zenodo.org/record/3526163<span class="nb">}</span>,
+year = <span class="nb">{</span>2019<span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+<p>If you need to cite a specific release of the package, please find the appropriate version on <a href="https://zenodo.org/record/3526163">Zenodo</a></p>
 <h2 id="Funding">Funding<a class="anchor-link" href="#Funding"> </a></h2><p><img src="assets/images/nsf_logo.jpg" width=100 /> This project is supported by NSF Award #1733705,
 <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false">Neighborhoods in Space-Time Contexts</a></p>
 
@@ -786,8 +822,8 @@ methods</p>
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/notebooks/01_getting_started.html">
-      Getting Started <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/quickstart.html">
+      Quickstart <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

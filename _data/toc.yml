@@ -24,11 +24,15 @@
 
 
 # Chapters
-- title: Introduction
-  url: README
+- title: Home
+  url: home
   not_numbered: false
 
-- title: Getting Started
+- title: Quickstart
+  url: quickstart
+  not_numbered: false
+  
+- title: Introduction
   url: notebooks/01_getting_started
   not_numbered: false
 

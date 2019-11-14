@@ -1,7 +1,9 @@
 <p align="center">
 <img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
 </p>
-<h2 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h2> 
+
+<h1 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h1> 
+
 
 `geosnap` makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
 of neighborhoods.
@@ -33,35 +35,58 @@ can get started modeling neighborhoods in the U.S. immediately.
 But you’re not just limited to the data provided with the package. `geosnap`
 works with any data you provide, any place in the world.
 
-
-## Architecture
-
-Most interaction in geosnap happens with a `Community`, and almost all of geosnap's functionality is available as a method on a `Community` object. But when you need to use other fetures, like access data or launch an interactive visuzalization, you may need to access functions in one of geosnap's submodules.
-
-### `geosnap` has five modules:
-
-- **`datasets`**:   Access built-in datasets, including 30 years of census data for the USA,  and databases stored with functions from the `io` module
-
-- **`io`**:  Ingest, create, and manipulate space-time datasets
-
-- **`analyze`**:  Analyze and model neighborhood boundaries and spatio-temporal dynamics
-
-- **`harmonize`**:  Harmonize neighborhood boundaries into consistent, stable units using spatial statistical
-methods
-
-- **`visualize`**:  Visualize neighborhood dynamics
+<p align="center">
+<img width=75% src='assets/images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif' alt='DC Transitions' style=' display: block; margin-left: auto; margin-right: auto;'/>
+</p>
 
 
 ## Installation
 
 The recommended method for installing geosnap is with
-[anaconda](https://www.anaconda.com/download/). 
+[anaconda](https://www.anaconda.com/download/). To get started with the development version,
+clone this repository or download it manually then `cd` into the directory and run the
+following commands:
 
 ```bash
-conda install geosnap
+conda env create -f environment.yml
+conda activate geosnap 
+python setup.py develop
 ```
 
+This will download the appropriate dependencies and install geosnap in its own conda
+environment.
+
+## Development
+
+geosnap development is hosted on [github](https://github.com/spatialucr/geosnap)
+
+## Bug reports
+
+To search for or report bugs, please see geosnap’s
+[issues](http://github.com/spatialucr/geosnap/issues)
+
+## License information
+
+See the file “LICENSE.txt” for information on the history of this software, terms &
+conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.
+
+## Citation
+
+For a generic citation of geosnap, we recommend the following: 
+
+```latex
+@misc{Knaap2019,
+author = {Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su},
+doi = {10.5281/ZENODO.3526163},
+title = {{geosnap: The Geospatial Neighborhood Analysis Package}},
+url = {https://zenodo.org/record/3526163},
+year = {2019}
+}
+```
+If you need to cite a specific release of the package, please find the appropriate version on [Zenodo](https://zenodo.org/record/3526163)
+
 ## Funding
+
 
 <img src="assets/images/nsf_logo.jpg" width=100 /> This project is supported by NSF Award #1733705,
 [Neighborhoods in Space-Time Contexts](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&HistoricalAwards=false)
