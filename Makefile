@@ -38,4 +38,4 @@ site: build
 	touch _site/.nojekyll
 
 update:
-	scripts/build.py --pull
+	python scripts/build.py --pull
