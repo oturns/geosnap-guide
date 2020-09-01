@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quickstart &#8212; geosnap User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/geosnap_long.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">geosnap User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_creating_community_datasets.html">
+   Creating Community Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_harmonizing_community_boundaries.html">
+   Harmonizing Community Boundaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_modeling_neighborhood_types.html">
+   Modeling Neighborhood Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_modeling_neighborhood_dynamics.html">
+   Modeling Neighborhood Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_visualizing_neighborhood_sequences.html">
+   Visualizing Neighborhood Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_interactive_visualization.html">
+   Interactive Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/quickstart.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>the <code class="docutils literal notranslate"><span class="pre">Community</span></code> class is geosnap’s central data construct that holds space-time neighborhood data.<br />
+You can create a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from geosnap’s built-in data by passing a set of fips codes to a
+constructor method</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.data</span> <span class="kn">import</span> <span class="n">Community</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_census</span><span class="p">(</span><span class="n">state_fips</span><span class="o">=</span><span class="s1">&#39;11&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">.from_census</span></code> constructor, you’ll get 30 years of census tract data in their original
+boundaries with over a hundred commonly used demographic and socioeconomic variables.
+Data are stored as a long-form geodataframe under the <code class="docutils literal notranslate"><span class="pre">gdf</span></code> attribute</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geoid</th>
+      <th>geometry</th>
+      <th>median_contract_rent</th>
+      <th>median_home_value</th>
+      <th>median_household_income</th>
+      <th>median_income_asianhh</th>
+      <th>median_income_blackhh</th>
+      <th>median_income_hispanichh</th>
+      <th>median_income_whitehh</th>
+      <th>n_age_5_older</th>
+      <th>...</th>
+      <th>p_unemployment_rate</th>
+      <th>p_vacant_housing_units</th>
+      <th>p_veterans</th>
+      <th>p_vietnamese_persons</th>
+      <th>p_white_over_60</th>
+      <th>p_white_over_65</th>
+      <th>p_white_under_15</th>
+      <th>p_widowed_divorced</th>
+      <th>per_capita_income</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>53214</th>
+      <td>11001001600</td>
+      <td>POLYGON ((-77.02680206298828 38.98410034179688...</td>
+      <td>477.0</td>
+      <td>285100.0</td>
+      <td>75252.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.742191e+70</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>2.58</td>
+      <td>1.028308e+08</td>
+      <td>0.00</td>
+      <td>3.159920e+25</td>
+      <td>4.999423e+17</td>
+      <td>1.378187e+24</td>
+      <td>0.0</td>
+      <td>32166.0</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>53215</th>
+      <td>11001001500</td>
+      <td>POLYGON ((-77.05280303955078 38.98649978637695...</td>
+      <td>1001.0</td>
+      <td>366000.0</td>
+      <td>79681.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.025723e+72</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>3.38</td>
+      <td>7.095389e+07</td>
+      <td>0.23</td>
+      <td>6.529311e+30</td>
+      <td>1.483617e+23</td>
+      <td>6.816417e+33</td>
+      <td>0.0</td>
+      <td>36452.0</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>53216</th>
+      <td>11001001701</td>
+      <td>POLYGON ((-77.02660369873047 38.97769927978516...</td>
+      <td>429.0</td>
+      <td>135600.0</td>
+      <td>34420.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.918716e+64</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>3.89</td>
+      <td>8.990532e+05</td>
+      <td>0.10</td>
+      <td>1.184601e+14</td>
+      <td>1.285720e+10</td>
+      <td>8.476736e+15</td>
+      <td>0.0</td>
+      <td>17782.0</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>53217</th>
+      <td>11001001801</td>
+      <td>POLYGON ((-77.02660369873047 38.97769927978516...</td>
+      <td>1001.0</td>
+      <td>0.0</td>
+      <td>77197.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.084115e+31</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>10.00</td>
+      <td>5.229000e+01</td>
+      <td>0.00</td>
+      <td>1.450982e+11</td>
+      <td>1.437909e+08</td>
+      <td>1.321830e+14</td>
+      <td>0.0</td>
+      <td>14679.0</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>53218</th>
+      <td>11001001702</td>
+      <td>POLYGON ((-77.00859832763672 38.97000122070312...</td>
+      <td>514.0</td>
+      <td>129300.0</td>
+      <td>42661.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.210494e+62</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>3.96</td>
+      <td>7.219278e+04</td>
+      <td>0.04</td>
+      <td>4.438992e+13</td>
+      <td>2.147213e+10</td>
+      <td>2.352939e+17</td>
+      <td>0.0</td>
+      <td>20468.0</td>
+      <td>1990</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 195 columns</p>
+</div>
+<p>you can create a <a class="reference external" href="https://en.wikipedia.org/wiki/Geodemography">geodemographic typology</a> using
+classic clustering methods on the <code class="docutils literal notranslate"><span class="pre">Community</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;kmeans&#39;</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;p_unemployment_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;per_capita_income&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span><span class="o">==</span><span class="mi">2000</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;kmeans&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p align="center">
+<img height=250 src="assets/images/output_6_1.png"/>
+</p>
+<p>you can create a
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/0038012181900409">regionalization</a> using
+spatially-constrained clustering methods on the <code class="docutils literal notranslate"><span class="pre">Community</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">cluster_spatial</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;spenc&#39;</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;p_unemployment_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;per_capita_income&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span><span class="o">==</span><span class="mi">2000</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;spenc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p align="center">
+<img height=250 src="assets/images/output_9_1.png"/>
+</p>
+<p>You can also <a class="reference external" href="https://github.com/spatialucr/tobler">harmonize</a> <code class="docutils literal notranslate"><span class="pre">Community</span></code> boundaries so that they’re
+consistent over time. For example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">harmonize</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="n">extensive_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>will create a new <code class="docutils literal notranslate"><span class="pre">Community</span></code> with population in 1990 and 2000 modeled as 2010 tract boundaries (2010 will remain unchanged). Thanks to <a class="reference external" href="http://github.com/pysal/tobler"><code class="docutils literal notranslate"><span class="pre">tobler</span></code></a>, geosnap provides several methods for harmonization, from simple areal interpolation to model-based approaches using auxiliary data. See the <a class="reference external" href="https://spatialucr.github.io/geosnap-guide/notebooks/03_harmonizing_community_boundaries.html">harmonization example</a> for more code samples</p>
+<p>You can explore datasets using a prototype interactive dashboard using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.vizualize</span> <span class="kn">import</span> <span class="n">explore</span>
+<span class="n">explore</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="content/assets/images/commviz.png" /></p>
+<p>By default, the dashboard will launch with built-in census data, but if you’ve stored other databases, then you can exlore those as well.</p>
+<p>Many more visualization features coming soon</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By geosnap developers<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

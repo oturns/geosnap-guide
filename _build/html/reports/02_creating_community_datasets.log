@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/jupyter_cache/executors/basic.py", line 162, in execute
+    executenb(
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 1077, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/knaaptime/anaconda3/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 520, in async_execute
+    async with self.async_setup_kernel(**kwargs):
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/async_generator/_util.py", line 34, in __aenter__
+    return await self._agen.asend(None)
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 479, in async_setup_kernel
+    await self.async_start_new_kernel_client(**kwargs)
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 392, in async_start_new_kernel_client
+    kernel_id = await ensure_async(self.km.start_kernel(extra_arguments=self.extra_arguments,
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 85, in ensure_async
+    result = await obj
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/jupyter_client/manager.py", line 569, in start_kernel
+    kernel_cmd, kw = self.pre_start_kernel(**kw)
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/jupyter_client/manager.py", line 257, in pre_start_kernel
+    kernel_cmd = self.format_kernel_cmd(extra_arguments=extra_arguments)
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/jupyter_client/manager.py", line 181, in format_kernel_cmd
+    cmd = self.kernel_spec.argv + extra_arguments
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/jupyter_client/manager.py", line 87, in kernel_spec
+    self._kernel_spec = self.kernel_spec_manager.get_kernel_spec(self.kernel_name)
+  File "/Users/knaaptime/anaconda3/lib/python3.8/site-packages/jupyter_client/kernelspec.py", line 235, in get_kernel_spec
+    raise NoSuchKernel(kernel_name)
+jupyter_client.kernelspec.NoSuchKernel: No such kernel named conda-env-geosnap-py

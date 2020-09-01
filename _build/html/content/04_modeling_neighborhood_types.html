@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Modeling neighborhoods and neighborhood types &#8212; geosnap User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modeling Neighborhood Dynamics" href="05_modeling_neighborhood_dynamics.html" />
+    <link rel="prev" title="Harmonizing Community Boundaries" href="03_harmonizing_community_boundaries.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/geosnap_long.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">geosnap User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_creating_community_datasets.html">
+   Creating Community Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_harmonizing_community_boundaries.html">
+   Harmonizing Community Boundaries
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modeling Neighborhood Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_modeling_neighborhood_dynamics.html">
+   Modeling Neighborhood Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_visualizing_neighborhood_sequences.html">
+   Visualizing Neighborhood Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_interactive_visualization.html">
+   Interactive Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/04_modeling_neighborhood_types.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-neighborhood-types">
+   Modeling neighborhood types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-neighborhoods">
+   Modeling neighborhoods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examining-model-fit">
+   Examining Model Fit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-model-diagnostics">
+     Plotting Model Diagnostics
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="modeling-neighborhoods-and-neighborhood-types">
+<h1>Modeling neighborhoods and neighborhood types<a class="headerlink" href="#modeling-neighborhoods-and-neighborhood-types" title="Permalink to this headline">¶</a></h1>
+<p>In the urban studies, the subfield of <strong>geodemographics</strong> focuses on the use of cluster analysis to identify a typology of prototypical neighborhoods in a study region. Meanwhile, the subfield of <strong>regionalization</strong> focuses on identifying contiguous groups of spatial units whose internal attribute structure is relatively homogenous. Whereas geodemographics are concerned primarily with summarizing and categorizing neighborhoods, regionalization is concerned primarily with identifying and delineating neighborhoods.</p>
+<p>geosnap supports both of these goals by providing classic and spatial clustering algorithms as methods on the <code class="docutils literal notranslate"><span class="pre">Community</span></code> object</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">geosnap</span> <span class="kn">import</span> <span class="n">Community</span><span class="p">,</span> <span class="n">datasets</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">Loading manifest: 100%|██████████| 3/3 [00:00&lt;00:00, 2889.97entries/s]
+Loading manifest: 100%|██████████| 5/5 [00:00&lt;00:00, 13662.23entries/s]
+Loading manifest: 100%|██████████| 5/5 [00:00&lt;00:00, 10821.22entries/s]
+Loading manifest: 100%|██████████| 3/3 [00:00&lt;00:00, 3319.15entries/s]
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="modeling-neighborhood-types">
+<h2>Modeling neighborhood types<a class="headerlink" href="#modeling-neighborhood-types" title="Permalink to this headline">¶</a></h2>
+<p>To facilitate geodemographic and other neighborhood typologies, the <code class="docutils literal notranslate"><span class="pre">geosnap.analyze</span></code> module provides the <code class="docutils literal notranslate"><span class="pre">cluster</span></code> function, which is also implemented as a method on the <code class="docutils literal notranslate"><span class="pre">Community</span></code> class.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cluster</span></code> takes a list of columns/variables, a clustering algorithm, and a number of clusters. It handles temporal clustering by splitting the dataset into decades and standardizing each variable, then re-pooling all the time periods back together before running the clustering algorithm on the full set of observations. This allows the distribution of each variable to evolve over time. It also allows neighborhood variables to move through different positions in the distrbution while providing a consistent set of clusters across time periods</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbusfips</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">msas</span><span class="p">()[</span>
+    <span class="n">datasets</span><span class="o">.</span><span class="n">msas</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Columbus, OH&quot;</span><span class="p">)</span>
+<span class="p">]</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_ltdb</span><span class="p">(</span><span class="n">msa_fips</span><span class="o">=</span><span class="n">columbusfips</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span> <span class="o">=</span> <span class="n">columbus</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;median_household_income&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p_poverty_rate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p_edu_college_greater&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p_unemployment_rate&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="s2">&quot;ward&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">],</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0563557,0.351445;0.282221x0.591327), CartesianAxesSubplot(0.377369,0.351445;0.282221x0.591327), CartesianAxesSubplot(0.698383,0.351445;0.282221x0.591327)])
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_8_1.png" src="../_images/04_modeling_neighborhood_types_8_1.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cluster</span></code> returns a <code class="docutils literal notranslate"><span class="pre">Community</span></code> class with cluster labels appended as a new column on the underlying geodataframe. This makes it simple to visualize how the clusters have evolved in space over time</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="s2">&quot;median_household_income&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0563557,0.322186;0.282221x0.618005), CartesianAxesSubplot(0.377369,0.322186;0.282221x0.618005), CartesianAxesSubplot(0.698383,0.322186;0.282221x0.618005)])
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_10_1.png" src="../_images/04_modeling_neighborhood_types_10_1.png" />
+</div>
+</div>
+<p>Since cluster labels are appended to the input database, it’s also simple to compute and visualize statistics by cluster, even for variables that weren’t used to derive the clusters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ward&quot;</span><span class="p">)[</span><span class="s2">&quot;p_nonhisp_white_persons&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>ward
+0    92.849963
+1    81.712362
+2    26.917546
+3    95.743874
+4    94.202012
+5    82.809803
+Name: p_nonhisp_white_persons, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;p_nonhisp_black_persons&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">columbus</span><span class="o">.</span><span class="n">gdf</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;ward&#39;, ylabel=&#39;p_nonhisp_black_persons&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_13_1.png" src="../_images/04_modeling_neighborhood_types_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span> <span class="s2">&quot;affinity_propagation&quot;</span><span class="p">,</span> <span class="s2">&quot;gaussian_mixture&quot;</span><span class="p">,</span> <span class="s2">&quot;spectral&quot;</span><span class="p">,</span> <span class="s2">&quot;hdbscan&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since there are many different clusting algorithms available, you can examine how their solutions differ for the same set of input variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+
+    <span class="n">columbus</span> <span class="o">=</span> <span class="n">columbus</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;median_household_income&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p_poverty_rate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p_edu_college_greater&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p_unemployment_rate&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">algo</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">columbus</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+        <span class="n">column</span><span class="o">=</span><span class="n">algo</span><span class="p">,</span>
+        <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">],</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">,</span>
+        <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_modeling_neighborhood_types_16_0.png" src="../_images/04_modeling_neighborhood_types_16_0.png" />
+<img alt="../_images/04_modeling_neighborhood_types_16_1.png" src="../_images/04_modeling_neighborhood_types_16_1.png" />
+<img alt="../_images/04_modeling_neighborhood_types_16_2.png" src="../_images/04_modeling_neighborhood_types_16_2.png" />
+<img alt="../_images/04_modeling_neighborhood_types_16_3.png" src="../_images/04_modeling_neighborhood_types_16_3.png" />
+<img alt="../_images/04_modeling_neighborhood_types_16_4.png" src="../_images/04_modeling_neighborhood_types_16_4.png" />
+</div>
+</div>
+</div>
+<div class="section" id="modeling-neighborhoods">
+<h2>Modeling neighborhoods<a class="headerlink" href="#modeling-neighborhoods" title="Permalink to this headline">¶</a></h2>
+<p>If use use the <code class="docutils literal notranslate"><span class="pre">cluster_spatial</span></code> method instead of the classic <code class="docutils literal notranslate"><span class="pre">cluster</span></code> method, we adopt the regionalization approach, assuming that each observation in smaller than a single “neighborhood”, and aggregate them into bespoke neighborhoods that are internally similar.</p>
+<p>Here again, we offer several different spatial clustering algorithms, each of which produces a distinct result</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spatial_types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;azp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ward_spatial&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skater&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;max_p&quot;</span><span class="p">,</span>
+<span class="p">]</span>  <span class="c1"># spenc is temporarily removed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">ctx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>  <span class="c1"># Disable printring because of max_p&#39;s diagnostics</span>
+
+<span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">spatial_types</span><span class="p">:</span>
+
+    <span class="n">columbus</span> <span class="o">=</span> <span class="n">columbus</span><span class="o">.</span><span class="n">cluster_spatial</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;median_household_income&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p_poverty_rate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p_edu_college_greater&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p_unemployment_rate&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">algo</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">columbus</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+        <span class="n">algo</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">],</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+        <span class="n">ctxmap</span><span class="o">=</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_modeling_neighborhood_types_22_0.png" src="../_images/04_modeling_neighborhood_types_22_0.png" />
+<img alt="../_images/04_modeling_neighborhood_types_22_1.png" src="../_images/04_modeling_neighborhood_types_22_1.png" />
+<img alt="../_images/04_modeling_neighborhood_types_22_2.png" src="../_images/04_modeling_neighborhood_types_22_2.png" />
+<img alt="../_images/04_modeling_neighborhood_types_22_3.png" src="../_images/04_modeling_neighborhood_types_22_3.png" />
+</div>
+</div>
+</div>
+<div class="section" id="examining-model-fit">
+<h2>Examining Model Fit<a class="headerlink" href="#examining-model-fit" title="Permalink to this headline">¶</a></h2>
+<p>Each time a cluster model is fitted to <code class="docutils literal notranslate"><span class="pre">Community</span></code> data, the results and some metadata are stored on the <code class="docutils literal notranslate"><span class="pre">Community.models</span></code> attribute, which is a dictionary keyed on the model name</p>
+<p>for models with <code class="docutils literal notranslate"><span class="pre">pooling==unique</span></code>, the value in <code class="docutils literal notranslate"><span class="pre">models</span></code> is a dictionary of <code class="docutils literal notranslate"><span class="pre">ModelResults</span></code> keyed on year</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">models</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;ward&#39;: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd5b80d2f50&gt;,
+ &#39;kmeans&#39;: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd629944390&gt;,
+ &#39;affinity_propagation&#39;: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6188aa450&gt;,
+ &#39;gaussian_mixture&#39;: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd66c0167d0&gt;,
+ &#39;spectral&#39;: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd649026bd0&gt;,
+ &#39;hdbscan&#39;: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd5b84c6310&gt;,
+ &#39;azp&#39;: {1970: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6299e06d0&gt;,
+  1980: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6186e5150&gt;,
+  1990: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd65906efd0&gt;,
+  2000: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6441c9650&gt;,
+  2010: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6441c94d0&gt;},
+ &#39;ward_spatial&#39;: {1970: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd659288410&gt;,
+  1980: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd629304d10&gt;,
+  1990: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd66c0d7590&gt;,
+  2000: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6396ec2d0&gt;,
+  2010: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd628df0a90&gt;},
+ &#39;skater&#39;: {1970: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd5b861bd90&gt;,
+  1980: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd648e58290&gt;,
+  1990: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd644528f90&gt;,
+  2000: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd5b85f8750&gt;,
+  2010: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd5b85ef5d0&gt;},
+ &#39;max_p&#39;: {1970: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd66c037e10&gt;,
+  1980: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd678e4a2d0&gt;,
+  1990: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd678e39f50&gt;,
+  2000: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd6290058d0&gt;,
+  2010: &lt;geosnap.analyze.analytics.ModelResults at 0x7fd629004e90&gt;}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>For community of the entries in the <code class="docutils literal notranslate"><span class="pre">models</span></code> dictionary is an instance of the <code class="docutils literal notranslate"><span class="pre">ModelResults</span></code> class</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">columbus</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="s2">&quot;ward&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;W&#39;,
+ &#39;X&#39;,
+ &#39;__class__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__dict__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__le__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__module__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__new__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;__weakref__&#39;,
+ &#39;boundary_sil&#39;,
+ &#39;boundary_silhouettes&#39;,
+ &#39;columns&#39;,
+ &#39;instance&#39;,
+ &#39;labels&#39;,
+ &#39;model_type&#39;,
+ &#39;nearest_label&#39;,
+ &#39;nearest_labels&#39;,
+ &#39;path_sil&#39;,
+ &#39;path_silhouettes&#39;,
+ &#39;sil_scores&#39;,
+ &#39;silhouettes&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each instance of <code class="docutils literal notranslate"><span class="pre">ModelResults</span></code> holds</p>
+<ul class="simple">
+<li><p>the input data (<code class="docutils literal notranslate"><span class="pre">X</span></code>),</p></li>
+<li><p>the resulting labels of each input geometry (<code class="docutils literal notranslate"><span class="pre">labels</span></code>),</p></li>
+<li><p>the column names from the Community <code class="docutils literal notranslate"><span class="pre">gdf</span></code> used to fit the model,</p></li>
+<li><p>the libpysal spatial weights matrix used in the model (<code class="docutils literal notranslate"><span class="pre">W</span></code>) (if necessary)</p></li>
+<li><p>the fitted model instance itself (<code class="docutils literal notranslate"><span class="pre">instance</span></code>) in case the analyst needs to pull any additional metadata from the object</p></li>
+</ul>
+<p>and some additional silhouette and geosilhouette statistics that can be used to evaluate model fit.</p>
+<div class="section" id="plotting-model-diagnostics">
+<h3>Plotting Model Diagnostics<a class="headerlink" href="#plotting-model-diagnostics" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_silhouette</span><span class="p">(</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Silhouette Analysis&#39;}, xlabel=&#39;Silhouette coefficient values&#39;, ylabel=&#39;Cluster label&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_32_1.png" src="../_images/04_modeling_neighborhood_types_32_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_silhouette</span><span class="p">(</span><span class="s2">&quot;kmeans&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Silhouette Analysis&#39;}, xlabel=&#39;Silhouette coefficient values&#39;, ylabel=&#39;Cluster label&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_33_1.png" src="../_images/04_modeling_neighborhood_types_33_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_silhouette</span><span class="p">(</span><span class="s2">&quot;gaussian_mixture&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Silhouette Analysis&#39;}, xlabel=&#39;Silhouette coefficient values&#39;, ylabel=&#39;Cluster label&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_34_1.png" src="../_images/04_modeling_neighborhood_types_34_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_silhouette_map</span><span class="p">(</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_35_1.png" src="../_images/04_modeling_neighborhood_types_35_1.png" />
+</div>
+</div>
+<p>For spatial models, or any cluster where temporal data are not pooled, include a year argument to see the model fit for that time period</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_silhouette</span><span class="p">(</span><span class="s2">&quot;ward_spatial&quot;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Silhouette Analysis&#39;}, xlabel=&#39;Silhouette coefficient values&#39;, ylabel=&#39;Cluster label&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_37_1.png" src="../_images/04_modeling_neighborhood_types_37_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_next_best_label</span><span class="p">(</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_38_1.png" src="../_images/04_modeling_neighborhood_types_38_1.png" />
+</div>
+</div>
+<p>Spatial cluster models also have some additional visualization methods available based on <a class="reference external" href="https://journals.sagepub.com/doi/10.1177/2399808319875752">geosilhouettes</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_next_best_label</span><span class="p">(</span><span class="s2">&quot;ward_spatial&quot;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_40_1.png" src="../_images/04_modeling_neighborhood_types_40_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_boundary_silhouette</span><span class="p">(</span><span class="s2">&quot;ward_spatial&quot;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_41_1.png" src="../_images/04_modeling_neighborhood_types_41_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">columbus</span><span class="o">.</span><span class="n">plot_path_silhouette</span><span class="p">(</span><span class="s2">&quot;ward_spatial&quot;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/04_modeling_neighborhood_types_42_1.png" src="../_images/04_modeling_neighborhood_types_42_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-geosnap-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-geosnap-py",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-geosnap-py'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03_harmonizing_community_boundaries.html" title="previous page">Harmonizing Community Boundaries</a>
+    <a class='right-next' id="next-link" href="05_modeling_neighborhood_dynamics.html" title="next page">Modeling Neighborhood Dynamics</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By geosnap developers<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

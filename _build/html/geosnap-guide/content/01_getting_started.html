@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started &#8212; geosnap User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/geosnap_long.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">geosnap User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/02_creating_community_datasets.html">
+   Creating Community Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/03_harmonizing_community_boundaries.html">
+   Harmonizing Community Boundaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/04_modeling_neighborhood_types.html">
+   Modeling Neighborhood Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/05_modeling_neighborhood_dynamics.html">
+   Modeling Neighborhood Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/06_visualizing_neighborhood_sequences.html">
+   Visualizing Neighborhood Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/07_interactive_visualization.html">
+   Interactive Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/geosnap-guide/content/01_getting_started.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-built-in-data">
+   Using built-in data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#storing-data-from-external-databases">
+   Storing Data from External Databases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#longitudinal-tract-database-ltdb">
+     Longitudinal Tract Database (LTDB)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geolytics-neighborhood-change-database">
+     Geolytics Neighborhood Change Database
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>geosnap provides a set of tools for collecting data and constructing space-time datasets, identifying local neighborhoods or prototypical neighborhood types, modeling neighborhood change over time, and visualizing data at each step of the process.</p>
+<p>geosnap works with data from anywhere in the world, but comes batteries-included with three decades of national US Census data, including boundaries for metropolitan statistical areas, states, counties, and tracts, and over 100 commonly used demographic and socioeconomic variables at the census-tract level. All of these data are stored as geopandas geodataframes in efficient <a class="reference external" href="https://parquet.apache.org/">apache parquet</a> files and distributed through <a class="reference external" href="https://quiltdata.com/">quilt</a>.</p>
+<p>These data are available when you first import geosnap by streaming from our <a class="reference external" href="https://spatialucr.quiltdata.com/b/spatial-ucr">quilt bucket</a> into memory. That can be useful if you dont need US data or if you just want to kick the tires, but it also means you need an internet connection to work with census data, and things may slow down depending on your network performance. For that reason, you can also use the <code class="docutils literal notranslate"><span class="pre">store_census</span></code> function to cache the data on your local machine for faster querying. This will only take around 400mb of disk space, speed up data operations, and remove the need for an internet connection.</p>
+<div class="section" id="using-built-in-data">
+<h2>Using built-in data<a class="headerlink" href="#using-built-in-data" title="Permalink to this headline">¶</a></h2>
+<p>You can access geosnap’s built-in data from the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> module. It contains a variable codebook as well as state, county, and MSA boundaries, in addition to boundaries and social data for three decades of census tracts. If you have stored an existing longitudinal database such as LTDB or the Geolytics Neighborhood Change Database, it will be available in <code class="docutils literal notranslate"><span class="pre">datasets</span></code> as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="kn">import</span> <span class="n">datasets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;blocks_2000&#39;,
+ &#39;blocks_2010&#39;,
+ &#39;codebook&#39;,
+ &#39;counties&#39;,
+ &#39;ltdb&#39;,
+ &#39;msa_definitions&#39;,
+ &#39;msas&#39;,
+ &#39;ncdb&#39;,
+ &#39;states&#39;,
+ &#39;tracts_1990&#39;,
+ &#39;tracts_2000&#39;,
+ &#39;tracts_2010&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Everything in <code class="docutils literal notranslate"><span class="pre">datasets</span></code> is a pandas (or geopandas) geo/dataframe. To access any of the data inside, just call the appropriate attribute/method (most datasets are methods). For example, to accesss the codebook which outlines each variable in the data store, incuding its name, description, the original census sources/variable names and the formula used to calculate it, you simply call <code class="docutils literal notranslate"><span class="pre">datasets.codebook()</span></code>. We support the same variable set the Longitudinal Tract Database (LTDB).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">codebook</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>label</th>
+      <th>formula</th>
+      <th>ltdb</th>
+      <th>ncdb</th>
+      <th>census_1990_form</th>
+      <th>census_1990_table_column</th>
+      <th>census_2000_form</th>
+      <th>census_2000_table_column</th>
+      <th>acs</th>
+      <th>category</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>189</th>
+      <td>p_poverty_rate_black</td>
+      <td>percentage of blacks in poverty</td>
+      <td>p_poverty_rate_black=n_poverty_black / n_pover...</td>
+      <td>pbpov</td>
+      <td>BLKPR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Socioeconomic Status</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>p_poverty_rate_hispanic</td>
+      <td>percentage of Hispanics in poverty</td>
+      <td>p_poverty_rate_hispanic=n_poverty_hispanic / n...</td>
+      <td>phpov</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Socioeconomic Status</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>p_poverty_rate_native</td>
+      <td>percentage of Native Americans in poverty</td>
+      <td>p_poverty_rate_native=n_poverty_native / n_pov...</td>
+      <td>pnapov</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Socioeconomic Status</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>p_poverty_rate_asian</td>
+      <td>percentage of Asian and Pacific Islanders in p...</td>
+      <td>p_poverty_rate_asian=n_poverty_asian / n_pover...</td>
+      <td>papov</td>
+      <td>RASPR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Socioeconomic Status</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>n_total_pop</td>
+      <td>total population</td>
+      <td>NaN</td>
+      <td>pop</td>
+      <td>TRCTPOP</td>
+      <td>SF1</td>
+      <td>P0010001</td>
+      <td>SF1</td>
+      <td>P001001</td>
+      <td>B01001_001E</td>
+      <td>total population</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can also take a look at the dataframes themselves or plot them as quick choropleth maps</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geoid</th>
+      <th>median_contract_rent</th>
+      <th>median_home_value</th>
+      <th>median_household_income</th>
+      <th>median_income_asianhh</th>
+      <th>median_income_blackhh</th>
+      <th>median_income_hispanichh</th>
+      <th>median_income_whitehh</th>
+      <th>n_age_5_older</th>
+      <th>n_asian_age_distribution</th>
+      <th>...</th>
+      <th>p_vacant_housing_units</th>
+      <th>p_veterans</th>
+      <th>p_vietnamese_persons</th>
+      <th>p_white_over_60</th>
+      <th>p_white_over_65</th>
+      <th>p_white_under_15</th>
+      <th>p_widowed_divorced</th>
+      <th>per_capita_income</th>
+      <th>year</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25009266400</td>
+      <td>662</td>
+      <td>172400</td>
+      <td>53314</td>
+      <td>48750</td>
+      <td>22500</td>
+      <td>0</td>
+      <td>53808</td>
+      <td>3065</td>
+      <td>7</td>
+      <td>...</td>
+      <td>3.74</td>
+      <td>9.84</td>
+      <td>0.03</td>
+      <td>14.59</td>
+      <td>11.04</td>
+      <td>21.40</td>
+      <td>17.61</td>
+      <td>24288</td>
+      <td>2000</td>
+      <td>POLYGON ((-70.91489900000001 42.886589, -70.90...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25009267102</td>
+      <td>653</td>
+      <td>169200</td>
+      <td>50739</td>
+      <td>46250</td>
+      <td>0</td>
+      <td>0</td>
+      <td>51264</td>
+      <td>4311</td>
+      <td>23</td>
+      <td>...</td>
+      <td>3.22</td>
+      <td>13.42</td>
+      <td>0.06</td>
+      <td>13.77</td>
+      <td>9.67</td>
+      <td>21.02</td>
+      <td>18.91</td>
+      <td>20946</td>
+      <td>2000</td>
+      <td>POLYGON ((-70.91489900000001 42.886589, -70.91...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25009266200</td>
+      <td>662</td>
+      <td>163200</td>
+      <td>49315</td>
+      <td>90457</td>
+      <td>101277</td>
+      <td>26250</td>
+      <td>48150</td>
+      <td>5131</td>
+      <td>37</td>
+      <td>...</td>
+      <td>3.30</td>
+      <td>9.10</td>
+      <td>0.07</td>
+      <td>13.44</td>
+      <td>10.63</td>
+      <td>22.38</td>
+      <td>20.74</td>
+      <td>21817</td>
+      <td>2000</td>
+      <td>POLYGON ((-70.93079899999999 42.884589, -70.92...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25009267101</td>
+      <td>624</td>
+      <td>179200</td>
+      <td>45625</td>
+      <td>0</td>
+      <td>54545</td>
+      <td>38750</td>
+      <td>44750</td>
+      <td>3011</td>
+      <td>11</td>
+      <td>...</td>
+      <td>42.08</td>
+      <td>9.96</td>
+      <td>0.00</td>
+      <td>19.89</td>
+      <td>14.78</td>
+      <td>16.97</td>
+      <td>27.61</td>
+      <td>22578</td>
+      <td>2000</td>
+      <td>POLYGON ((-70.8246893731782 42.87092164133018,...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>25009266100</td>
+      <td>569</td>
+      <td>215200</td>
+      <td>60677</td>
+      <td>48750</td>
+      <td>43750</td>
+      <td>32500</td>
+      <td>61224</td>
+      <td>3643</td>
+      <td>20</td>
+      <td>...</td>
+      <td>3.74</td>
+      <td>10.31</td>
+      <td>0.23</td>
+      <td>14.44</td>
+      <td>10.77</td>
+      <td>22.19</td>
+      <td>15.48</td>
+      <td>28030</td>
+      <td>2000</td>
+      <td>POLYGON ((-70.97459559012734 42.86775028124355...</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 192 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">states</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x128b5bdd8&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">datasets</span><span class="o">.</span><span class="n">tracts_1990</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_1990</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1990</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2000</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2010</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">tracts_2010</span><span class="p">()</span><span class="o">.</span><span class="n">geoid</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrBr&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">2010</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As mentioned above, you save these data locally for better performance using <code class="docutils literal notranslate"><span class="pre">geosnap.io.store_census</span></code>, which will download two quilt packages totaling just over 400mb (which is an exceedingly small file size, when you consider how much data are packed into those files). Once data are stored locally, you won’t need this function again unless you want to update your local package to the most recent version on quilt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.io</span> <span class="kn">import</span> <span class="n">store_census</span>
+<span class="n">store_census</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using geosnap’s built-in data, researchers can get a jumpstart on neighborhood analysis with US tract data, but census tracts are not without their drawbacks. Many of geosnap’s analytics require that neighborhood units remain consistent and stable in a study area over time (how can you analyze neighborhood change if your neighborhoods are different in each time period?), but with each new decennial census, tracts are redrawn according to population fluctuations. Geosnap offers two methods for dealing with this challenge.</p>
+<p>First, geosnap can create its own set of stable longitudinal units of analysis and convert raw census or other data into those units. Its <code class="docutils literal notranslate"><span class="pre">harmonize</span></code> module provides tools for researchers to define a set of geographic units and interpolate data into those units using moden spatial statistical methods. This is a good option for researchers who are interested in the ways that different interpolation methods can affect their analyses or those who want to use state-of-the-art methods to create longitudinal datasets that are more accurate than those provided by existing databases.</p>
+<p>Second, geosnap can simply leverage existing data that has already been standardized into a set of consistent units. The <code class="docutils literal notranslate"><span class="pre">io</span></code> module provides tools for reading and storing existing longitudinal databases that, once ingested, will be available in the data store and can be queried and analyzed repeatedly. This is a good option for researchers who want to get started modeling neighborhood characteristics right away and are less interested in exploring how error propagates through spatial interpolation.</p>
+</div>
+<div class="section" id="storing-data-from-external-databases">
+<h2>Storing Data from External Databases<a class="headerlink" href="#storing-data-from-external-databases" title="Permalink to this headline">¶</a></h2>
+<p>The quickest way to get started with geosnap is by importing pre-harmonized census data from either the <a class="reference external" href="https://s4.ad.brown.edu/projects/diversity/Researcher/LTDB.htm">Longitudinal Tract Database
+(LTDB)</a> created by researchers from Brown University or the <a class="reference external" href="http://www.geolytics.com/USCensus,Neighborhood-Change-Database-1970-2000,Products.asp">Neighborhood Change Database</a> created by the consulting company Geolytics. While licensing restrictions prevent either of these databases from being distributed inside geosnap, LTDB is nonetheless <em>free</em>. As such, we recommended importing LTDB data before getting started with geosnap</p>
+<div class="section" id="longitudinal-tract-database-ltdb">
+<h3>Longitudinal Tract Database (LTDB)<a class="headerlink" href="#longitudinal-tract-database-ltdb" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://s4.ad.brown.edu/projects/diversity/Researcher/LTDB.htm">Longitudinal Tract Database
+(LTDB)</a> is a
+freely available dataset developed by researchers at Brown University that
+provides 1970-2010 census data harmonized to 2010 boundaries.</p>
+<p>To store LTDB data and make it available to geosnap, proceed with the following:</p>
+<ol class="simple">
+<li><p>Download the raw data from the LTDB <a class="reference external" href="https://s4.ad.brown.edu/projects/diversity/Researcher/LTBDDload/Default.aspx">downloads
+page</a>.
+Note that to construct the entire database you will need two archives: one
+containing the sample variables, and another containing the “full count”
+variables.</p>
+<ul class="simple">
+<li><p>Use the dropdown menu called <strong>select file type</strong> and choose “full”; in
+the dropdown called <strong>select a year</strong>, choose “All Years”</p></li>
+<li><p>Click the button “Download Standard Data Files”</p></li>
+<li><p>Repeat the process, this time selecting “sample” in the <strong>select file
+type</strong> menu and “All years” in the <strong>select a year</strong> dropdown</p></li>
+</ul>
+</li>
+<li><p>Note the location of the two zip archives you downloaded. By default they are called</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LTDB_Std_All_Sample.zip</span></code> and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LTDB_Std_All_fullcount.zip</span></code></p></li>
+</ul>
+</li>
+<li><p>Start ipython/jupyter, import geosnap, and call the <code class="docutils literal notranslate"><span class="pre">store_ltdb</span></code> function with the paths of the two zip archives you downloaded from the LTDB project page:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.io</span> <span class="kn">import</span> <span class="n">store_ltdb</span>
+
+<span class="c1"># if the archives were in my downloads folder, the paths might be something like this</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="s2">&quot;/Users/knaaptime/Downloads/LTDB_Std_All_Sample.zip&quot;</span>
+<span class="n">full</span> <span class="o">=</span> <span class="s2">&quot;/Users/knaaptime/Downloads/LTDB_Std_All_fullcount.zip&quot;</span>
+
+<span class="c1"># uncomment to run</span>
+<span class="c1">#store_ltdb(sample=sample, fullcount=full)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That function will extract the necessary data from the archives, calculate additional variables using formulas from the codebook, create a new local quilt package for storing the data, and register the database with the <code class="docutils literal notranslate"><span class="pre">datasets</span></code>. After the function has run, you will be able to access the LTDB data as a long-form geodataframe by calling the <code class="docutils literal notranslate"><span class="pre">ltdb</span></code> attribute from the data store. As with the <code class="docutils literal notranslate"><span class="pre">store_census</span></code> function above, this only needs to be run a single time to save the data as a local quit package and register it with geosnap. You won’t neeed to store the data again unless there’s an update to the variable formulas in the codebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#datasets.ltdb.head()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="geolytics-neighborhood-change-database">
+<h3>Geolytics Neighborhood Change Database<a class="headerlink" href="#geolytics-neighborhood-change-database" title="Permalink to this headline">¶</a></h3>
+<p>The Neighborhood Change Database (ncdb) is a commercial database created by Geolytics and the Urban Institute. Like LTDB, it provides census data harmonized to 2010 tracts. NCDB data must be purchased from Geolytics prior to use. If you have a license, you can import NCDB into geosnap with the following:</p>
+<ol class="simple">
+<li><p>Open the Geolytics application</p></li>
+<li><p>Choose “New Request”:<br />
+<img alt="Choose &quot;New Request&quot;" src="https://github.com/spatialucr/geosnap/blob/master/docs/figs/geolytics_interface1.PNG?raw=true" /></p></li>
+<li><p>Select CSV or DBF</p></li>
+<li><p>Make the following Selections:</p>
+<ul class="simple">
+<li><p><strong>year</strong>: all years in 2010 boundaries</p></li>
+<li><p><strong>area</strong>: all census tracts in the entire united states</p></li>
+<li><p><strong>counts</strong>: [right click] Check All Sibling Nodes</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="" src="https://github.com/spatialucr/geosnap/blob/master/docs/figs/geolytics_interface2.PNG?raw=true" /></p>
+<ol class="simple">
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Report</span></code></p></li>
+<li><p>Note the name and location of the CSV you created</p></li>
+<li><p>Start ipython/jupyter, import geosnap, and call the <code class="docutils literal notranslate"><span class="pre">store_ncdb</span></code> function with the path of the CSV:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap.io</span> <span class="kn">import</span> <span class="n">store_ncdb</span>
+
+<span class="n">ncdb_path</span> <span class="o">=</span> <span class="s2">&quot;~/Downloads/ncdb.csv&quot;</span>
+
+<span class="c1"># note this will raise several warnings since NCDB does not contain all the underlying data necessary to calculate all the variables in the codebook</span>
+
+<span class="c1"># uncomment to run</span>
+<span class="c1"># store_ncdb(ncdb_path)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As with above, you can access the geolytics data through the <code class="docutils literal notranslate"><span class="pre">ncdb</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">datasets</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#datasets.ncdb.head()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-geosnap-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-geosnap-py",
+            path: "./geosnap-guide/content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-geosnap-py'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By geosnap developers<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

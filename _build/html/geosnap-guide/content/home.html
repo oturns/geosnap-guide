@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Installation &#8212; geosnap User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/geosnap_long.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">geosnap User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/02_creating_community_datasets.html">
+   Creating Community Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/03_harmonizing_community_boundaries.html">
+   Harmonizing Community Boundaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/04_modeling_neighborhood_types.html">
+   Modeling Neighborhood Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/05_modeling_neighborhood_dynamics.html">
+   Modeling Neighborhood Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/06_visualizing_neighborhood_sequences.html">
+   Visualizing Neighborhood Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../content/07_interactive_visualization.html">
+   Interactive Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/geosnap-guide/content/home.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p align="center">
+<img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
+</p>
+<h1 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h1> 
+<p><code class="docutils literal notranslate"><span class="pre">geosnap</span></code> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
+of neighborhoods.
+Neighborhoods are important for a wide variety of reasons, but they’re hard to study
+because of some long-standing challenges, including that</p>
+<ul class="simple">
+<li><p>there is no formal definition of a
+<a class="reference external" href="https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood">“neighborhood”</a> so
+identifying and modeling them is frought with uncertainty</p></li>
+<li><p>many different physical and social data can characterize a neighborhood (e.g. its
+proximity to the urban core, its share of residents with a high school education, or the
+median price of its apartments) so there are countless ways to model neighborhoods by
+choosing different subsets of attributes</p></li>
+<li><p>conceptually, neighborhoods evolve through both space and time, meaning their
+socially-construed boundaries can shift over time, as can their demographic makeup.</p></li>
+<li><p>geographic tabulation units change boundaries over time, meaning the raw data are
+aggregated to different areal units at differerent points in time.</p></li>
+</ul>
+<p>To address these challenges,<code class="docutils literal notranslate"><span class="pre">geosnap</span></code> provides a suite of tools for creating socio-spatial
+datasets, harmonizing those datasets into consistent set of time-static boundaries,
+modeling bespoke neighborhoods and prototypical neighborhood types, and modeling
+neighborhood change using classic and spatial statistical methods.
+It also provides a set of static and interactive visualization tools to help you display
+and understand the critical information at each step of the process.</p>
+<p><strong>Batteries Included:</strong>
+<code class="docutils literal notranslate"><span class="pre">geosnap</span></code> comes packed with 30 years of census data, thanks to <a class="reference external" href="https://quiltdata.com/">quilt</a>, so you
+can get started modeling neighborhoods in the U.S. immediately.
+But you’re not just limited to the data provided with the package. <code class="docutils literal notranslate"><span class="pre">geosnap</span></code>
+works with any data you provide, any place in the world.</p>
+<p align="center">
+<img width=75% src='assets/images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif' alt='DC Transitions' style=' display: block; margin-left: auto; margin-right: auto;'/>
+</p>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>The recommended method for installing geosnap is with
+<a class="reference external" href="https://www.anaconda.com/download/">anaconda</a>. To get started with the development version,
+clone this repository or download it manually then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the directory and run the
+following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
+conda activate geosnap 
+python setup.py develop
+</pre></div>
+</div>
+<p>This will download the appropriate dependencies and install geosnap in its own conda
+environment.</p>
+</div>
+<div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<p>geosnap development is hosted on <a class="reference external" href="https://github.com/spatialucr/geosnap">github</a></p>
+</div>
+<div class="section" id="bug-reports">
+<h1>Bug reports<a class="headerlink" href="#bug-reports" title="Permalink to this headline">¶</a></h1>
+<p>To search for or report bugs, please see geosnap’s
+<a class="reference external" href="http://github.com/spatialucr/geosnap/issues">issues</a></p>
+</div>
+<div class="section" id="license-information">
+<h1>License information<a class="headerlink" href="#license-information" title="Permalink to this headline">¶</a></h1>
+<p>See the file “LICENSE.txt” for information on the history of this software, terms &amp;
+conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.</p>
+</div>
+<div class="section" id="citation">
+<h1>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h1>
+<p>For a generic citation of geosnap, we recommend the following:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@misc<span class="nb">{</span>Knaap2019,
+author = <span class="nb">{</span>Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su<span class="nb">}</span>,
+doi = <span class="nb">{</span>10.5281/ZENODO.3526163<span class="nb">}</span>,
+title = <span class="nb">{</span>geosnap: The Geospatial Neighborhood Analysis Package<span class="nb">}</span>,
+url = <span class="nb">{</span>https://zenodo.org/record/3526163<span class="nb">}</span>,
+year = <span class="nb">{</span>2019<span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+</div>
+<p>If you need to cite a specific release of the package, please find the appropriate version on <a class="reference external" href="https://zenodo.org/record/3526163">Zenodo</a></p>
+</div>
+<div class="section" id="funding">
+<h1>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h1>
+<p><img src="assets/images/nsf_logo.jpg" width=100 /> This project is supported by NSF Award #1733705,
+<a class="reference external" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false">Neighborhoods in Space-Time Contexts</a></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./geosnap-guide/content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By geosnap developers<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

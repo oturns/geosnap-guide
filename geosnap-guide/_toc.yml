@@ -1,0 +1,5 @@
+- file: content/home.md
+- file: content/quickstart
+  sections:
+    - file: content/01_getting_started
+    - file: content/02_creating_community_boundaries

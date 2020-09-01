@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Working with Communitys &#8212; geosnap User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Harmonizing Community Boundaries" href="03_harmonizing_community_boundaries.html" />
+    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/geosnap_long.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">geosnap User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Creating Community Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_harmonizing_community_boundaries.html">
+   Harmonizing Community Boundaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_modeling_neighborhood_types.html">
+   Modeling Neighborhood Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_modeling_neighborhood_dynamics.html">
+   Modeling Neighborhood Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_visualizing_neighborhood_sequences.html">
+   Visualizing Neighborhood Sequences
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_interactive_visualization.html">
+   Interactive Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/02_creating_community_datasets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-community-from-built-in-census-data">
+   Create a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Community
+    </span>
+   </code>
+   from built-in census data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-community-from-longitudinal-employment-household-dynamics">
+   Create a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Community
+    </span>
+   </code>
+   from Longitudinal Employment-Household Dynamics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-community-from-a-longitudinal-database">
+   Create a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Community
+    </span>
+   </code>
+   from a longitudinal database
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ltdb-using-fips-codes">
+     LTDB using fips codes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ncdb-using-a-boundary">
+     NCDB Using a boundary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-community-from-a-list-of-geodataframes">
+   Create a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Community
+    </span>
+   </code>
+   from a list of geodataframes
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="working-with-communitys">
+<h1>Working with <code class="docutils literal notranslate"><span class="pre">Community</span></code>s<a class="headerlink" href="#working-with-communitys" title="Permalink to this headline">¶</a></h1>
+<p>the <code class="docutils literal notranslate"><span class="pre">Community</span></code> object is geosnap’s central data structure. A <code class="docutils literal notranslate"><span class="pre">Community</span></code> is a dataset that stores information about a collection of neighborhoods over several time periods, including each neighborhood’s physical, socioeconomic, and demographic attributes and its demarcated boundaries. Under the hood, each <code class="docutils literal notranslate"><span class="pre">Community</span></code> is simply a long-form geopandas geodataframe with some associated metadata.</p>
+<p>If you’re working with built-in data, you instantiate a <code class="docutils literal notranslate"><span class="pre">Community</span></code> by choosing the constructor for your dataset and passing either a boundary (geodataframe) or a selection filter that defines the study area. The selection filter can be either a <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> boundary or a set of <a class="reference external" href="https://www.policymap.com/2012/08/tips-on-fips-a-quick-guide-to-geographic-place-codes-part-iii/">FIPS</a> codes. Boundary queries are often more convenient but they are  more expensive to compute and will take longer to construct.</p>
+<p>When constructing <code class="docutils literal notranslate"><span class="pre">Community</span></code>s from fips codes, the constructor has arguments for state, county, msa, or list of any arbitrary fips codes. If more than one of these arguments is passed, geosnap will use the union. This means that each level of the hierarchy is available for convenience but you are free to mix and match msas, states, counties, and even single tracts to create your study region of choice</p>
+<p>If you’re working with your own data, you instantiate a <code class="docutils literal notranslate"><span class="pre">Community</span></code> by passing a list of geodataframes (or a single long-form).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="kn">import</span> <span class="n">Community</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">Loading manifest: 100%|██████████| 3/3 [00:00&lt;00:00, 3184.74entries/s]
+Loading manifest: 100%|██████████| 5/5 [00:00&lt;00:00, 9226.36entries/s]
+Loading manifest: 100%|██████████| 5/5 [00:00&lt;00:00, 10871.71entries/s]
+Loading manifest: 100%|██████████| 3/3 [00:00&lt;00:00, 2749.76entries/s]
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-community-from-built-in-census-data">
+<h2>Create a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from built-in census data<a class="headerlink" href="#create-a-community-from-built-in-census-data" title="Permalink to this headline">¶</a></h2>
+<p>The quickest and easiest method for getting started is to instantiate a Community using the built-in census data. To do so, you use the <code class="docutils literal notranslate"><span class="pre">Community.from_census</span></code> constructor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will create a new community using data from Washington DC (which is fips code 11)</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_census</span><span class="p">(</span><span class="n">state_fips</span><span class="o">=</span><span class="s2">&quot;11&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+</div>
+</div>
+<p>Note that when using <code class="docutils literal notranslate"><span class="pre">Community.from_census</span></code>, the resulting community has <em>unharmonized</em> tract boundaries, meaning that the tracts are different for each decade</p>
+<p>To access the underlying data from a <code class="docutils literal notranslate"><span class="pre">Community</span></code>, simply call its <code class="docutils literal notranslate"><span class="pre">gdf</span></code> attribute which returns a geodataframe</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geoid</th>
+      <th>n_mexican_pop</th>
+      <th>n_cuban_pop</th>
+      <th>n_puerto_rican_pop</th>
+      <th>n_total_housing_units</th>
+      <th>n_vacant_housing_units</th>
+      <th>n_occupied_housing_units</th>
+      <th>n_owner_occupied_housing_units</th>
+      <th>n_renter_occupied_housing_units</th>
+      <th>n_white_persons</th>
+      <th>...</th>
+      <th>p_irish_born_pop</th>
+      <th>p_italian_born_pop</th>
+      <th>p_poverty_rate_children</th>
+      <th>p_poverty_rate_hispanic</th>
+      <th>p_russian_born_pop</th>
+      <th>p_scandanavian_born_pop</th>
+      <th>p_scandanavian_pop</th>
+      <th>n_total_pop_sample</th>
+      <th>p_female_labor_force</th>
+      <th>p_black_persons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11001001600</td>
+      <td>4409.0</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>1667.0</td>
+      <td>43.0</td>
+      <td>1624.0</td>
+      <td>1458.0</td>
+      <td>166.0</td>
+      <td>114423.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11001001500</td>
+      <td>5430.0</td>
+      <td>11.0</td>
+      <td>15.0</td>
+      <td>2309.0</td>
+      <td>78.0</td>
+      <td>2231.0</td>
+      <td>1898.0</td>
+      <td>333.0</td>
+      <td>4694102.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11001001701</td>
+      <td>2868.0</td>
+      <td>5.0</td>
+      <td>22.0</td>
+      <td>1287.0</td>
+      <td>50.0</td>
+      <td>1237.0</td>
+      <td>619.0</td>
+      <td>618.0</td>
+      <td>31727.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11001001801</td>
+      <td>694.0</td>
+      <td>5.0</td>
+      <td>28.0</td>
+      <td>10.0</td>
+      <td>1.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>35813.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11001001702</td>
+      <td>2516.0</td>
+      <td>6.0</td>
+      <td>12.0</td>
+      <td>1086.0</td>
+      <td>43.0</td>
+      <td>1043.0</td>
+      <td>712.0</td>
+      <td>331.0</td>
+      <td>48917.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 195 columns</p>
+</div></div></div>
+</div>
+<p>You can easily create figures of time series plots from geosnap <code class="docutils literal notranslate"><span class="pre">Community</span></code> objects using the <code class="docutils literal notranslate"><span class="pre">plot_timeseries</span></code> class method. <code class="docutils literal notranslate"><span class="pre">plot_timeseries</span></code> uses <code class="docutils literal notranslate"><span class="pre">proplot</span></code>, a lightweight <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> wrapper with its own feature set. It also uses <a class="reference external" href="https://github.com/geopandas/contextily"><code class="docutils literal notranslate"><span class="pre">contextily</span></code></a> to (optionally) provide a nice basemap</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="s2">&quot;p_nonhisp_white_persons&quot;</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;quantiles&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+    <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0573948,0.351445;0.250549x0.591327), CartesianAxesSubplot(0.384321,0.351445;0.250561x0.591327), CartesianAxesSubplot(0.711337,0.351445;0.250393x0.591327)])
+</pre></div>
+</div>
+<img alt="../_images/02_creating_community_datasets_13_1.png" src="../_images/02_creating_community_datasets_13_1.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot_timeseries</span></code> default behavior is to graph every year in the provided <code class="docutils literal notranslate"><span class="pre">Community</span></code> object in chronological order with OpenStreetMaps.Mapnik from contextily as the basemap. If you pass the list <code class="docutils literal notranslate"><span class="pre">years=[]</span></code> , then <code class="docutils literal notranslate"><span class="pre">plot_timeseries</span></code> will graph in the order that the list was passed. You can also specify another map provider for contextily, or disable it by passing <code class="docutils literal notranslate"><span class="pre">False</span></code> with the parameter<code class="docutils literal notranslate"><span class="pre">ctxmap</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">save_fig</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">plot_timeseries</span></code> tells the function to save the resulting plot with the specified name and path. Note that if the file extension is not specified then the image will be saved as a <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>, and that the path specified must already exist.</p>
+</div>
+<div class="section" id="create-a-community-from-longitudinal-employment-household-dynamics">
+<h2>Create a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from Longitudinal Employment-Household Dynamics<a class="headerlink" href="#create-a-community-from-longitudinal-employment-household-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>You can also create a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from block-level LEHD census data. Unlike the decennial census, LEHD data are annual and contain information about the “workplace area characteristics” (“wac”) and “residence area characteristics” (“rac”) of employees. “wac” datasets contain information about where employees work, while “rac” datasets contiain information about where they live. Apart from information about the race, skill level, and income of emmployees in eaech census block, LEHD data also count the number of workers in each NAICS 2-digit industry category.</p>
+<p>If you use the <code class="docutils literal notranslate"><span class="pre">Community.from_lodes</span></code> constructor, you can collect data from 2000 to 2015</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delaware</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_lodes</span><span class="p">(</span><span class="n">state_fips</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/Dropbox/projects/geosnap/geosnap/_data.py:242: UserWarning: Unable to locate local census 2010 block data. Streaming instead.
+If you plan to use census data repeatedly you can store it locally with the io.store_blocks_2010 function for better performance
+  &quot;Unable to locate local census 2010 block data. Streaming instead.\n&quot;
+Loading manifest: 100%|██████████| 52/52 [00:00&lt;00:00, 33533.80entries/s]
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delaware</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geoid</th>
+      <th>year</th>
+      <th>CFA01</th>
+      <th>CFA02</th>
+      <th>CFA03</th>
+      <th>CFA04</th>
+      <th>CFA05</th>
+      <th>CFS01</th>
+      <th>CFS02</th>
+      <th>CFS03</th>
+      <th>...</th>
+      <th>naics_55</th>
+      <th>naics_56</th>
+      <th>naics_61</th>
+      <th>naics_62</th>
+      <th>naics_71</th>
+      <th>naics_72</th>
+      <th>naics_81</th>
+      <th>naics_90</th>
+      <th>population</th>
+      <th>total_employees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>100010401001045</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>121</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>100010402031011</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>10</td>
+      <td>0</td>
+      <td>6</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>100010402012012</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>44</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>100010402021006</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>100010402012036</td>
+      <td>2014</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 57 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delaware</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">delaware</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2015</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;total_employees&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;quantiles&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">9</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/02_creating_community_datasets_20_1.png" src="../_images/02_creating_community_datasets_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="create-a-community-from-a-longitudinal-database">
+<h2>Create a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from a longitudinal database<a class="headerlink" href="#create-a-community-from-a-longitudinal-database" title="Permalink to this headline">¶</a></h2>
+<p>To instantiate a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from a longitudinal database, you must first register the database with geosnap using either <code class="docutils literal notranslate"><span class="pre">store_ltdb</span></code> or <code class="docutils literal notranslate"><span class="pre">store_ncdb</span></code>. Once the data are available in datasets, you can call <code class="docutils literal notranslate"><span class="pre">Community.from_ltdb</span></code> and <code class="docutils literal notranslate"><span class="pre">Community.from_ncdb</span></code></p>
+<div class="section" id="ltdb-using-fips-codes">
+<h3>LTDB using fips codes<a class="headerlink" href="#ltdb-using-fips-codes" title="Permalink to this headline">¶</a></h3>
+<p>I don’t know the Riverside MSA fips code by heart, so I’ll slice through the <code class="docutils literal notranslate"><span class="pre">msas</span></code> dataframe in the data store to find it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="kn">import</span> <span class="n">datasets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">msas</span><span class="p">()[</span><span class="n">datasets</span><span class="o">.</span><span class="n">msas</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Riverside&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geoid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>725</th>
+      <td>40140</td>
+      <td>Riverside-San Bernardino-Ontario, CA</td>
+      <td>Metro Area</td>
+      <td>POLYGON ((-117.67375 33.87083, -117.67394 33.8...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">riverside</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_ltdb</span><span class="p">(</span><span class="n">msa_fips</span><span class="o">=</span><span class="s2">&quot;40140&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">riverside</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span><span class="s2">&quot;p_poverty_rate&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;quantiles&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0213299,0.40153;0.166207x0.533087), CartesianAxesSubplot(0.219575,0.40153;0.166207x0.533087), CartesianAxesSubplot(0.417819,0.40153;0.166207x0.533087), CartesianAxesSubplot(0.616064,0.40153;0.166207x0.533087), CartesianAxesSubplot(0.814309,0.40153;0.166207x0.533087)])
+</pre></div>
+</div>
+<img alt="../_images/02_creating_community_datasets_28_1.png" src="../_images/02_creating_community_datasets_28_1.png" />
+</div>
+</div>
+<p>Instead of passing a fips code, I could use the <code class="docutils literal notranslate"><span class="pre">boundary</span></code> argument to pass the riverside MSA as a geodataframe. This is more computationally expensive because it requires geometric operations, but is more flexible because it allows you to create communities that don’t nest into fips hierarchies (like zip codes, census designated places, or non-US data)</p>
+</div>
+<div class="section" id="ncdb-using-a-boundary">
+<h3>NCDB Using a boundary<a class="headerlink" href="#ncdb-using-a-boundary" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># grab the boundary for Sacramento from libpysal&#39;s built-in examples</span>
+
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">libpysal.examples</span> <span class="kn">import</span> <span class="n">load_example</span>
+
+<span class="n">sac</span> <span class="o">=</span> <span class="n">load_example</span><span class="p">(</span><span class="s2">&quot;Sacramento1&quot;</span><span class="p">)</span>
+<span class="n">sac</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">sac</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;sacramentot2.shp&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sacramento</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_ncdb</span><span class="p">(</span><span class="n">boundary</span><span class="o">=</span><span class="n">sac</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/_community.py:1226: UserWarning: Unable to determine whether boundary CRS is WGS84 if this produces unexpected results, try reprojecting
+  &quot;Unable to determine whether boundary CRS is WGS84 &quot;
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">ctx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sacramento</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="s2">&quot;median_household_income&quot;</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;quantiles&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+    <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">ctxmap</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">,</span>
+    <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0332923,0.468556;0.212957x0.462877), CartesianAxesSubplot(0.407506,0.468556;0.212957x0.462877), CartesianAxesSubplot(0.781719,0.468556;0.212957x0.462877)])
+</pre></div>
+</div>
+<img alt="../_images/02_creating_community_datasets_34_1.png" src="../_images/02_creating_community_datasets_34_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-community-from-a-list-of-geodataframes">
+<h2>Create a <code class="docutils literal notranslate"><span class="pre">Community</span></code> from a list of geodataframes<a class="headerlink" href="#create-a-community-from-a-list-of-geodataframes" title="Permalink to this headline">¶</a></h2>
+<p>If you are working outside the US, or if you have data that aren’t included in geosnap (like census blocks or zip codes) then you can still create a community using the <code class="docutils literal notranslate"><span class="pre">Community.from_geodataframes</span></code> constructor, which allows you to pass a list of geodataframes that will be concatenated into the single long-form gdf structure that geosnap’s analytics expect.</p>
+<p>This constructor is typically used in cases where a researcher has several shapefiles for a study area, each of which pertainin to a different time period. In such a case, the user would read each shapefile into a geodataframe and ensure that each has a “time” column that will differentiate each time period from one another in the long-form structure (e.g. if each shapefile is a different decade, then the 1990 shapefile should have a column called “year” in which every observation has a value of 1990). Then, these geodataframes simply need to be passed in a list to the <code class="docutils literal notranslate"><span class="pre">from_geodataframes</span></code> constructor</p>
+<p>Here, I’ll use <code class="docutils literal notranslate"><span class="pre">cenpy</span></code> to grap population data from two different ACS vintages and combine them into a single community</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cenpy.products</span> <span class="kn">import</span> <span class="n">ACS</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chi13</span> <span class="o">=</span> <span class="n">ACS</span><span class="p">(</span><span class="mi">2013</span><span class="p">)</span><span class="o">.</span><span class="n">from_place</span><span class="p">(</span><span class="s2">&quot;chicago&quot;</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="s2">&quot;B00001_001E&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/cenpy/products.py:799: UserWarning: Uncertain place identifier &quot;chicago&quot;. The place identifier should look something like &quot;placename, state&quot; or, for larger areas, like Combined Statistical Areas or Metropolitan Statistical Areas,&quot;placename1-placename2, state1-state2-state3&quot;
+  replace_missing=replace_missing,
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Matched: chicago to Chicago city within layer Incorporated Places
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chi13</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2013</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chi17</span> <span class="o">=</span> <span class="n">ACS</span><span class="p">(</span><span class="mi">2017</span><span class="p">)</span><span class="o">.</span><span class="n">from_place</span><span class="p">(</span><span class="s2">&quot;chicago&quot;</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="s2">&quot;B00001_001E&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/cenpy/products.py:799: UserWarning: Uncertain place identifier &quot;chicago&quot;. The place identifier should look something like &quot;placename, state&quot; or, for larger areas, like Combined Statistical Areas or Metropolitan Statistical Areas,&quot;placename1-placename2, state1-state2-state3&quot;
+  replace_missing=replace_missing,
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Matched: chicago to Chicago city within layer Incorporated Places
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chi17</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2017</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chicago</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_geodataframes</span><span class="p">([</span><span class="n">chi13</span><span class="p">,</span> <span class="n">chi17</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chicago</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span>
+    <span class="s2">&quot;B00001_001E&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;quantiles&quot;</span><span class="p">,</span>
+    <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">ctxmap</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Chicago Population by Census Tract&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0814728,0.351445;0.211361x0.591327), CartesianAxesSubplot(0.707166,0.351445;0.211361x0.591327)])
+</pre></div>
+</div>
+<img alt="../_images/02_creating_community_datasets_44_1.png" src="../_images/02_creating_community_datasets_44_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-geosnap-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-geosnap-py",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-geosnap-py'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
+    <a class='right-next' id="next-link" href="03_harmonizing_community_boundaries.html" title="next page">Harmonizing Community Boundaries</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By geosnap developers<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
