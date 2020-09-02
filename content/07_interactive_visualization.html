@@ -29,7 +29,6 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -72,7 +71,12 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="current nav sidenav_l1">
+  <p class="caption">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started.html">
    Getting Started
@@ -80,24 +84,51 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_creating_community_datasets.html">
-   Creating Community Datasets
+   Working with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Community
+    </span>
+   </code>
+   s
   </a>
  </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Harmonizing Boundaries
+ </span>
+</p>
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="03_harmonizing_community_boundaries.html">
    Harmonizing Community Boundaries
   </a>
  </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatiotemporal Analytics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="04_modeling_neighborhood_types.html">
-   Modeling Neighborhood Types
+   Geodemographics &amp; Regionalization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_modeling_neighborhood_dynamics.html">
-   Modeling Neighborhood Dynamics
+   Neighborhood Dynamics
   </a>
  </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Visualization
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="06_visualizing_neighborhood_sequences.html">
    Visualizing Neighborhood Sequences
@@ -105,7 +136,28 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Interactive Visualization
+   Prototype Interactive Platform
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Additional Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://spatialucr.github.io/geosnap/">
+   API Documentation
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spatialucr/geosnap/">
+   Github Repository
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
 </ul>

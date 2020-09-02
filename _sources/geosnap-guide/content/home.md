@@ -1,8 +1,6 @@
-<p align="center">
-<img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
-</p>
+![](../images/logo/geosnap_long.png)
 
-<h1 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h1> 
+# The Geospatial Neighborhood Analysis Package
 
 
 `geosnap` makes it easier to explore, model, analyze, and visualize the social and spatial dynamics

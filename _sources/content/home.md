@@ -1,9 +1,11 @@
-<p align="center">
-<img height=200  src="assets/images/geosnap_long.png" alt="geosnap"/>
-</p>
 
-<h1 align="center" style="margin-top:-10px">The Geospatial Neighborhood Analysis Package</h1> 
+```{image} ../images/logo/geosnap_long.png
+:alt: logo
+:height: 200px
+:align: center
+```
 
+# The Geospatial Neighborhood Analysis Package
 
 `geosnap` makes it easier to explore, model, analyze, and visualize the social and spatial dynamics
 of neighborhoods.
@@ -35,9 +37,12 @@ can get started modeling neighborhoods in the U.S. immediately.
 But you’re not just limited to the data provided with the package. `geosnap`
 works with any data you provide, any place in the world.
 
-<p align="center">
-<img width=75% src='assets/images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif' alt='DC Transitions' style=' display: block; margin-left: auto; margin-right: auto;'/>
-</p>
+
+```{image} ../images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif
+:alt: DC Transitions
+:width: 75%
+:align: center
+```
 
 
 ## Installation
@@ -87,6 +92,10 @@ If you need to cite a specific release of the package, please find the appropria
 
 ## Funding
 
+```{image} ../images/nsf_logo.jpg
+:alt: NSF
+:width: 100px
+```
 
-<img src="assets/images/nsf_logo.jpg" width=100 /> This project is supported by NSF Award #1733705,
+This project is supported by NSF Award #1733705,
 [Neighborhoods in Space-Time Contexts](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&HistoricalAwards=false)
