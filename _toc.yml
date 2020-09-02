@@ -1,15 +1,37 @@
 - file: content/home
-- file: content/01_getting_started
-  title: Getting Started
-- file: content/02_creating_community_datasets
-  title: Creating Community Datasets
-- file: content/03_harmonizing_community_boundaries
-  title: Harmonizing Community Boundaries
-- file: content/04_modeling_neighborhood_types
-  title: Modeling Neighborhood Types
-- file: content/05_modeling_neighborhood_dynamics
-  title: Modeling Neighborhood Dynamics
-- file: content/06_visualizing_neighborhood_sequences
-  title: Visualizing Neighborhood Sequences
-- file: content/07_interactive_visualization
-  title: Interactive Visualization
+
+- part: Get started
+  chapters:
+  - file: content/01_getting_started
+
+- part: Creating Datasets
+  chapters:
+  - file: content/02_creating_community_datasets
+
+- part: Harmonizing Boundaries
+  chapters:
+  - file: content/03_harmonizing_community_boundaries
+
+- part: Modeling Neighborhood Types and Regions
+  chapters:
+  - file: content/04_modeling_neighborhood_types
+
+- part: Modeling Neighborhood Dynamics
+  chapters:
+  - file: content/05_modeling_neighborhood_dynamics
+
+- part: Visualizing Neighborhood Sequences
+  chapters:
+  - file: content/06_visualizing_neighborhood_sequences
+
+- part: Interactive Visualization
+  chapters:
+  - file: content/07_interactive_visualization
+
+- part: Additional Resources
+  chapters:
+  - url: https://spatialucr.github.io/geosnap/
+    title: API Documentation
+  - url: https://github.com/spatialucr/geosnap/
+    title: Github Repository
+
