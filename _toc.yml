@@ -1,32 +1,27 @@
 - file: content/home
 
-- part: Get started
+- part: Data
   chapters:
   - file: content/01_getting_started
-
-- part: Creating Datasets
-  chapters:
   - file: content/02_creating_community_datasets
 
 - part: Harmonizing Boundaries
   chapters:
   - file: content/03_harmonizing_community_boundaries
 
-- part: Modeling Neighborhood Types and Regions
+- part: Spatiotemporal Analytics
   chapters:
   - file: content/04_modeling_neighborhood_types
-
-- part: Modeling Neighborhood Dynamics
-  chapters:
+    title: Geodemographics & Regionalization
   - file: content/05_modeling_neighborhood_dynamics
+    title: Neighborhood Dynamics
 
-- part: Visualizing Neighborhood Sequences
+- part: Visualization
   chapters:
   - file: content/06_visualizing_neighborhood_sequences
-
-- part: Interactive Visualization
-  chapters:
+    title: Visualizing Neighborhood Sequences
   - file: content/07_interactive_visualization
+    title: Prototype Interactive Platform
 
 - part: Additional Resources
   chapters:

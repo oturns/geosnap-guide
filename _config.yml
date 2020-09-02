@@ -35,3 +35,6 @@ latex:
   latex_engine                : "xelatex"
   latex_documents:
     targetname: book.tex
+
+parse:
+  myst_extended_syntax: true
