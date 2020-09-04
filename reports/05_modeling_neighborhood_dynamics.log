@@ -43,7 +43,7 @@ warnings.filterwarnings("ignore")
 [1;32m     31[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mutil[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m~/Dropbox/projects/geosnap/geosnap/analyze/__init__.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mfrom[0m [0;34m.[0m[0manalytics[0m [0;32mimport[0m [0mcluster[0m[0;34m,[0m [0mcluster_spatial[0m[0;34m,[0m [0mModelResults[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0;34m.[0m[0manalytics[0m [0;32mimport[0m [0mcluster[0m[0;34m,[0m [0mcluster_spatial[0m[0;34m,[0m [0mModelResults[0m[0;34m,[0m [0mpredict_labels[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0;32mfrom[0m [0;34m.[0m[0mdynamics[0m [0;32mimport[0m [0msequence[0m[0;34m,[0m [0mtransition[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0;32mfrom[0m [0;34m.[0m[0mincs[0m [0;32mimport[0m [0mlinc[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      4[0m [0;34m[0m[0m
@@ -54,7 +54,7 @@ warnings.filterwarnings("ignore")
 [0;32m----> 2[0;31m [0;32mimport[0m [0mesda[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      4[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mpreprocessing[0m [0;32mimport[0m [0mStandardScaler[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mimport[0m [0mgeopandas[0m [0;32mas[0m [0mgpd[0m[0;34m[0m[0;34m[0m[0m
 
 [0;31mModuleNotFoundError[0m: No module named 'esda'
 ModuleNotFoundError: No module named 'esda'

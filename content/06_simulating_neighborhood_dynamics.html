@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simulating Neighborhood Socio-Spatial Dynamics &#8212; User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Modeling Neighborhood Dynamics" href="05_modeling_neighborhood_dynamics.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/geosnap_long.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">User Guide</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_creating_community_datasets.html">
+   Working with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Community
+    </span>
+   </code>
+   s
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Harmonizing Boundaries
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_harmonizing_community_boundaries.html">
+   Data prep
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_harmonizing_community_boundaries.html#harmonizing-a-community-with-areal-interpolation">
+   Harmonizing a community with areal interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_harmonizing_community_boundaries.html#harmonizing-a-community-with-areal-interpolation-and-auxiliary-data">
+   Harmonizing a community with areal interpolation and auxiliary data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatiotemporal Analytics
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_modeling_neighborhood_types.html">
+   Geodemographics &amp; Regionalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_modeling_neighborhood_dynamics.html">
+   Neighborhood Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Simulating Neighborhood Dynamics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Additional Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://spatialucr.github.io/geosnap/">
+   API Documentation
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spatialucr/geosnap/">
+   Github Repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/06_simulating_neighborhood_dynamics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cluster-model">
+   Cluster Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transition-model">
+   Transition Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-neighborhood-change">
+   Simulating Neighborhood Change
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="simulating-neighborhood-socio-spatial-dynamics">
+<h1>Simulating Neighborhood Socio-Spatial Dynamics<a class="headerlink" href="#simulating-neighborhood-socio-spatial-dynamics" title="Permalink to this headline">¶</a></h1>
+<p>By combining a few simple steps, <code class="docutils literal notranslate"><span class="pre">geosnap</span></code> is capable of simulating neighborhood change into the future. To do so, it relies on the notion of a spatially-conditioned Markov transition model. Put simply, if we know what Type a neighborhood used to be, and we know what Types of neighborhoods surround it, we can make an informed prediction about what Type the neighborhood is likely to be during the next time period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">Community</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">Loading manifest: 100%|██████████| 3/3 [00:00&lt;00:00, 1681.53entries/s]
+Loading manifest: 100%|██████████| 5/5 [00:00&lt;00:00, 13697.92entries/s]
+Loading manifest: 100%|██████████| 5/5 [00:00&lt;00:00, 17232.14entries/s]
+Loading manifest: 100%|██████████| 3/3 [00:00&lt;00:00, 1523.72entries/s]
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="cluster-model">
+<h2>Cluster Model<a class="headerlink" href="#cluster-model" title="Permalink to this headline">¶</a></h2>
+<p>We start by developing a cluster model of neighborhood types, where each geographic unit can take on a different type in successive years</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;p_nonhisp_black_persons&#39;</span><span class="p">,</span> <span class="s1">&#39;p_nonhisp_white_persons&#39;</span><span class="p">,</span> <span class="s1">&#39;p_hispanic_persons&#39;</span><span class="p">,</span> <span class="s1">&#39;p_asian_persons&#39;</span><span class="p">,</span> <span class="s1">&#39;median_household_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_home_value&#39;</span><span class="p">,</span> <span class="s1">&#39;p_unemployment_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;p_poverty_rate&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_ltdb</span><span class="p">(</span><span class="n">msa_fips</span><span class="o">=</span><span class="s1">&#39;12580&#39;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1980</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: '+init=&lt;authority&gt;:&lt;code&gt;' syntax is deprecated. '&lt;authority&gt;:&lt;code&gt;' is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&quot; &quot;.join(pjargs))
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span> <span class="o">=</span> <span class="n">balt</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">VARS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0430916,0.278056;0.163817x0.68162), CartesianAxesSubplot(0.272648,0.278056;0.204703x0.68162), CartesianAxesSubplot(0.522648,0.278056;0.204703x0.68162), CartesianAxesSubplot(0.772648,0.278056;0.204703x0.68162)])
+</pre></div>
+</div>
+<img alt="../_images/06_simulating_neighborhood_dynamics_8_1.png" src="../_images/06_simulating_neighborhood_dynamics_8_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="transition-model">
+<h2>Transition Model<a class="headerlink" href="#transition-model" title="Permalink to this headline">¶</a></h2>
+<p>For these neighborhood types we can create a transition model. The following heatmap shows which neighborhoods are likely to transition into each other type of neighborhood, and critically, how those probabilities change under different conditions of spatial context</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span><span class="o">.</span><span class="n">plot_transition_matrix</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">n_rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">suptitle</span><span class="o">=</span><span class="s1">&#39;Neighborhood Transitions in Baltimore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:title={&#39;center&#39;:&#39;Global&#39;}&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Modal Neighbor - 0&#39;}&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Modal Neighbor - 1&#39;}&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Modal Neighbor - 2&#39;}&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Modal Neighbor - 3&#39;}&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Modal Neighbor - 4&#39;}&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Modal Neighbor - 5&#39;}&gt;,
+       &lt;AxesSubplot:&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/06_simulating_neighborhood_dynamics_11_1.png" src="../_images/06_simulating_neighborhood_dynamics_11_1.png" />
+</div>
+</div>
+<p>Another way of visualizing the transition matrices is as a network graph where neighborhood types are represented as nodes and the transition probabilities between them are represented as edges.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span><span class="o">.</span><span class="n">plot_transition_graphs</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="s1">&#39;queen&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;images/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the global (aspatial) transition matrix is laid out as a graph. We can see quickly that some neighborhood types like Type 2 have higher in-degree than out-degree, meaning many different neighborhood types transition into Type 2, but once there, Type 2 only transitions into a few other types</p>
+<p><img alt="img" src="../_images/ward_transitions_global.png" /></p>
+</div>
+<div class="section" id="simulating-neighborhood-change">
+<h2>Simulating Neighborhood Change<a class="headerlink" href="#simulating-neighborhood-change" title="Permalink to this headline">¶</a></h2>
+<p>If we expect these same socio-spatial dynamics to persist over time, then we can use our spatial Markov transition model to simulate neighborhood change into the future. The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method takes a cluster model name and simulates forward for a specified number of time steps, then returns a new <code class="docutils literal notranslate"><span class="pre">Community</span></code> with the predicted data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predicted</span> <span class="o">=</span> <span class="n">balt</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">base_year</span><span class="o">=</span><span class="mi">2010</span><span class="p">,</span> <span class="n">w_type</span><span class="o">=</span><span class="s1">&#39;queen&#39;</span><span class="p">,</span> <span class="n">time_steps</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 2 disconnected components.
+  warnings.warn(message)
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 2 disconnected components.
+  warnings.warn(message)
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/analytics.py:590: RuntimeWarning: invalid value encountered in true_divide
+  probs.sum()
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/geodataframe.py:853: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super(GeoDataFrame, self).__setitem__(key, value)
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/analytics.py:590: RuntimeWarning: invalid value encountered in true_divide
+  probs.sum()
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/geodataframe.py:853: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super(GeoDataFrame, self).__setitem__(key, value)
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/analytics.py:590: RuntimeWarning: invalid value encountered in true_divide
+  probs.sum()
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/geodataframe.py:853: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super(GeoDataFrame, self).__setitem__(key, value)
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/analytics.py:590: RuntimeWarning: invalid value encountered in true_divide
+  probs.sum()
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/geodataframe.py:853: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super(GeoDataFrame, self).__setitem__(key, value)
+</pre>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">)</span>
+<span class="n">predicted</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">predicted</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">predicted</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span><span class="o">!=</span><span class="mi">2010</span><span class="p">]</span> <span class="c1"># dont include the base year</span>
+<span class="n">predicted</span><span class="o">.</span><span class="n">plot_timeseries</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/plotting.py:376: UserWarning: The GeoSeries you are attempting to plot is empty. Nothing has been displayed.
+  UserWarning,
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/plotting.py:376: UserWarning: The GeoSeries you are attempting to plot is empty. Nothing has been displayed.
+  UserWarning,
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/plotting.py:376: UserWarning: The GeoSeries you are attempting to plot is empty. Nothing has been displayed.
+  UserWarning,
+/Users/knaaptime/anaconda3/envs/geosnap/lib/python3.7/site-packages/geopandas/plotting.py:376: UserWarning: The GeoSeries you are attempting to plot is empty. Nothing has been displayed.
+  UserWarning,
+</pre>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>SubplotsContainer([CartesianAxesSubplot(0.0195417,0.189435;0.225279x0.625111), CartesianAxesSubplot(0.266132,0.189435;0.225279x0.625111), CartesianAxesSubplot(0.512722,0.189435;0.225279x0.625111), CartesianAxesSubplot(0.759312,0.189435;0.225279x0.625111)])
+</pre></div>
+</div>
+<img alt="../_images/06_simulating_neighborhood_dynamics_19_2.png" src="../_images/06_simulating_neighborhood_dynamics_19_2.png" />
+<img alt="../_images/06_simulating_neighborhood_dynamics_19_3.png" src="../_images/06_simulating_neighborhood_dynamics_19_3.png" />
+</div>
+</div>
+<p>The top plot shows the observed neighborhood types over the 4 time periods from 1980 to 2010. The bottom plot shows the next four predicted time periods from 2020 to 2050, assuming the underlying transition model remains constant</p>
+<p>For a more dynamic view of the neighborhood evolution process, we can create a simple animation from these data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">balt</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">balt</span><span class="o">.</span><span class="n">gdf</span><span class="p">[</span><span class="n">balt</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">year</span><span class="o">!=</span> <span class="mi">1980</span><span class="p">]</span>  <span class="c1">#  in 1980, Queen Anne&#39;s county wasnt in the MSA, so the different bounds make the animation awkward</span>
+<span class="n">combined_sequence</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_geodataframes</span><span class="p">([</span><span class="n">balt</span><span class="o">.</span><span class="n">gdf</span><span class="p">,</span> <span class="n">predicted</span><span class="o">.</span><span class="n">gdf</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">combined_sequence</span><span class="o">.</span><span class="n">animate_timeseries</span><span class="p">(</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/simulation.gif&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="simulation" src="../_images/simulation.gif" /></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-geosnap-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-geosnap-py",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-geosnap-py'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_modeling_neighborhood_dynamics.html" title="previous page">Modeling Neighborhood Dynamics</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By geosnap developers<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

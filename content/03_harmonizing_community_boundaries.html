@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Harmonizing Community Boundaries &#8212; geosnap User Guide</title>
+    <title>Data prep &#8212; User Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -61,7 +61,7 @@
   <img src="../_static/geosnap_long.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">geosnap User Guide</h1>
+  <h1 class="site-logo" id="site-title">User Guide</h1>
   
 </a>
 </div>
@@ -103,7 +103,17 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Harmonizing Community Boundaries
+   Data prep
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#harmonizing-a-community-with-areal-interpolation">
+   Harmonizing a community with areal interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#harmonizing-a-community-with-areal-interpolation-and-auxiliary-data">
+   Harmonizing a community with areal interpolation and auxiliary data
   </a>
  </li>
 </ul>
@@ -123,21 +133,9 @@
    Neighborhood Dynamics
   </a>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Visualization
- </span>
-</p>
-<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_visualizing_neighborhood_sequences.html">
-   Visualizing Neighborhood Sequences
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_interactive_visualization.html">
-   Prototype Interactive Platform
+  <a class="reference internal" href="06_simulating_neighborhood_dynamics.html">
+   Simulating Neighborhood Dynamics
   </a>
  </li>
 </ul>
@@ -226,24 +224,7 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-prep">
-   Data prep
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#harmonizing-a-community-with-areal-interpolation">
-   Harmonizing a community with areal interpolation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#harmonizing-a-community-with-areal-interpolation-and-auxiliary-data">
-   Harmonizing a community with areal interpolation and auxiliary data
-  </a>
- </li>
-</ul>
-
+            
         </nav>
     </div>
 </div>
@@ -252,9 +233,7 @@
         
               <div>
                 
-  <div class="section" id="harmonizing-community-boundaries">
-<h1>Harmonizing Community Boundaries<a class="headerlink" href="#harmonizing-community-boundaries" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geosnap</span> <span class="kn">import</span> <span class="n">Community</span>
 </pre></div>
@@ -262,7 +241,7 @@
 </div>
 </div>
 <div class="section" id="data-prep">
-<h2>Data prep<a class="headerlink" href="#data-prep" title="Permalink to this headline">¶</a></h2>
+<h1>Data prep<a class="headerlink" href="#data-prep" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">Community</span><span class="o">.</span><span class="n">from_lodes</span><span class="p">(</span><span class="n">state_fips</span><span class="o">=</span><span class="s2">&quot;11&quot;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2015</span><span class="p">])</span>
@@ -319,7 +298,7 @@
 </div>
 </div>
 <div class="section" id="harmonizing-a-community-with-areal-interpolation">
-<h2>Harmonizing a community with areal interpolation<a class="headerlink" href="#harmonizing-a-community-with-areal-interpolation" title="Permalink to this headline">¶</a></h2>
+<h1>Harmonizing a community with areal interpolation<a class="headerlink" href="#harmonizing-a-community-with-areal-interpolation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this wil take the 2010 tract data and interpolate it to 2015 boundaries (the same as 2010)</span>
@@ -332,7 +311,7 @@
 </div>
 </div>
 <div class="section" id="harmonizing-a-community-with-areal-interpolation-and-auxiliary-data">
-<h2>Harmonizing a community with areal interpolation and auxiliary data<a class="headerlink" href="#harmonizing-a-community-with-areal-interpolation-and-auxiliary-data" title="Permalink to this headline">¶</a></h2>
+<h1>Harmonizing a community with areal interpolation and auxiliary data<a class="headerlink" href="#harmonizing-a-community-with-areal-interpolation-and-auxiliary-data" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will do the same as above, but will use 2011 NLCD data to constrain the overlay to what&#39;s considered developed land</span>
@@ -412,7 +391,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_harmonizing_community_boundaries_17_0.png" src="../_images/03_harmonizing_community_boundaries_17_0.png" />
+<img alt="../_images/03_harmonizing_community_boundaries_16_0.png" src="../_images/03_harmonizing_community_boundaries_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -436,7 +415,7 @@ max      3618.364054
 Name: population, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/03_harmonizing_community_boundaries_18_1.png" src="../_images/03_harmonizing_community_boundaries_18_1.png" />
+<img alt="../_images/03_harmonizing_community_boundaries_17_1.png" src="../_images/03_harmonizing_community_boundaries_17_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -460,8 +439,7 @@ max      3621.922652
 Name: population, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/03_harmonizing_community_boundaries_19_1.png" src="../_images/03_harmonizing_community_boundaries_19_1.png" />
-</div>
+<img alt="../_images/03_harmonizing_community_boundaries_18_1.png" src="../_images/03_harmonizing_community_boundaries_18_1.png" />
 </div>
 </div>
 </div>
