@@ -1,10 +1,3 @@
-
-```{image} ../images/logo/geosnap_long.png
-:alt: logo
-:height: 200px
-:align: center
-```
-
 # The Geospatial Neighborhood Analysis Package
 
 `geosnap` makes it easier to explore, model, analyze, and visualize the social and spatial dynamics

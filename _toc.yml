@@ -15,12 +15,14 @@
     title: Geodemographics & Regionalization
   - file: content/05_modeling_neighborhood_dynamics
     title: Neighborhood Dynamics
+  - file: content/06_simulating_neighborhood_dynamics
+    title: Simulating Neighborhood Change
 
 - part: Visualization
   chapters:
-  - file: content/06_visualizing_neighborhood_sequences
+  - file: content/07_visualizing_neighborhood_sequences
     title: Visualizing Neighborhood Sequences
-  - file: content/07_interactive_visualization
+  - file: content/08_interactive_visualization
     title: Prototype Interactive Platform
 
 - part: Additional Resources

@@ -1,12 +1,12 @@
 #######################################################################################
 # Book settings
-title : geosnap User Guide
+title : User Guide
 author: geosnap developers
 logo: 'images/logo/geosnap_long.png'
 
 # Information about where the book exists on the web
 description: >-
-  A brief introduction to Python programming for scientific applications.
+  An introduction to geosnap, the geospatial neighborhood analysis package
 #######################################################################################
 # Execution settings
 execute:
@@ -24,7 +24,7 @@ notebook_interface            : "notebook"
 #######################################################################################
 # Launch button settings
 repository:
-  url                         : https://github.com/executablebooks/quantecon-mini-example
+  url                         : https://github.com/spatialucr/geosnap
   path_to_book                : "geosnap-guide"
 
 binder:
