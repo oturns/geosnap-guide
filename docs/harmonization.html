@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Geospatial Neighborhood Analysis Package - 3&nbsp; Boundary Harmonization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./clustering.html" rel="next">
+<link href="./datasets.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./harmonization.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Boundary Harmonization</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Geospatial Neighborhood Analysis Package</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/oturns/geosnap/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./The-Geospatial-Neighborhood-Analysis-Package.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./The-Geospatial-Neighborhood-Analysis-Package.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://twitter.com/intent/tweet?url=|url|" rel="" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./harmonization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Boundary Harmonization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Geodemographic Clustering</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regionalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Geodemographic Regionalization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Neighborhood Dynamics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./segregation_dynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Spatiotemporal Segregation Dynamics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./isochrone_example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Egohoods and Isochrones</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#original-data" id="toc-original-data" class="nav-link active" data-scroll-target="#original-data"><span class="header-section-number">3.1</span> Original Data</a></li>
+  <li><a href="#harmonization-using-areal-interpolation" id="toc-harmonization-using-areal-interpolation" class="nav-link" data-scroll-target="#harmonization-using-areal-interpolation"><span class="header-section-number">3.2</span> Harmonization using Areal Interpolation</a></li>
+  <li><a href="#harmonization-using-dasymetric-interpolation" id="toc-harmonization-using-dasymetric-interpolation" class="nav-link" data-scroll-target="#harmonization-using-dasymetric-interpolation"><span class="header-section-number">3.3</span> Harmonization using Dasymetric Interpolation</a></li>
+  <li><a href="#harmonizing-to-an-alternate-geographic-unit" id="toc-harmonizing-to-an-alternate-geographic-unit" class="nav-link" data-scroll-target="#harmonizing-to-an-alternate-geographic-unit"><span class="header-section-number">3.4</span> Harmonizing to an Alternate Geographic Unit</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/oturns/geosnap/blob/main/harmonization.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Boundary Harmonization</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>A common issue in spatial analysis is that geographic tabulation units can (and often do) change over time. For instance the U.S. census boundary polygons like tracts and blocks are re-drawn with each census to accomodate population growth and change. That means it’s impossible to see if tract XZY has changed over time because “tract XYZ” means something different in each time period. To help solve that problem geosnap leverages the pysal <a href="https://pysal.org/tobler"><code>tobler</code></a> package to harmonize spatial boundaries over time. Doing so is as simple as calling the <code>harmonize()</code> function</p>
+<section id="original-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="original-data"><span class="header-section-number">3.1</span> Original Data</h2>
+<p>First, we’ll create a new Community from San Diego county</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:50.137584Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:50.137439Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:53.345293Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:53.344959Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:50.137566Z&quot;}" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap <span class="im">import</span> DataStore</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap <span class="im">import</span> analyze <span class="im">as</span> gaz</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap <span class="im">import</span> io <span class="im">as</span> gio</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap <span class="im">import</span> visualize <span class="im">as</span> gvz</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap.harmonize <span class="im">import</span> harmonize</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> DataStore()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:53.346414Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:53.346329Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:53.358565Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:53.358217Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:53.346405Z&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>a <span class="st">'eli knaap'</span> <span class="op">-</span>d <span class="op">-</span>u <span class="op">-</span>iv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author: eli knaap
+
+Last updated: 2024-01-16
+
+pandas    : 2.1.4
+geosnap   : 0.12.1.dev9+g3a1cb0f6de61.d20240110
+matplotlib: 3.8.2
+geopandas : 0.14.1
+</code></pre>
+</div>
+</div>
+<p>Using the <code>from_census</code> constructor, we’ll grab some original census data which by default, includes data from 1990, 2000, and 2010 and adjusts all currency columns for inflation by converting them into 2015 dollars (if you want to suppress this behavior set <code>constant_dollars=False</code>). Here’s how median contract has changed in San Diego county if we plot maps of the original boundaries</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:53.359129Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:53.359041Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:54.007360Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:54.007033Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:53.359118Z&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sd <span class="op">=</span> gio.get_census(datasets, county_fips<span class="op">=</span><span class="st">"06073"</span>, currency_year<span class="op">=</span><span class="dv">2019</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:54.007895Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:54.007803Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:55.258117Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:55.257815Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:54.007884Z&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sd_acs <span class="op">=</span> gio.get_acs(datasets, county_fips<span class="op">=</span><span class="st">"06073"</span>, years<span class="op">=</span>[<span class="dv">2020</span>], level<span class="op">=</span><span class="st">"tract"</span>, currency_year<span class="op">=</span><span class="dv">2019</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/io/constructors.py:215: UserWarning: Currency columns unavailable at this resolution; not adjusting for inflation
+  warn(</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:55.258742Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:55.258651Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:55.605068Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:55.604618Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:55.258732Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sd_acs <span class="op">=</span> sd_acs.to_crs(<span class="dv">6426</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:55.605536Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:55.605453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:55.625199Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:55.624718Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:55.605526Z&quot;}" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sd <span class="op">=</span> sd.to_crs(<span class="dv">6426</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:55.626913Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:55.626775Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:55.638198Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:55.637835Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:55.626903Z&quot;}" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sd <span class="op">=</span> gpd.GeoDataFrame(pd.concat([sd, sd_acs]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are several different harmonization techniques in the literature (for a deeper dive on spatial interpolation checkout the <code>tobler</code> library) but nearly all of them require good estimates of source and target polygon areas. That means it’s important to set a reasonable CRS for the study region (which should be a familiar habit anyway). In this case, <a href="https://epsg.io/6246">epsg 6246</a> is appropriate</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:55.638737Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:55.638648Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:16:59.572668Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:16:59.572346Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:55.638727Z&quot;}" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gvz.plot_timeseries(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    sd,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"median_contract_rent"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Median Rent, Original Boundaries"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"Greens"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    nrows<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    ncols<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
+  warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>It looks like San Diego county has gotten dramatically more expensive over time, particularly through the 2000s. But since the underlying geographic units are changing over time, we still can’t make tract-to-tract comparisons, so we can harmonize the boundaries. Here we’ll take each census year and convert population and median income data into constant boundaries from the 2020 census.</p>
+</section>
+<section id="harmonization-using-areal-interpolation" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="harmonization-using-areal-interpolation"><span class="header-section-number">3.2</span> Harmonization using Areal Interpolation</h2>
+<p>The simplest way to harmonize boundaries is to use areal interpolation, meaning we use the area of overlap between consecutive years to create a weighted sum of intersecting polygons. This approach assumes each polygon has constant density of each attribute so its most useful when the polygons are small and homogenous</p>
+<p>When harmonizing boundaries over time, we need to distinguish between <a href="https://en.wikipedia.org/wiki/Intensive_and_extensive_properties">intensive and extensive</a> variables because each needs to be handled differently during the interpolation process. Median income is a statistic (so intensive), whereas total population is a count (extensive), so we make sure to pass each to the appropriate list</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:16:59.573200Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:16:59.573111Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:17:00.492951Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:17:00.492593Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:16:59.573191Z&quot;}" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sd_harm20 <span class="op">=</span> harmonize(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    sd,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    intensive_variables<span class="op">=</span>[<span class="st">"median_contract_rent"</span>, <span class="st">"p_hispanic_persons"</span>],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    extensive_variables<span class="op">=</span>[<span class="st">"n_total_pop"</span>],</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    weights_method<span class="op">=</span><span class="st">"area"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    target_year<span class="op">=</span><span class="dv">2020</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/geopandas/geodataframe.py:1543: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"75e479139f674892be4601d2995bcace","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:17:00.493655Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:17:00.493571Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:17:02.574049Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:17:02.573025Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:17:00.493645Z&quot;}" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gvz.plot_timeseries(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    sd_harm20,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"median_contract_rent"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Median Rent, 2010 Boundaries"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"Greens"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    nrows<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    ncols<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
+  warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:17:02.574623Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:17:02.574540Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:17:04.688892Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:17:04.688597Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:17:02.574614Z&quot;}" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gvz.plot_timeseries(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    sd_harm20,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"p_hispanic_persons"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Hispanic Population (%), 2010 Boundaries"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    nrows<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    ncols<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
+  warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We could also use 1990 boundaries as our target to see how the region has evolved according to those units:</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:17:04.689390Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:17:04.689309Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:17:06.523445Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:17:06.523077Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:17:04.689381Z&quot;}" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sd_harm90 <span class="op">=</span> harmonize(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    sd,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    intensive_variables<span class="op">=</span>[<span class="st">"median_contract_rent"</span>],</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    weights_method<span class="op">=</span><span class="st">"area"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    target_year<span class="op">=</span><span class="dv">1990</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>gvz.plot_timeseries(</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    sd_harm90,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"median_contract_rent"</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Median Rent, 1990 Boundaries"</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"Greens"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    nrows<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    ncols<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/geopandas/geodataframe.py:1543: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ea1940f1d085414dab8c1b1eb3fb4909","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
+  warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-13-output-4.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="harmonization-using-dasymetric-interpolation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="harmonization-using-dasymetric-interpolation"><span class="header-section-number">3.3</span> Harmonization using Dasymetric Interpolation</h2>
+<p>To account for the fact that most variables are not distributed uniformly thoughout the polygon (e.g.&nbsp;development is often clustered rather than spread evenly throughout each census tract), geosnap can use <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6420221/">dasymetric interpolation</a> that incorporates additional information for a more accurate harmonization. In this case, we can use raster data like <a href="https://www.mrlc.gov/">the NLCD</a> to constrain our interpolation to only the developed part of each census tract.</p>
+<p><a href="https://spatial.ucr.edu">oturns</a> distributes an optimized version of the NLCD data through its <a href="https://open.quiltdata.com/b/spatial-ucr">quilt bucket</a> for use in harmonization so we can download it simply using quilt. Since we’re harmonizing boundaries from the past, our auxiliary data should roughly match the time period of the polygon data we’re converting. The earliest version of the NLCD available is 2001, so we’ll use that</p>
+<p>To use dasymetric harmonization, we need to change the <code>weights_method</code> and provide a path to a valid raster file (which, in this case, we just downloaded to th current dir). When using a raster file as a dasymetric mask, we need to tell the function which raster cells are part of the mask. In this case, the pixels in the NLCD raster to different land use types, and we want to constrain the interpolation to developed land. So here we’ll set the <code>pixel_values</code> argument to the developed land types from the nlcd:</p>
+<ul>
+<li>22 (Developed, Low Intensity)</li>
+<li>23 (Developed, Medium Intensity)</li>
+<li>24 (Developed, High Intensity)</li>
+</ul>
+<p>Note: dasymetric interpolation is much more data intensive so it takes considerably longer to calculate. On my machine it takes roughly 90 seconds per time period for this study area, whereas the pure areal interpolation completes in a few seconds each. Ninety seconds is still pretty impressive in this case, given that the raster file is ~1.5gb and is being read directly from the web.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:17:06.523977Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:17:06.523893Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:47.913121Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:47.912254Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:17:06.523968Z&quot;}" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sd_harm10_dasy <span class="op">=</span> harmonize(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    sd,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    intensive_variables<span class="op">=</span>[<span class="st">"median_contract_rent"</span>],</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    weights_method<span class="op">=</span><span class="st">"dasymetric"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    raster<span class="op">=</span><span class="st">"https://spatial-ucr.s3.amazonaws.com/nlcd/landcover/nlcd_landcover_2021.tif"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    pixel_values<span class="op">=</span>[<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>],</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    target_year<span class="op">=</span><span class="dv">2010</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/geopandas/geodataframe.py:1543: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"501178664c2b473a8b51433fccf252d3","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)
+/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/shapely/set_operations.py:131: RuntimeWarning: invalid value encountered in intersection
+  return lib.intersection(a, b, **kwargs)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:21:47.914025Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:21:47.913869Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:49.570000Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:49.569693Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:21:47.914011Z&quot;}" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>gvz.plot_timeseries(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    sd_harm10_dasy,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"median_contract_rent"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Median Rent, 2010 Boundaries w/ Dasymetric Interpolation"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"Greens"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    nrows<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    ncols<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
+  warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The NLCD is a useful dasymetric layer because it has high spatial resolution and classifies a relatively wide range of land uses. By constraining our interpolation to developed land uses we ensure that there are no variables allocated to obviously incorrect places like forests, lakes, or farms. But it doesnt do anything to prevent allocating variables to developed land uses that don’t have population–like heavy industry, airports, parking lots, or shopping malls. Depending on the particular problem and location, you may want to inclue or exclude different pixel types. There may also be better raster sources that could be used as alternatives</p>
+</section>
+<section id="harmonizing-to-an-alternate-geographic-unit" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="harmonizing-to-an-alternate-geographic-unit"><span class="header-section-number">3.4</span> Harmonizing to an Alternate Geographic Unit</h2>
+<p>In some cases, it can be useful to discard the original boundaries altogether and instead harmonize all time periods to a consistent geographic unit defined elsewhere (like a school district, or congressional district, or a regular hexgrid)</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:21:49.570514Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:21:49.570438Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:49.574349Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:49.574073Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:21:49.570506Z&quot;}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tobler.util <span class="im">import</span> h3fy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note you need the <code>h3</code> libarary to run this cell, which might require <code>mamba install hy-py</code></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:21:49.574772Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:21:49.574700Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:49.696984Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:49.696711Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:21:49.574763Z&quot;}" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sd_hex <span class="op">=</span> h3fy(sd[sd.year <span class="op">==</span> <span class="dv">2010</span>], resolution<span class="op">=</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/mambaforge/envs/geosnap/lib/python3.11/site-packages/pyproj/crs/crs.py:1293: UserWarning: You will likely lose important projection information when converting to a PROJ string from another format. See: https://proj.org/faq.html#what-is-the-best-format-for-describing-coordinate-reference-systems
+  proj = self._crs.to_proj4(version=version)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:21:49.697684Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:21:49.697436Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:49.872442Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:49.871981Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:21:49.697675Z&quot;}" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sd_hex.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>&lt;Axes: &gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:21:49.873056Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:21:49.872965Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:50.454762Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:50.454506Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:21:49.873047Z&quot;}" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sd_hex_interp <span class="op">=</span> harmonize(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    sd, target_gdf<span class="op">=</span>sd_hex, intensive_variables<span class="op">=</span>[<span class="st">"median_home_value"</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"09042b2768484dcebeb3bcddfd9ead58","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T22:21:50.455598Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T22:21:50.455413Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T22:21:52.391093Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T22:21:52.389876Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T22:21:50.455585Z&quot;}" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>gvz.plot_timeseries(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    sd_hex_interp,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"median_home_value"</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Median Home Value, Regular Hexgrid"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"Greens"</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>),</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    nrows<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    ncols<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
+  warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="harmonization_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"09042b2768484dcebeb3bcddfd9ead58":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"children":["IPY_MODEL_41a81960909145aea49511a1464c6eca","IPY_MODEL_4f4a54e848fb464894913028fc321c55","IPY_MODEL_d42b60212c134d1fb02cd50e506d811b"],"layout":"IPY_MODEL_b2b6d70d10114467be433a116277526f"}},"1aa8e2b287024b43a140650a9d1d3dc2":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"29123c63e6f5417bbc87f597a45a26ed":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"291e1f3085814b84833e359b522d0272":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"2d9a2e0000964d6c9bd79e8ea4887f08":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_1aa8e2b287024b43a140650a9d1d3dc2","style":"IPY_MODEL_a47e717508b44206af3073dd597702a0","value":"Complete: 100%"}},"40336682e05b495f99fd33826c956d7c":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_db41d28bcd9d4f8da1f9dfe1c566a3e5","style":"IPY_MODEL_71b1b41fc39f4e2ca530a279e4632e20","value":" 3/3 [04:41&lt;00:00, 95.58s/it]"}},"41a81960909145aea49511a1464c6eca":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_9ea5de2248714e4092a1ec74187b94d9","style":"IPY_MODEL_ae046e3b27cd426597ff444792afe20d","value":"Complete: 100%"}},"43b6766b43d64b368779297f3b238249":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"4b0f1e94113b4a78b489a63526dde260":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"4f4a54e848fb464894913028fc321c55":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"bar_style":"success","layout":"IPY_MODEL_6b74914f247d4399b85b977eea707143","max":4,"style":"IPY_MODEL_89fffeb253c641a69a2a0df2d7673cb1","value":4}},"501178664c2b473a8b51433fccf252d3":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"children":["IPY_MODEL_2d9a2e0000964d6c9bd79e8ea4887f08","IPY_MODEL_a4f8e5819e3245d5b1a7fe00bbe687af","IPY_MODEL_40336682e05b495f99fd33826c956d7c"],"layout":"IPY_MODEL_291e1f3085814b84833e359b522d0272"}},"55ab9376c06a4e098cd8b3dc72d0433b":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"58fe37e65b84422fb9d6ba5e9dfaad7f":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"5c8c82dca870443d809b8cb63a38f98a":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"5f6dc9220d0b402a8685fd73979402be":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"description_width":""}},"5f8336b3ead34e3383b9a8c5c47e8fdb":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"6b74914f247d4399b85b977eea707143":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"6e93cf29d1034b95a0057ff2c9182bde":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"71b1b41fc39f4e2ca530a279e4632e20":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"75e479139f674892be4601d2995bcace":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"children":["IPY_MODEL_a8aa8b15481543aea3e03cb0f46ab9f5","IPY_MODEL_c997d165de9e493b8e098df7923a8ecc","IPY_MODEL_a56ab4815a4942acb990a76414c5455c"],"layout":"IPY_MODEL_43b6766b43d64b368779297f3b238249"}},"7aaa7b90bfb944ae960b8b906114af2f":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"89fffeb253c641a69a2a0df2d7673cb1":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"description_width":""}},"8af3f80ba3994e18a9d05d256dd3b5f2":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"9ea5de2248714e4092a1ec74187b94d9":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"a47e717508b44206af3073dd597702a0":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"a4f8e5819e3245d5b1a7fe00bbe687af":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"bar_style":"success","layout":"IPY_MODEL_29123c63e6f5417bbc87f597a45a26ed","max":3,"style":"IPY_MODEL_cd08204b93094dd9aff6e0975bd34490","value":3}},"a56ab4815a4942acb990a76414c5455c":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_7aaa7b90bfb944ae960b8b906114af2f","style":"IPY_MODEL_6e93cf29d1034b95a0057ff2c9182bde","value":" 3/3 [00:00&lt;00:00,  3.24it/s]"}},"a8aa8b15481543aea3e03cb0f46ab9f5":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_55ab9376c06a4e098cd8b3dc72d0433b","style":"IPY_MODEL_fa096f72c84141e29e5ecd20f52c54bc","value":"Complete: 100%"}},"a8b7fefb76184943bc2084aedb3d97b9":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"ae046e3b27cd426597ff444792afe20d":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}},"b2b6d70d10114467be433a116277526f":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"b6d1c73a209144a58a74c0347eb5f6fe":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"description_width":""}},"c3b00a7baf504e08a0c34197075024c7":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"bar_style":"success","layout":"IPY_MODEL_5f8336b3ead34e3383b9a8c5c47e8fdb","max":3,"style":"IPY_MODEL_5f6dc9220d0b402a8685fd73979402be","value":3}},"c71deae0bc924826b436bc3da670aca1":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"c997d165de9e493b8e098df7923a8ecc":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"bar_style":"success","layout":"IPY_MODEL_5c8c82dca870443d809b8cb63a38f98a","max":3,"style":"IPY_MODEL_b6d1c73a209144a58a74c0347eb5f6fe","value":3}},"cd08204b93094dd9aff6e0975bd34490":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"description_width":""}},"d42b60212c134d1fb02cd50e506d811b":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_d7ac3ffecfbd4acabb8b96299fe629a4","style":"IPY_MODEL_58fe37e65b84422fb9d6ba5e9dfaad7f","value":" 4/4 [00:00&lt;00:00,  6.50it/s]"}},"d7134fa4580b4605b9e3478628e18d46":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"d7ac3ffecfbd4acabb8b96299fe629a4":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"db41d28bcd9d4f8da1f9dfe1c566a3e5":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"ea1940f1d085414dab8c1b1eb3fb4909":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"children":["IPY_MODEL_eb744407652b43f69ba89f6d99b69822","IPY_MODEL_c3b00a7baf504e08a0c34197075024c7","IPY_MODEL_ed0980c5451d4d948e098b529ff794f8"],"layout":"IPY_MODEL_4b0f1e94113b4a78b489a63526dde260"}},"eb744407652b43f69ba89f6d99b69822":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_c71deae0bc924826b436bc3da670aca1","style":"IPY_MODEL_a8b7fefb76184943bc2084aedb3d97b9","value":"Complete: 100%"}},"ed0980c5451d4d948e098b529ff794f8":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_d7134fa4580b4605b9e3478628e18d46","style":"IPY_MODEL_8af3f80ba3994e18a9d05d256dd3b5f2","value":" 3/3 [00:00&lt;00:00, 10.35it/s]"}},"fa096f72c84141e29e5ecd20f52c54bc":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"description_width":"","font_size":null,"text_color":null}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./datasets.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Sets</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./clustering.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Geodemographic Clustering</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

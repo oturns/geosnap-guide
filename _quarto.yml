@@ -1,0 +1,37 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "The Geospatial Neighborhood Analysis Package"
+  author: "Elijah Knaap"
+  date: "1/15/2024"
+  search: true
+  repo-url: https://github.com/oturns/geosnap/
+  repo-actions: [edit]
+  downloads: [pdf, epub]
+  sharing: [twitter]
+  comments:
+    hypothesis: true
+  chapters:
+    - index.md
+    - datasets.ipynb
+    - harmonization.ipynb
+    - clustering.ipynb
+    - regionalization.ipynb
+    - dynamics.ipynb
+    - segregation_dynamics.ipynb
+    - isochrone_example.ipynb
+
+bibliography: geosnap.bib
+sidebar:
+  style: floating
+  background: dark
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreport
+  epub:
+    cover-image: cover.png
