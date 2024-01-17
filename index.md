@@ -5,7 +5,7 @@ Neighborhoods are important for a wide variety of reasons, but they’re hard to
 because of some long-standing challenges, including that
 
 - there is no formal definition of a
-  [“neighborhood”](https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood) so
+  ["neighborhood"](https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood) so
   identifying and modeling them is frought with uncertainty
 - many different physical and social data can characterize a neighborhood (e.g. its
   proximity to the urban core, its share of residents with a high school education, or the
