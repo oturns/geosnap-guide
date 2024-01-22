@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./segregation_dynamics.html" rel="next">
 <link href="./regionalization.html" rel="prev">
+<link href="./images/geosnap.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,9 +113,19 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
+<meta property="og:title" content="A Guide to Geosnap">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://oturns.github.io.geosnap-guide/images/geosnap_long.png">
+<meta property="og:site-name" content="The Geospatial Neighborhood Analysis Package">
+<meta property="og:image:height" content="640">
+<meta property="og:image:width" content="1280">
 <meta name="twitter:title" content="The Geospatial Neighborhood Analysis Package - 6&nbsp; Neighborhood Dynamics">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="dynamics_files/figure-html/cell-10-output-2.png">
+<meta name="twitter:image" content="https://oturns.github.io.geosnap-guide/dynamics_files/figure-html/cell-10-output-2.png">
+<meta name="twitter:creator" content="@knaaptime">
+<meta name="twitter:site" content="@knaaptime">
+<meta name="twitter:image-height" content="3084">
+<meta name="twitter:image-width" content="2379">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -140,7 +151,10 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/geosnap_long.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">The Geospatial Neighborhood Analysis Package</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -243,7 +257,7 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
 </header>
 
 <p>The geosnap package is designed for geodemographic analysis and regionalization applied to longitudinal data. Following those analyses, it also provides tools for modeling neighborhood composition into the future using spatial and temporal transition rules learned from the past.</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:30.748483Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:30.748343Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:33.572980Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:33.572691Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:30.748466Z&quot;}" data-tags="[]" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:05.346830Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:05.346754Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:08.359329Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:08.359025Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:05.346819Z&quot;}" data-tags="[]" data-execution_count="1">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
@@ -252,7 +266,7 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
 <div class="cell-output cell-output-stdout">
 <pre><code>Author: author: eli knaap
 
-Last updated: 2024-01-16
+Last updated: 2024-01-22
 
 Python implementation: CPython
 Python version       : 3.11.0
@@ -260,12 +274,12 @@ IPython version      : 8.18.1
 
 segregation: 2.5
 libpysal   : 4.9.2
-geopandas  : 0.14.1
+geopandas  : 0.14.2
 geosnap    : 0.12.1.dev9+g3a1cb0f6de61.d20240110
 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:33.574112Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:33.574005Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:33.576901Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:33.576669Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:33.574103Z&quot;}" data-tags="[]" data-execution_count="2">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:08.360437Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:08.360350Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:08.364022Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:08.363771Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:08.360428Z&quot;}" data-tags="[]" data-execution_count="2">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap <span class="im">import</span> DataStore</span>
@@ -273,13 +287,13 @@ geosnap    : 0.12.1.dev9+g3a1cb0f6de61.d20240110
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap.analyze <span class="im">import</span> cluster, regionalize, find_k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:33.577483Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:33.577347Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:33.581180Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:33.580836Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:33.577473Z&quot;}" data-tags="[]" data-execution_count="3">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:08.364419Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:08.364344Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:08.368009Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:08.367769Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:08.364411Z&quot;}" data-tags="[]" data-execution_count="3">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap.visualize <span class="im">import</span> plot_timeseries, animate_timeseries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:33.581670Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:33.581585Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:33.583873Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:33.583349Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:33.581660Z&quot;}" data-tags="[]" data-execution_count="4">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:08.368406Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:08.368331Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:08.370301Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:08.370075Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:08.368397Z&quot;}" data-tags="[]" data-execution_count="4">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -287,14 +301,14 @@ geosnap    : 0.12.1.dev9+g3a1cb0f6de61.d20240110
 </div>
 <section id="examining-data" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="examining-data"><span class="header-section-number">6.1</span> Examining Data</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:33.585265Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:33.584779Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:33.590047Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:33.589434Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:33.585221Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:08.370937Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:08.370840Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:08.375507Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:08.374779Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:08.370928Z&quot;}" data-tags="[]" data-execution_count="5">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>store <span class="op">=</span> DataStore()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The DataStore class provides access to hundreds of neighbrohood indicators for the U.S. collected from federal agencies. We store these datasets in the cloud and stream them on demand. But if you plan on doing repeated analyses you can store the data locally (which we’ve already done on the JupyterHub)</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:33.590808Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:33.590701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:37.932459Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:37.931881Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:33.590798Z&quot;}" data-tags="[]" data-execution_count="6">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:08.376376Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:08.376283Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:12.874551Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:12.874163Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:08.376366Z&quot;}" data-tags="[]" data-execution_count="6">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="op">=</span> get_acs(store, county_fips<span class="op">=</span><span class="st">'17031'</span>, level<span class="op">=</span><span class="st">'tract'</span>, years<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">2013</span>, <span class="dv">2017</span>)))  <span class="co"># without specifying a subset of years, we get everything</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -304,7 +318,7 @@ geosnap    : 0.12.1.dev9+g3a1cb0f6de61.d20240110
   warn(</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:37.952369Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:37.952254Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:37.960423Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:37.960075Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:37.952358Z&quot;}" data-tags="[]" data-execution_count="8">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:12.876396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:12.876277Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:12.886337Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:12.885591Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:12.876385Z&quot;}" data-tags="[]" data-execution_count="7">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>chicago.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -317,12 +331,12 @@ dtypes: float64(158), geometry(1), int64(1), object(1)
 memory usage: 6.5+ MB</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:37.960943Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:37.960866Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:37.971460Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:37.971176Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:37.960934Z&quot;}" data-tags="[]" data-execution_count="9">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:12.887743Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:12.887621Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:12.905585Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:12.905160Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:12.887731Z&quot;}" data-tags="[]" data-execution_count="8">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>chicago.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -482,7 +496,7 @@ memory usage: 6.5+ MB</code></pre>
 </div>
 </div>
 <p>There are also convenient plotting methods for looking at change over time. A useful feature here is that the choropleth bins are the same for each time period, making it easy to see change over time</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:37.972024Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:37.971940Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:16:43.991049Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:16:43.990689Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:37.972015Z&quot;}" data-tags="[]" data-execution_count="10">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:12.906151Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:12.906060Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:18.306088Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:18.305192Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:12.906142Z&quot;}" data-tags="[]" data-execution_count="9">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -498,10 +512,10 @@ memory usage: 6.5+ MB</code></pre>
 </div>
 </div>
 <p>Still it can be difficult to see minute changes across the various maps. The <code>animate_timeseries</code> function can make it easier to see what’s happening, like the steady income decline in Midlothian near the southern edge of the region</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:16:43.991659Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:16:43.991552Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:17:00.075540Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:17:00.075224Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:16:43.991650Z&quot;}" data-tags="[]" data-execution_count="11">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:18.306767Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:18.306673Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:35.003778Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:35.003495Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:18.306758Z&quot;}" data-tags="[]" data-execution_count="10">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>animate_timeseries(chicago, <span class="st">'median_home_value'</span>, scheme<span class="op">=</span><span class="st">'quantiles'</span>, k<span class="op">=</span><span class="dv">7</span>, cmap<span class="op">=</span><span class="st">'YlOrBr'</span>, filename<span class="op">=</span><span class="st">'chicago_income_change.gif'</span>, fps<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>animate_timeseries(chicago, <span class="st">'median_home_value'</span>, scheme<span class="op">=</span><span class="st">'quantiles'</span>, k<span class="op">=</span><span class="dv">7</span>, cmap<span class="op">=</span><span class="st">'YlOrBr'</span>, filename<span class="op">=</span><span class="st">'images/chicago_income_change.gif'</span>, fps<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 2000x2000 with 0 Axes&gt;</code></pre>
@@ -519,20 +533,11 @@ memory usage: 6.5+ MB</code></pre>
 <pre><code>&lt;Figure size 1000x1000 with 0 Axes&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:17:00.076203Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:17:00.076107Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:17:00.079878Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:17:00.079574Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:17:00.076194Z&quot;}" data-tags="[]" data-execution_count="12">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:17:00.080378Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:17:00.080300Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:17:00.092649Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:17:00.091912Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:17:00.080370Z&quot;}" data-tags="[]" data-execution_count="13">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Image(<span class="st">"chicago_income_change.gif"</span>, width<span class="op">=</span><span class="dv">800</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chicago_income_change.gif" class="img-fluid figure-img" width="800"></p>
+<figcaption class="figure-caption">Home Value Change in Chicago</figcaption>
+</figure>
 </div>
 <p>Note here that we’re comparing overlapping samples from the ACS 5-year survey, which the Census Bureau recommends against. Here it just makes a good example :)</p>
 </section>
@@ -540,25 +545,25 @@ memory usage: 6.5+ MB</code></pre>
 <h2 data-number="6.2" class="anchored" data-anchor-id="modeling-neighborhood-types"><span class="header-section-number">6.2</span> Modeling Neighborhood Types</h2>
 <p>With <code>geosnap</code>, it’s possible to look at <em>temporal</em> geodemographics without writing much code. Under the hood, the package provides tools for scaling each dataset within its own time period, adjusting currency values for inflation, and ensuring that times, variables, and geometries stay aligned properly. Together those tools make it easy to explore how different portions of the region transition into different neighborhood types over time, and if desired, model the evolution of neighborhood change as a spatial Markov process.</p>
 <p>Any variables could be used to examine neighborhood transitions, but we’ll return to the simple set of sociodemographic veriables used before to understand if/how patterns of racial and socioeconomic segregation and neighborhood partitioning unfold over time</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:17:00.093661Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:17:00.093434Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:17:00.101150Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:17:00.098808Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:17:00.093649Z&quot;}" data-tags="[]" data-execution_count="14">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:35.018663Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:35.018583Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:35.022749Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:35.022154Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:35.018654Z&quot;}" data-tags="[]" data-execution_count="13">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">'median_household_income'</span>, <span class="st">'median_home_value'</span>, <span class="st">'p_asian_persons'</span>, <span class="st">'p_hispanic_persons'</span>, <span class="st">'p_nonhisp_black_persons'</span>, <span class="st">'p_nonhisp_white_persons'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">'median_household_income'</span>, <span class="st">'median_home_value'</span>, <span class="st">'p_asian_persons'</span>, <span class="st">'p_hispanic_persons'</span>, <span class="st">'p_nonhisp_black_persons'</span>, <span class="st">'p_nonhisp_white_persons'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:18.323706Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:18.323423Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:18.591297Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:18.590942Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:18.323696Z&quot;}" data-tags="[]" data-execution_count="44">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:35.023442Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:35.023355Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:35.379267Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:35.378853Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:35.023434Z&quot;}" data-tags="[]" data-execution_count="14">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>chicago_ward <span class="op">=</span> cluster(gdf<span class="op">=</span>chicago, columns<span class="op">=</span>columns, method<span class="op">=</span><span class="st">'ward'</span>, n_clusters<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>chicago_ward <span class="op">=</span> cluster(gdf<span class="op">=</span>chicago, columns<span class="op">=</span>columns, method<span class="op">=</span><span class="st">'ward'</span>, n_clusters<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The simplest version of the function returns the geodataframe with new cluster labels appended</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:18.591784Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:18.591703Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:18.603398Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:18.602923Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:18.591774Z&quot;}" data-tags="[]" data-execution_count="45">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:35.379920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:35.379826Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:35.389755Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:35.389247Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:35.379912Z&quot;}" data-tags="[]" data-execution_count="15">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>chicago_ward.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>chicago_ward.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
@@ -717,24 +722,24 @@ memory usage: 6.5+ MB</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:18.604010Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:18.603912Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:22.000538Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:22.000178Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:18.604001Z&quot;}" data-tags="[]" data-execution_count="46">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:35.390921Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:35.390716Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:38.655267Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:38.654843Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:35.390906Z&quot;}" data-tags="[]" data-execution_count="16">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_timeseries(chicago_ward, <span class="st">'ward'</span>, categorical<span class="op">=</span><span class="va">True</span>, nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">16</span>))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot_timeseries(chicago_ward, <span class="st">'ward'</span>, categorical<span class="op">=</span><span class="va">True</span>, nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">16</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/mapping.py:170: UserWarning: `proplot` is not installed.  Falling back to matplotlib
   warn("`proplot` is not installed.  Falling back to matplotlib")</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:22.001031Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:22.000947Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:37.568346Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:37.568051Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:22.001022Z&quot;}" data-tags="[]" data-execution_count="47">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:38.656008Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:38.655911Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.307934Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.307616Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:38.655998Z&quot;}" data-tags="[]" data-execution_count="17">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>animate_timeseries(chicago_ward, <span class="st">'ward'</span>, categorical<span class="op">=</span><span class="va">True</span>, filename<span class="op">=</span><span class="st">'chicago_type_change.gif'</span>, fps<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>animate_timeseries(chicago_ward, <span class="st">'ward'</span>, categorical<span class="op">=</span><span class="va">True</span>, filename<span class="op">=</span><span class="st">'images/chicago_type_change.gif'</span>, fps<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 2000x2000 with 0 Axes&gt;</code></pre>
@@ -753,38 +758,35 @@ memory usage: 6.5+ MB</code></pre>
 </div>
 </div>
 <p>The vast majority of tracts are assigned to the same geodemographic type in each time period, but some transition into different types over time. The ones that <em>do</em> transition tend to be those on the edges of large contiguous groups (i.e.&nbsp;change tends to happen along the periphery and move inward, implying a certain kind of spatial dynamic)</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:37.568786Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:37.568713Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:37.578037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:37.577644Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:37.568778Z&quot;}" data-tags="[]" data-execution_count="48">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Image(<span class="st">'chicago_type_change.gif'</span>, width<span class="op">=</span><span class="dv">800</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="48">
-<pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chicago_type_change.gif" class="img-fluid figure-img" width="800"></p>
+<figcaption class="figure-caption">Chicago Neighborhood Types</figcaption>
+</figure>
 </div>
 <p>If we add the argument <code>return_model=True</code>, then the function returns the same geodataframe as before, as well as a <code>ModelResults</code> class that holds additional diagnostic measures, as well as plotting and simulation methods</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:37.578588Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:37.578458Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:37.855155Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:37.854814Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:37.578576Z&quot;}" data-tags="[]" data-execution_count="49">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.317967Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.317831Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.594529Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.594078Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.317950Z&quot;}" data-tags="[]" data-execution_count="19">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>chicago_ward, chi_model <span class="op">=</span> cluster(chicago, columns<span class="op">=</span>columns, method<span class="op">=</span><span class="st">'ward'</span>, n_clusters<span class="op">=</span><span class="dv">6</span>, return_model<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>chicago_ward, chi_model <span class="op">=</span> cluster(chicago, columns<span class="op">=</span>columns, method<span class="op">=</span><span class="st">'ward'</span>, n_clusters<span class="op">=</span><span class="dv">6</span>, return_model<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:37.855843Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:37.855733Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:37.859060Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:37.858258Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:37.855835Z&quot;}" data-tags="[]" data-execution_count="50">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.595263Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.595158Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.601090Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.600685Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.595253Z&quot;}" data-tags="[]" data-execution_count="20">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(chi_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(chi_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="50">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>geosnap.analyze._model_results.ModelResults</code></pre>
 </div>
 </div>
 <p>For example, the <code>silhouette_scores</code> attribute makes computing a silhouette coefficient for the cluster model a one-liner:</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:37.860027Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:37.859868Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.106054Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.105793Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:37.860010Z&quot;}" data-tags="[]" data-execution_count="51">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.601487Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.601408Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.832226Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.831893Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.601478Z&quot;}" data-tags="[]" data-execution_count="21">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>chi_model.silhouette_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>chi_model.silhouette_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -884,22 +886,22 @@ memory usage: 6.5+ MB</code></pre>
 </div>
 </div>
 <p>Each observation is given its own silhouette score to identify potential spatial outliers, or the measures can be summarized to provide an aggregate statistic</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.106684Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.106454Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.112401Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.111747Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.106674Z&quot;}" data-tags="[]" data-execution_count="52">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.835288Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.835186Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.840804Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.840190Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.835279Z&quot;}" data-tags="[]" data-execution_count="22">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>chi_model.silhouette_scores.silhouette_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>chi_model.silhouette_scores.silhouette_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>0.35971262107670565</code></pre>
 </div>
 </div>
 <p>Since the data are indexed by time, we can also examine whether certain time periods have a poorer fit versus others:</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.112938Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.112855Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.117964Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.117588Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.112928Z&quot;}" data-tags="[]" data-execution_count="53">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.841304Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.841222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.848079Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.847689Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.841294Z&quot;}" data-tags="[]" data-execution_count="23">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>chi_model.silhouette_scores.groupby(<span class="st">'year'</span>).silhouette_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>chi_model.silhouette_scores.groupby(<span class="st">'year'</span>).silhouette_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>year
 2013    0.362116
 2014    0.361529
@@ -913,18 +915,18 @@ Name: silhouette_score, dtype: float64</code></pre>
 <h2 data-number="6.3" class="anchored" data-anchor-id="analyzing-neighborhood-change"><span class="header-section-number">6.3</span> Analyzing Neighborhood Change</h2>
 <p>With the cluster model in hand, each census tract is represented as a series of neighborhood types over time (i.e.&nbsp;what we plotted above). To understand which neighborhoods have experienced the most change, the <code>ModelResults</code> class implements a method called “LINCS”, the Local Indicator of Neighborhood Change. The <code>lincs</code> attribute measures how often a given spatial unit shares its cluster assignment with the other units over time.</p>
 <p>If a “neighborhood” is grouped with many different neighborhoods over time (rather than joining a single group with the same members repeatedly), then it shows more variation and thus a higher LINC score</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.121438Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.121267Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.232198Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.231741Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.121426Z&quot;}" data-tags="[]" data-execution_count="54">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.848647Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.848557Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.959889Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.959478Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.848638Z&quot;}" data-tags="[]" data-execution_count="24">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>chi_lincs <span class="op">=</span> chi_model.lincs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>chi_lincs <span class="op">=</span> chi_model.lincs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.232709Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.232620Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.245348Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.244990Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.232700Z&quot;}" data-tags="[]" data-execution_count="55">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.960470Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.960384Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:54.970661Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:54.969976Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.960461Z&quot;}" data-tags="[]" data-execution_count="25">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>chi_lincs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>chi_lincs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -1059,117 +1061,117 @@ Name: silhouette_score, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.246075Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.245970Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.547767Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.547422Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.246066Z&quot;}" data-tags="[]" data-execution_count="56">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:54.971602Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:54.971482Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:55.183334Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:55.182765Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:54.971593Z&quot;}" data-tags="[]" data-execution_count="26">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>chi_lincs.plot(<span class="st">'linc'</span>,legend<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'plasma'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>chi_lincs.plot(<span class="st">'linc'</span>,legend<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'plasma'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>&lt;Axes: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Yellow places have changed the most in our cluster model, and blue places have remained the most stagnant. We can use the LISA statistics from <code>esda</code> to locate hotspots of change or stagnation</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.548259Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.548167Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.631605Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.631283Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.548249Z&quot;}" data-tags="[]" data-execution_count="57">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:55.183964Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:55.183866Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:55.365182Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:55.364755Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:55.183954Z&quot;}" data-tags="[]" data-execution_count="27">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>chi_lincs.linc.plot(kind<span class="op">=</span><span class="st">'density'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>chi_lincs.linc.plot(kind<span class="op">=</span><span class="st">'density'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="57">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>&lt;Axes: ylabel='Density'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.632217Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.632115Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.634650Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.634010Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.632209Z&quot;}" data-tags="[]" data-execution_count="58">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:55.365728Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:55.365651Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:55.370314Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:55.369753Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:55.365719Z&quot;}" data-tags="[]" data-execution_count="28">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> esda <span class="im">import</span> Moran_Local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> esda <span class="im">import</span> Moran_Local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.635716Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.635348Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.639781Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.639363Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.635653Z&quot;}" data-tags="[]" data-execution_count="59">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:55.370899Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:55.370794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:55.373417Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:55.372669Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:55.370889Z&quot;}" data-tags="[]" data-execution_count="29">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> libpysal.weights <span class="im">import</span> Queen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> libpysal.weights <span class="im">import</span> Queen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.640274Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.640197Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:38.998061Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:38.997738Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.640266Z&quot;}" data-tags="[]" data-execution_count="60">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:55.374918Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:55.374714Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:55.805279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:55.804937Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:55.374908Z&quot;}" data-tags="[]" data-execution_count="30">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> Queen.from_dataframe(chi_model.lincs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> Queen.from_dataframe(chi_model.lincs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/79/cknfb1sx2pv16rztkpg6wzlw0000gn/T/ipykernel_75148/3977480944.py:1: FutureWarning: `use_index` defaults to False but will default to True in future. Set True/False directly to control this behavior and silence this warning
+<pre><code>/var/folders/79/cknfb1sx2pv16rztkpg6wzlw0000gn/T/ipykernel_38372/3977480944.py:1: FutureWarning: `use_index` defaults to False but will default to True in future. Set True/False directly to control this behavior and silence this warning
   w = Queen.from_dataframe(chi_model.lincs)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:38.998696Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:38.998600Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:39.056263Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:39.055794Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:38.998687Z&quot;}" data-tags="[]" data-execution_count="61">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:55.805931Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:55.805838Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:57.039182Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:57.038805Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:55.805922Z&quot;}" data-tags="[]" data-execution_count="31">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>linc_lisa <span class="op">=</span> Moran_Local(chi_lincs.linc, w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>linc_lisa <span class="op">=</span> Moran_Local(chi_lincs.linc, w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Recall that the LISA statistic measures the association between a focal observation and its neighbors. When we have spatial units (i.e.&nbsp;tracts) with a high LINC score, and their neighboring tracts <em>also</em> have high LINC scores, then we’ve found a local pocket of neighborhood change.</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:39.056725Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:39.056647Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:39.059720Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:39.058918Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:39.056716Z&quot;}" data-tags="[]" data-execution_count="62">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:57.039662Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:57.039576Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:57.043994Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:57.043710Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:57.039653Z&quot;}" data-tags="[]" data-execution_count="32">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>linc_lisa.Is</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>linc_lisa.Is</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="62">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>array([ 0.19094133, -0.38635302, -0.13315014, ...,  2.09900215,
         0.3517673 ,  0.49985707])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:39.060471Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:39.060321Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:39.256326Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:39.255993Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:39.060461Z&quot;}" data-tags="[]" data-execution_count="63">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:57.044524Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:57.044432Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:57.239916Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:57.239581Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:57.044516Z&quot;}" data-tags="[]" data-execution_count="33">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>chi_lincs.assign(i<span class="op">=</span>linc_lisa.Is).plot(<span class="st">'i'</span>, legend<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>chi_lincs.assign(i<span class="op">=</span>linc_lisa.Is).plot(<span class="st">'i'</span>, legend<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="63">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>&lt;Axes: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:39.256881Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:39.256799Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:39.259257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:39.258428Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:39.256871Z&quot;}" data-tags="[]" data-execution_count="64">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:57.240398Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:57.240321Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:57.274891Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:57.274461Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:57.240388Z&quot;}" data-tags="[]" data-execution_count="34">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> splot.esda <span class="im">import</span> plot_local_autocorrelation, lisa_cluster</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> splot.esda <span class="im">import</span> plot_local_autocorrelation, lisa_cluster</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:39.260493Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:39.260309Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:40.037819Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:40.037386Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:39.260482Z&quot;}" data-tags="[]" data-execution_count="65">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:57.275372Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:57.275298Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:57.971705Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:57.971261Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:57.275364Z&quot;}" data-tags="[]" data-execution_count="35">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plot_local_autocorrelation(linc_lisa, chi_lincs.to_crs(<span class="dv">3857</span>), <span class="st">'linc'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>plot_local_autocorrelation(linc_lisa, chi_lincs.to_crs(<span class="dv">3857</span>), <span class="st">'linc'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="65">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>(&lt;Figure size 1500x400 with 3 Axes&gt;,
  array([&lt;Axes: title={'center': 'Moran Local Scatterplot'}, xlabel='Attribute', ylabel='Spatial Lag'&gt;,
         &lt;Axes: &gt;, &lt;Axes: &gt;], dtype=object))</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-36-output-2.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:40.038685Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:40.038344Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:40.042407Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:40.042002Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:40.038675Z&quot;}" data-tags="[]" data-execution_count="66">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:57.972330Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:57.972230Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:20:57.974678Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:20:57.974209Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:57.972321Z&quot;}" data-tags="[]" data-execution_count="36">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextily <span class="im">as</span> ctx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextily <span class="im">as</span> ctx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:40.042801Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:40.042734Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:41.136386Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:41.136064Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:40.042794Z&quot;}" data-tags="[]" data-execution_count="67">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:20:57.975088Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:20:57.975010Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:21:04.723096Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:21:04.722753Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:20:57.975079Z&quot;}" data-tags="[]" data-execution_count="37">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> lisa_cluster(linc_lisa, chi_lincs.to_crs(<span class="dv">3857</span>), alpha<span class="op">=</span><span class="fl">0.6</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">10</span>))</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>ax, source<span class="op">=</span>ctx.providers.CartoDB.Positron, zoom<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> lisa_cluster(linc_lisa, chi_lincs.to_crs(<span class="dv">3857</span>), alpha<span class="op">=</span><span class="fl">0.6</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">10</span>))</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>ax, source<span class="op">=</span>ctx.providers.CartoDB.Positron, zoom<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Red areas of high-high clusters of LINC scores are places undergoing change, whereas blue places (low LINC scores surrounded by low scores) are those that have changed very little over time. Orange places are particularly interesting, as they represent local pockets of change surrounded by larger pockets of stagnation.</p>
@@ -1178,16 +1180,16 @@ Name: silhouette_score, dtype: float64</code></pre>
 <section id="modeling-neighborhood-transitions" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="modeling-neighborhood-transitions"><span class="header-section-number">6.4</span> Modeling Neighborhood Transitions</h2>
 <p>We can also use the sequence of labels to create a spatial Markov transition model. These models examine how often one neighborhood type transitions into another type–then how these transition rates change under different conditions of spatial context</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:41.136907Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:41.136830Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:41.139144Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:41.138927Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:41.136898Z&quot;}" data-tags="[]" data-execution_count="68">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:21:04.723629Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:21:04.723550Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:21:04.727223Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:21:04.726965Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:21:04.723621Z&quot;}" data-tags="[]" data-execution_count="38">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap.visualize <span class="im">import</span> plot_transition_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geosnap.visualize <span class="im">import</span> plot_transition_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:41.139511Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:41.139440Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:42.778113Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:42.777655Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:41.139503Z&quot;}" data-tags="[]" data-execution_count="69">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:21:04.727611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:21:04.727541Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:21:06.336145Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:21:06.335827Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:21:04.727603Z&quot;}" data-tags="[]" data-execution_count="39">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>plot_transition_matrix(chicago_ward, cluster_col<span class="op">=</span><span class="st">'ward'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plot_transition_matrix(chicago_ward, cluster_col<span class="op">=</span><span class="st">'ward'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/visualize/transitions.py:82: UserWarning: Creating a transition model implicitly is deprecated and will be removed in future versions. please pass a giddy.Spatial_Markov instance using `giddy` or `geosnap.analyze.transition`
@@ -1195,7 +1197,7 @@ Name: silhouette_score, dtype: float64</code></pre>
 /Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:123: FutureWarning: `use_index` defaults to False but will default to True in future. Set True/False directly to control this behavior and silence this warning
   w = Ws[w_type].from_dataframe(gpd.GeoDataFrame(gdf_wide), **w_options)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>array([&lt;Axes: title={'center': 'Global'}&gt;,
        &lt;Axes: title={'center': 'Modal Neighbor - 0'}&gt;,
        &lt;Axes: title={'center': 'Modal Neighbor - 1'}&gt;,
@@ -1206,14 +1208,14 @@ Name: silhouette_score, dtype: float64</code></pre>
       dtype=object)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="dynamics_files/figure-html/cell-40-output-3.png" class="img-fluid"></p>
+<p><img src="dynamics_files/figure-html/cell-37-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 <p>And we can use those transition rates to make predictions about future conditions</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:42.778599Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:42.778525Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:18:44.059136Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:18:44.058712Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:42.778590Z&quot;}" data-tags="[]" data-execution_count="70">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:21:06.336622Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:21:06.336538Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:21:07.635758Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:21:07.635373Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:21:06.336613Z&quot;}" data-tags="[]" data-execution_count="40">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> chi_model.predict_markov_labels(time_steps<span class="op">=</span><span class="dv">10</span>, increment<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> chi_model.predict_markov_labels(time_steps<span class="op">=</span><span class="dv">10</span>, increment<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/_model_results.py:777: UserWarning: No base_year provided. Using the last period for which labels are known:  2016 
@@ -1222,48 +1224,26 @@ Name: silhouette_score, dtype: float64</code></pre>
   w = Ws[w_type].from_dataframe(gpd.GeoDataFrame(gdf_wide), **w_options)
 /Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:330: FutureWarning: `use_index` defaults to False but will default to True in future. Set True/False directly to control this behavior and silence this warning
   w = Ws[w_type].from_dataframe(gdf, **w_options)
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031804804
   warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031220602
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031804804
   warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031220602
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031804804
   warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031161100
   warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031814700
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031161100
   warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031600600
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031161100
   warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031600600
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031600600
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031600600
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031600600
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031839800
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031600600
-  warn(
-/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031811401
+/Users/knaaptime/Dropbox/projects/geosnap/geosnap/analyze/dynamics.py:392: UserWarning: Falling back to aspatial transition rule for unit 17031161100
   warn(</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:18:44.059775Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:18:44.059675Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:19:28.152944Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:19:28.152629Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:18:44.059766Z&quot;}" data-tags="[]" data-execution_count="71">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-22T20:21:07.636438Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-22T20:21:07.636337Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-22T20:21:52.333601Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-22T20:21:52.333191Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-22T20:21:07.636429Z&quot;}" data-tags="[]" data-execution_count="41">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>animate_timeseries(future, <span class="st">'predicted'</span>, categorical<span class="op">=</span><span class="va">True</span>, filename<span class="op">=</span><span class="st">'chicago_predictions.gif'</span>, fps<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>animate_timeseries(future, <span class="st">'predicted'</span>, categorical<span class="op">=</span><span class="va">True</span>, filename<span class="op">=</span><span class="st">'images/chicago_predictions.gif'</span>, fps<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 2000x2000 with 0 Axes&gt;</code></pre>
@@ -1302,14 +1282,11 @@ Name: silhouette_score, dtype: float64</code></pre>
 <pre><code>&lt;Figure size 1000x1000 with 0 Axes&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-16T20:19:28.153574Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-16T20:19:28.153476Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-16T20:19:28.164585Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-16T20:19:28.164135Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-16T20:19:28.153565Z&quot;}" data-tags="[]" data-execution_count="72">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>Image(<span class="st">'chicago_predictions.gif'</span>, width<span class="op">=</span><span class="dv">800</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="72">
-<pre><code>&lt;IPython.core.display.Image object&gt;</code></pre>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chicago_predictions.gif" class="img-fluid figure-img" width="800"></p>
+<figcaption class="figure-caption">Predicted Neighborhood Types in Chicago</figcaption>
+</figure>
 </div>
 <p>From a social equity perspective, these predictions can help inform investments in place that are likely to provide the greatest return, such as providing place-based affordable houising in high-opportunity (but low likelihood of change) or by providing displacement protections in places that show large potential for change</p>
 

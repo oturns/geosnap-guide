@@ -30,11 +30,7 @@ But you’re not just limited to the data provided with the package. `geosnap`
 works with any data you provide, any place in the world.
 
 
-```{image} ../images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif
-:alt: DC Transitions
-:width: 75%
-:align: center
-```
+![Neighborhood Transitions in the DC Metro](images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif)
 
 
 ## Installation
