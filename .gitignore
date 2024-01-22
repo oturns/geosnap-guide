@@ -1,1 +1,7 @@
 /.quarto/
+
+.ipynb_checkpoints/
+*.h5
+*.pdf
+*.tex
+*.log
