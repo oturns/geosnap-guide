@@ -134,7 +134,7 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Citation</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -170,7 +170,7 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Citation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -225,12 +225,8 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation"><span class="header-section-number">0.1</span> Installation</a></li>
-  <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development"><span class="header-section-number">0.2</span> Development</a></li>
-  <li><a href="#bug-reports" id="toc-bug-reports" class="nav-link" data-scroll-target="#bug-reports"><span class="header-section-number">0.3</span> Bug reports</a></li>
-  <li><a href="#license-information" id="toc-license-information" class="nav-link" data-scroll-target="#license-information"><span class="header-section-number">0.4</span> License information</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation"><span class="header-section-number">0.5</span> Citation</a></li>
-  <li><a href="#funding" id="toc-funding" class="nav-link" data-scroll-target="#funding"><span class="header-section-number">0.6</span> Funding</a></li>
+  <li><a href="#citation" id="toc-citation" class="nav-link active" data-scroll-target="#citation"><span class="header-section-number">0.1</span> Citation</a></li>
+  <li><a href="#funding" id="toc-funding" class="nav-link" data-scroll-target="#funding"><span class="header-section-number">0.2</span> Funding</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/oturns/geosnap/edit/main/index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/oturns/geosnap/blob/main/index.md" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -269,55 +265,46 @@ gtag('config', 'G-0PG1JNLCXB', { 'anonymize_ip': true});
 <p><img src="images/geosnap.svg" title="The Geospatial Neighborhood Analysis Package" class="quarto-cover-image img-fluid"></p>
 <p><code>geosnap</code> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics of neighborhoods. Neighborhoods are important for a wide variety of reasons, but they’re hard to study because of some long-standing challenges, including that</p>
 <ul>
-<li>there is no formal definition of a <a href="https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood">“neighborhood”</a> so identifying and modeling them is frought with uncertainty</li>
+<li>there is no formal definition of a <a href="https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood">“neighborhood”</a> so identifying and modeling them is characterized uncertainty</li>
 <li>many different physical and social data can characterize a neighborhood (e.g.&nbsp;its proximity to the urban core, its share of residents with a high school education, or the median price of its apartments) so there are countless ways to model neighborhoods by choosing different subsets of attributes</li>
 <li>conceptually, neighborhoods evolve through both space and time, meaning their socially-construed boundaries can shift over time, as can their demographic makeup.</li>
 <li>geographic tabulation units change boundaries over time, meaning the raw data are aggregated to different areal units at differerent points in time.</li>
 </ul>
 <p>To address these challenges,<code>geosnap</code> provides a suite of tools for creating socio-spatial datasets, harmonizing those datasets into consistent set of time-static boundaries, modeling bespoke neighborhoods and prototypical neighborhood types, and modeling neighborhood change using classic and spatial statistical methods. It also provides a set of static and interactive visualization tools to help you display and understand the critical information at each step of the process.</p>
-<p><strong>Batteries Included:</strong> <code>geosnap</code> comes packed with 30 years of census data, thanks to <a href="https://quiltdata.com/">quilt</a>, so you can get started modeling neighborhoods in the U.S. immediately. But you’re not just limited to the data provided with the package. <code>geosnap</code> works with any data you provide, any place in the world.</p>
+<p><strong>Batteries Included:</strong> <code>geosnap</code> comes packed with 40 years of high-resolution data, thanks to <a href="https://quiltdata.com/">quilt</a>, so you can get started modeling neighborhoods in the U.S. immediately. But you’re not just limited to the data provided with the package. <code>geosnap</code> works with any data you provide, any place in the world.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Neighborhood Transitions in the DC Metro</figcaption>
 </figure>
 </div>
-<section id="installation" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">0.1</span> Installation</h2>
-<p>The recommended method for installing geosnap is with <a href="https://www.anaconda.com/download/">anaconda</a>. To get started with the development version, clone this repository or download it manually then <code>cd</code> into the directory and run the following commands:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate geosnap </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py develop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will download the appropriate dependencies and install geosnap in its own conda environment.</p>
-</section>
-<section id="development" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="development"><span class="header-section-number">0.2</span> Development</h2>
-<p>geosnap development is hosted on <a href="https://github.com/spatialucr/geosnap">github</a></p>
-</section>
-<section id="bug-reports" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="bug-reports"><span class="header-section-number">0.3</span> Bug reports</h2>
-<p>To search for or report bugs, please see geosnap’s <a href="http://github.com/spatialucr/geosnap/issues">issues</a></p>
-</section>
-<section id="license-information" class="level2" data-number="0.4">
-<h2 data-number="0.4" class="anchored" data-anchor-id="license-information"><span class="header-section-number">0.4</span> License information</h2>
-<p>See the file “LICENSE.txt” for information on the history of this software, terms &amp; conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.</p>
-</section>
-<section id="citation" class="level2" data-number="0.5">
-<h2 data-number="0.5" class="anchored" data-anchor-id="citation"><span class="header-section-number">0.5</span> Citation</h2>
+<section id="citation" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="citation"><span class="header-section-number">0.1</span> Citation</h2>
 <p>For a generic citation of geosnap, we recommend the following:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>@misc{Knaap2019,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>author = {Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su},</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>doi = {10.5281/ZENODO.3526163},</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>title = {geosnap: The Geospatial Neighborhood Analysis Package},</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>url = {https://zenodo.org/record/3526163},</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>year = {2019}</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>@misc{Knaap2019,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>author = {Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doi = {10.5281/ZENODO.3526163},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>title = {geosnap: The Geospatial Neighborhood Analysis Package},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>url = {https://zenodo.org/record/3526163},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>year = {2019}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you need to cite a specific release of the package, please find the appropriate version on <a href="https://zenodo.org/record/3526163">Zenodo</a></p>
 </section>
-<section id="funding" class="level2" data-number="0.6">
-<h2 data-number="0.6" class="anchored" data-anchor-id="funding"><span class="header-section-number">0.6</span> Funding</h2>
-<p><code>eeqhgao ../images/nsf_logo.jpg :alt: NSF :width: 100px</code></p>
-<p>This project is supported by NSF Award #1733705, <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false">Neighborhoods in Space-Time Contexts</a></p>
+<section id="funding" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="funding"><span class="header-section-number">0.2</span> Funding</h2>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/nsf_logo.jpg" class="img-fluid figure-img" width="100"></p>
+<figcaption class="figure-caption">National Science Foundation</figcaption>
+</figure>
+</div>
+<p>This project has received financial support from NSF Awards</p>
+<ul>
+<li>#1733705 <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false">Neighborhoods in Space-Time Contexts</a></li>
+<li>#1831615 <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1831615">Scalable Geospatial Analytics for Social Science Research</a></li>
+<li>#1421935 <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1421935">New Approaches for Spatial Distribution Dynamics</a></li>
+</ul>
+<p>The Geosnap software project is also based on research funded by (or in part by) the Bill &amp; Melinda Gates Foundation (award INV024366). The findings and conclusions contained within are those of the authors and do not necessarily reflect positions or policies of the Bill &amp; Melinda Gates Foundation.</p>
 
 
 <!-- -->
@@ -733,94 +720,68 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">`geosnap`</span> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>of neighborhoods.</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Neighborhoods are important for a wide variety of reasons, but they’re hard to study</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>because of some long-standing challenges, including that</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>there is no formal definition of a</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">"neighborhood"</span><span class="co">](https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood)</span> so</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  identifying and modeling them is frought with uncertainty</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>many different physical and social data can characterize a neighborhood (e.g. its</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  proximity to the urban core, its share of residents with a high school education, or the</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  median price of its apartments) so there are countless ways to model neighborhoods by</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  choosing different subsets of attributes</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>conceptually, neighborhoods evolve through both space and time, meaning their</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  socially-construed boundaries can shift over time, as can their demographic makeup.</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>geographic tabulation units change boundaries over time, meaning the raw data are</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  aggregated to different areal units at differerent points in time.</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>To address these challenges,<span class="in">`geosnap`</span> provides a suite of tools for creating socio-spatial</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>datasets, harmonizing those datasets into consistent set of time-static boundaries,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>modeling bespoke neighborhoods and prototypical neighborhood types, and modeling</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>neighborhood change using classic and spatial statistical methods.</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>It also provides a set of static and interactive visualization tools to help you display</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>and understand the critical information at each step of the process.</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>**Batteries Included:**</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">`geosnap`</span> comes packed with 30 years of census data, thanks to <span class="co">[</span><span class="ot">quilt</span><span class="co">](https://quiltdata.com/)</span>, so you</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>can get started modeling neighborhoods in the U.S. immediately.</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>But you’re not just limited to the data provided with the package. <span class="in">`geosnap`</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>works with any data you provide, any place in the world.</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="al">![Neighborhood Transitions in the DC Metro](images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif)</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>The recommended method for installing geosnap is with</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">anaconda</span><span class="co">](https://www.anaconda.com/download/)</span>. To get started with the development version,</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>clone this repository or download it manually then <span class="in">`cd`</span> into the directory and run the</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>following commands:</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate geosnap </span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py develop</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>This will download the appropriate dependencies and install geosnap in its own conda</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>environment.</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Development</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>geosnap development is hosted on <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/spatialucr/geosnap)</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bug reports</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>To search for or report bugs, please see geosnap’s</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">issues</span><span class="co">](http://github.com/spatialucr/geosnap/issues)</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## License information</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>See the file “LICENSE.txt” for information on the history of this software, terms &amp;</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>For a generic citation of geosnap, we recommend the following: </span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="in">```latex</span></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="in">@misc{Knaap2019,</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="in">author = {Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su},</span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="in">doi = {10.5281/ZENODO.3526163},</span></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="in">title = {geosnap: The Geospatial Neighborhood Analysis Package},</span></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="in">url = {https://zenodo.org/record/3526163},</span></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="in">year = {2019}</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>If you need to cite a specific release of the package, please find the appropriate version on <span class="co">[</span><span class="ot">Zenodo</span><span class="co">](https://zenodo.org/record/3526163)</span></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Funding</span></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{image} ../images/nsf_logo.jpg</span></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="in">:alt: NSF</span></span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="in">:width: 100px</span></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>This project is supported by NSF Award #1733705,</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Neighborhoods in Space-Time Contexts</span><span class="co">](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">`geosnap`</span> makes it easier to explore, model, analyze, and visualize the social and spatial dynamics</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>of neighborhoods.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Neighborhoods are important for a wide variety of reasons, but they’re hard to study</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>because of some long-standing challenges, including that</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>there is no formal definition of a</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">"neighborhood"</span><span class="co">](https://www.cnu.org/publicsquare/2019/01/29/once-and-future-neighborhood)</span> so</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  identifying and modeling them is characterized uncertainty</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>many different physical and social data can characterize a neighborhood (e.g. its</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  proximity to the urban core, its share of residents with a high school education, or the</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  median price of its apartments) so there are countless ways to model neighborhoods by</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  choosing different subsets of attributes</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>conceptually, neighborhoods evolve through both space and time, meaning their</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  socially-construed boundaries can shift over time, as can their demographic makeup.</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>geographic tabulation units change boundaries over time, meaning the raw data are</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  aggregated to different areal units at differerent points in time.</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>To address these challenges,<span class="in">`geosnap`</span> provides a suite of tools for creating socio-spatial</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>datasets, harmonizing those datasets into consistent set of time-static boundaries,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>modeling bespoke neighborhoods and prototypical neighborhood types, and modeling</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>neighborhood change using classic and spatial statistical methods.</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>It also provides a set of static and interactive visualization tools to help you display</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>and understand the critical information at each step of the process.</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>**Batteries Included:**</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="in">`geosnap`</span> comes packed with 40 years of high-resolution data, thanks to <span class="co">[</span><span class="ot">quilt</span><span class="co">](https://quiltdata.com/)</span>, so you</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>can get started modeling neighborhoods in the U.S. immediately.</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>But you’re not just limited to the data provided with the package. <span class="in">`geosnap`</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>works with any data you provide, any place in the world.</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="al">![Neighborhood Transitions in the DC Metro](images/Washington-Arlington-Alexandria_DC-VA-MD-WV.gif)</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>For a generic citation of geosnap, we recommend the following: </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">```latex</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">@misc{Knaap2019,</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="in">author = {Knaap, Elijah and Kang, Wei and Rey, Sergio and Wolf, Levi John and Cortes, Renan Xavier and Han, Su},</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">doi = {10.5281/ZENODO.3526163},</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">title = {geosnap: The Geospatial Neighborhood Analysis Package},</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">url = {https://zenodo.org/record/3526163},</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">year = {2019}</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>If you need to cite a specific release of the package, please find the appropriate version on <span class="co">[</span><span class="ot">Zenodo</span><span class="co">](https://zenodo.org/record/3526163)</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Funding</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="al">![National Science Foundation](images/nsf_logo.jpg)</span>{width=100 fig-align='left'}</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>This project has received financial support from NSF Awards </span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>#1733705 <span class="co">[</span><span class="ot">Neighborhoods in Space-Time Contexts</span><span class="co">](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1733705&amp;HistoricalAwards=false)</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>#1831615 <span class="co">[</span><span class="ot">Scalable Geospatial Analytics for Social Science Research</span><span class="co">](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1831615)</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>#1421935 <span class="co">[</span><span class="ot">New Approaches for Spatial Distribution Dynamics</span><span class="co">](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1421935)</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>The Geosnap software project is also based on research funded by (or in part by) the Bill &amp;</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>Melinda Gates Foundation (award INV024366). The findings and conclusions contained within are those of the authors and do</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>not necessarily reflect positions or policies of the Bill &amp; Melinda Gates Foundation.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
